@@ -2,8 +2,6 @@ program md;
 
 {$mode objfpc}{$H+}
 
-{$DEFINE MANGADOWNLOADER}
-
 uses
  {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads,
@@ -12,9 +10,10 @@ uses
   windows,
  {$endif}
   Interfaces, // this includes the LCL widgetset
-  Forms, LazFileUtils, IniFiles, simpleipc, sqlite3dyn, FMDOptions, uBaseUnit, FMDVars, webp,
+  Forms, LazFileUtils, IniFiles, simpleipc, sqlite3dyn, FMDOptions, uBaseUnit,
+  FMDVars, webp, CheckUpdate, DBUpdater, SelfUpdater, uDownloadsManager,
   LuaWebsiteModules, SimpleException, Classes, sysutils, frmMain, MultiLog,
-  FileChannel, ssl_openssl_lib;
+  FileChannel, ssl_openssl_lib, blcksock, ssl_openssl;
 
 var
   CheckInstance: Boolean = True;
@@ -26,17 +25,12 @@ var
   trcfile: String;
   {$ENDIF DEBUGLEAKS}
   i: Integer;
-  p: String;
 
 {$ifdef windows}
+  doRestartHandle: THandle;
+  doRestartHandleWaitCounter:Integer=0;
   evpathlen: Integer;
   evpath: String;
-
-type
-  TOpenSSLVersion=function (t:integer):PAnsiChar;cdecl;
-
-var
-  _OpenSSLVersion:TOpenSSLVersion=nil;
 
 const
   {$ifdef win64}
@@ -51,8 +45,42 @@ const
 {$R *.res}
 
 begin
-  Application.Title:='Free Manga Downloader';
-  RequireDerivedFormResource:=True;
+  // read and save all params
+  for i:=1 to ParamCount do
+    AppParams.Add(ParamStr(i));
+
+  {$ifdef windows}
+  //wait for prev process from dorestart
+  doRestartHandle:=THandle(-1);
+  doRestartHandle:=THandle(StrToIntDef(AppParams.Values['--dorestart-handle'],-1));
+  if Integer(doRestartHandle)<>-1 then
+  begin
+    // remove previous --dorestart-handle from params
+    AppParams.Delete(AppParams.IndexOfName('--dorestart-handle'));
+    while IsWindow(doRestartHandle) do
+    begin
+      Sleep(250);
+      inc(doRestartHandleWaitCounter,250);
+      // if previous handle takes longer than 10s, we give up
+      // todo: do something if app takes longer to close
+      if doRestartHandleWaitCounter>10000 then Exit;
+    end;
+  end;
+  {$endif}
+
+  // always execute lua modules from file, for dev purpose
+  if AppParams.IndexOf('--lua-dofile')<>-1 then
+    LuaWebsiteModules.AlwaysLoadLuaFromFile:=True;
+
+  with TIniFile.Create(CONFIG_FILE) do
+    try
+      CheckInstance := ReadBool('general', 'OneInstanceOnly', True);
+      EnableLogging := ReadBool('logger', 'Enabled', False);
+      if EnableLogging then
+        LogFileName := ExpandFileNameUTF8(ReadString('logger', 'LogFileName', DEFAULT_LOG_FILE), FMD_DIRECTORY);
+    finally
+      Free;
+    end;
 
   if CheckInstance then
   begin
@@ -69,7 +97,6 @@ begin
         Free;
       end;
   end;
-
   if not AllowedToRun then Exit;
 
   {$IFDEF DEBUGLEAKS}
@@ -88,23 +115,8 @@ begin
   windows.SetEnvironmentVariable('PATH',pchar(evpath));
   {$endif}
 
-  for i := 1 to ParamCount do
-  begin
-    p := AnsiLowerCase(ParamStr(i));
-    if p = '--lua-dofile' then
-       LuaWebsiteModules.AlwaysLoadLuaFromFile := True;
-  end;
-
-  with TIniFile.Create(CONFIG_FILE) do
-    try
-      CheckInstance := ReadBool('general', 'OneInstanceOnly', True);
-      EnableLogging := ReadBool('logger', 'Enabled', False);
-      if EnableLogging then
-        LogFileName := ExpandFileNameUTF8(ReadString('logger', 'LogFileName', DEFAULT_LOG_FILE), FMD_DIRECTORY);
-    finally
-      Free;
-    end;
-
+  Application.Title := 'Free Manga Downloader';
+  RequireDerivedFormResource:=True;
   Logger.ThreadSafe:=True;
   Logger.Enabled:=EnableLogging;
   InitSimpleExceptionHandler(LogFileName);
@@ -137,16 +149,12 @@ begin
     DLLSSLName:=FMD_DIRECTORY+OpenSSLDLLSSLName;
     DLLUtilName:=FMD_DIRECTORY+OpenSSLDLLUtilName;
     if InitSSLInterface then
-      _OpenSSLVersion:=TOpenSSLVersion(GetProcAddress(SSLUtilHandle,PChar('OpenSSL_version')));
-    if Assigned(_OpenSSLVersion) then
-      OpenSSLVersion:=PAnsiChar(_OpenSSLVersion(0));
-  end else
-  if FileExists(FMD_DIRECTORY+DLLSSLName) and FileExists(FMD_DIRECTORY+DLLUtilName) then
+      SSLImplementation := TSSLOpenSSL;
+  end
+  else if FileExists(FMD_DIRECTORY+DLLSSLName) and FileExists(FMD_DIRECTORY+DLLUtilName) then
   begin
     DLLSSLName:=FMD_DIRECTORY+DLLSSLName;
     DLLUtilName:=FMD_DIRECTORY+DLLUtilName;
-    if InitSSLInterface then
-      OpenSSLVersion:=SSLeayversion(0);
   end;
   if not IsSSLloaded then
     InitSSLInterface;

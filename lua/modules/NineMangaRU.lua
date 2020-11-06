@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -11,7 +11,7 @@ local LuaDebug   = require 'Modules.LuaDebugging'
 -- Local Constants
 ----------------------------------------------------------------------------------------------------
 
-local Template   = require 'Modules.Template-NineManga'
+local Template   = require 'templates.NineManga'
 -- DirectoryPagination = '/'            --> Override template variable by uncommenting this line.
 -- DirectorySuffix     = ''             --> Override template variable by uncommenting this line.
 -- MangaInfoParameters = ''             --> Override template variable by uncommenting this line.

@@ -4,9 +4,87 @@ https://github.com/fmd-project-team/FMD
 Changelog:
 ([!] Important, [+] Addition, [-] Removal, [*] Fix/Change, [?] Feedback needed)
 
-0.9.168.0 (18.01.2020)
+1.3.3.0 (12.04.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.3.2.0...1.3.3.0
+
+1.3.2.0 (10.04.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.3.1.0...1.3.2.0
+
+1.3.1.0 (09.04.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.3.0.0...1.3.1.0
+
+1.3.0.0 (08.04.2020)
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.5.0...1.3.0.0
+
+1.2.5.0 (25.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.4.0...1.2.5.0
+
+1.2.4.0 (24.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.3.0...1.2.4.0
+
+1.2.3.0 (24.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.2.0...1.2.3.0
+
+1.2.2.0 (23.02.2020)
+[*] Fixed website modules updater unable to find new update
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.0.0...1.2.1.0
+
+1.2.1.0 (23.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.2.0.0...1.2.1.0
+
+1.2.0.0 (22.02.2020)
+[*] Lua modules structure changed
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.1.4.0...1.2.0.0
+
+1.1.4.0 (15.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.1.3.0...1.1.4.0
+
+1.1.3.0 (14.02.2020)
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.1.2.0...1.1.3.0
+
+1.1.2.0 (13.02.2020)
+[*] Hotfix update
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.1.1.0...1.1.2.0
+
+1.1.1.0 (12.02.2020)
+[*] Website account and proxy user/pass now encrypted in file,
+    it will break your previous data, backup them first
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.1.0.0...1.1.1.0
+
+1.1.0.0 (03.02.2020)
+[+] Added auto backup settings everyday, max 7 backups
+[*] Fixed slowing down on long download/favorite list
+[*] Fixed filter favorite
+[*] Various performance improvement
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/1.0.0.0...1.1.0.0
+
+1.0.0.0 (27.01.2020)
+[*] Fixed FMD sometimes won't restart after modules update
+[*] Fixed memory leaks
+[+] Added MangaNT[EN]
+[*] Ported MangaReader/MangaPanda to lua
+[*] Various changes and bug fixes
+Full changes: https://github.com/fmd-project-team/FMD/compare/0.9.168.0...1.0.0.0
+
+0.9.168.1 (19.01.2020)
 [!] Report issues here: https://github.com/fmd-project-team/FMD/issues
 [!] Join us on Discord: https://discord.gg/cXKKgw3
+[*] Replaced the "InternetTools" and "MultiLog" packages from Lazarus OPM with the newer Git versions.
+[*] Improved logger and some cleanup. -> Thank you dazedcat19
+Full changes: https://github.com/fmd-project-team/FMD/compare/0.9.168.0...0.9.168.1
+
+0.9.168.0 (18.01.2020)
 [+] Added GetManhwa [Webcomics]
 [+] Added Hiperdex [H-Sites]
 [+] Added KomikGoCoID [ID]

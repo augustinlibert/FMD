@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -11,7 +11,7 @@ local LuaDebug   = require 'Modules.LuaDebugging'
 -- Local Constants
 ----------------------------------------------------------------------------------------------------
 
-local Template   = require 'Modules.Template-MangaReaderOnline'
+local Template   = require 'templates.MangaReaderOnline'
 -- DirectoryParameters = '/'            --> Override template variable by uncommenting this line.
 XPathTokenStatus    = 'Estado'
 XPathTokenAuthors   = 'Autor(es)'

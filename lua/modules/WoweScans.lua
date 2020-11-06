@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -11,7 +11,7 @@ local LuaDebug   = require 'Modules.LuaDebugging'
 -- Local Constants
 ----------------------------------------------------------------------------------------------------
 
-local Template   = require 'Modules.Template-Genkan'
+local Template   = require 'templates.Genkan'
 -- DirectoryPagination = '/'   --> Override template variable by uncommenting this line.
 
 

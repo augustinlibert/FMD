@@ -10,7 +10,7 @@ function Init() end
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -108,8 +108,8 @@ function _M.GetPageNumber()
   if not http.Get(u) then return net_problem end
   
   x = TXQuery.Create(http.Document)
-  json = GetBetween('[[', ']]', Trim(GetBetween('rm_h.init(', ', 0, false);', x.XPathString('//script[@type="text/javascript" and contains(., "rm_h.init")]'))))
-  json = json:gsub('%],%[', ';'):gsub('\'', ''):gsub('"', '')
+  json = GetBetween('[[', ', 0, ', Trim(GetBetween('rm_h.init(', 'false);', x.XPathString('//script[@type="text/javascript" and contains(., "rm_h.init")]'))))
+  json = json:gsub('%],%[', ';'):gsub('\'', ''):gsub('"', ''):gsub(']]', ';')
   for i in json:gmatch('(.-);') do
     i1, i2 = i:match('.-,(.-),(.-),.-,.-')
     task.PageLinks.Add(i1 .. i2)

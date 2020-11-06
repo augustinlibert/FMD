@@ -17,8 +17,8 @@ uses
   FakeActiveX,
   {$endif}
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, LCLType, ExtCtrls, ComCtrls,
-  Buttons, Spin, Menus, VirtualTrees, RichMemo, IniFiles, simpleipc, lclproc, types, LCLIntf,
-  DefaultTranslator, EditBtn, PairSplitter, MultiLog, FileChannel, FileUtil, LazUTF8Classes,
+  Buttons, Spin, Menus, VirtualTrees, RichMemo, simpleipc, lclproc, types, LCLIntf,
+  EditBtn, PairSplitter, MultiLog, FileChannel, FileUtil, LazUTF8Classes,
   TAGraph, TASources, TASeries, TATools, AnimatedGif, uBaseUnit, uDownloadsManager,
   uFavoritesManager, uUpdateThread, uSilentThread, uMisc,
   uGetMangaInfosThread, frmDropTarget, frmAccountManager, frmWebsiteOptionCustom,
@@ -137,6 +137,7 @@ type
     miChapterListHideDownloaded: TMenuItem;
     miAbortSilentThread: TMenuItem;
     mmChangelog: TMemo;
+    pnAboutVersion: TPanel;
     pnThumb: TPanel;
     pnInfos: TPanel;
     pnDownloadList: TPanel;
@@ -183,7 +184,6 @@ type
     tsLog: TTabSheet;
     tmStartup: TTimer;
     tmAnimateMangaInfo: TTimer;
-    tmBackup: TTimer;
     tmCheckFavorites: TTimer;
     tmRefreshDownloadsInfo: TTimer;
     tsWebsiteAdvanced: TTabSheet;
@@ -398,11 +398,9 @@ type
     seOptionPDFQuality: TSpinEdit;
     seOptionDigitVolume: TSpinEdit;
     seOptionDigitChapter: TSpinEdit;
-    btAbortUpdateList: TSpeedButton;
     spInfos: TSplitter;
     spMainSplitter: TSplitter;
     sbMain: TStatusBar;
-    sbUpdateList: TStatusBar;
     tbDropTargetOpacity: TTrackBar;
     tbWebsitesCollapseAll: TToolButton;
     tbWebsitesExpandAll: TToolButton;
@@ -602,6 +600,9 @@ type
     procedure tvDownloadFilterSelectionChanged(Sender: TObject);
     procedure UniqueInstanceFMDOtherInstance(Sender: TObject;
       ParamCount: Integer; Parameters: array of String);
+    procedure vtDownloadAfterCellPaint(Sender: TBaseVirtualTree;
+      TargetCanvas: TCanvas; Node: PVirtualNode; Column: TColumnIndex;
+      const CellRect: TRect);
     procedure vtDownloadColumnDblClick(Sender: TBaseVirtualTree;
       Column: TColumnIndex; Shift: TShiftState);
     procedure vtDownloadDragAllowed(Sender : TBaseVirtualTree;
@@ -612,9 +613,6 @@ type
     procedure vtDownloadDragOver(Sender : TBaseVirtualTree; Source : TObject;
       Shift : TShiftState; State : TDragState; const Pt : TPoint;
       Mode : TDropMode; var Effect : LongWord; var Accept : Boolean);
-    procedure vtDownloadDrawText(Sender: TBaseVirtualTree;
-      TargetCanvas: TCanvas; Node: PVirtualNode; Column: TColumnIndex;
-      const CellText: String; const CellRect: TRect; var DefaultDraw: Boolean);
     procedure vtDownloadFocusChanged(Sender: TBaseVirtualTree;
       Node: PVirtualNode; Column: TColumnIndex);
     procedure vtDownloadGetHint(Sender: TBaseVirtualTree; Node: PVirtualNode;
@@ -625,12 +623,7 @@ type
       var Ghosted: Boolean; var ImageIndex: Integer);
     procedure vtDownloadGetText(Sender: TBaseVirtualTree; Node: PVirtualNode;
       Column: TColumnIndex; TextType: TVSTTextType; var CellText: String);
-    {$if VTMajorVersion < 5}
-    procedure vtDownloadHeaderClick(Sender: TVTHeader; Column: TColumnIndex;
-      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-    {$else}
     procedure vtDownloadHeaderClick(Sender: TVTHeader; HitInfo: TVTHeaderHitInfo);
-    {$endif}
     procedure vtDownloadKeyAction(Sender: TBaseVirtualTree; var CharCode: Word;
       var Shift: TShiftState; var DoDefault: Boolean);
     procedure vtDownloadKeyDown(Sender : TObject; var Key : Word;
@@ -658,12 +651,7 @@ type
       var Ghosted: Boolean; var ImageIndex: Integer);
     procedure vtFavoritesGetText(Sender: TBaseVirtualTree; Node: PVirtualNode;
       Column: TColumnIndex; TextType: TVSTTextType; var CellText: String);
-    {$if VTMajorVersion < 5}
-    procedure vtFavoritesHeaderClick(Sender: TVTHeader; Column: TColumnIndex;
-      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-    {$else}
     procedure vtFavoritesHeaderClick(Sender: TVTHeader; HitInfo: TVTHeaderHitInfo);
-    {$endif}
     procedure vtFavoritesPaintText(Sender: TBaseVirtualTree;
       const TargetCanvas: TCanvas; Node: PVirtualNode; Column: TColumnIndex;
       TextType: TVSTTextType);
@@ -681,7 +669,6 @@ type
       var NodeDataSize: Integer);
     procedure vtMangaListGetText(Sender: TBaseVirtualTree; Node: PVirtualNode;
       Column: TColumnIndex; TextType: TVSTTextType; var CellText: String);
-    procedure tmBackupTimer(Sender: TObject);
     procedure vtMangaListInitNode(Sender: TBaseVirtualTree; ParentNode,
       Node: PVirtualNode; var InitialStates: TVirtualNodeInitStates);
     procedure vtOptionMangaSiteSelectionFreeNode(Sender : TBaseVirtualTree;
@@ -716,6 +703,10 @@ type
     gifWaiting: TAnimatedGif;
     gifWaitingRect: TRect;
 
+    // timer schedule
+    Timer1Hour: TTimer;
+
+    procedure OnTimer1Hour(Sender:TObject);
 
     // embed form
     procedure EmbedForm(const AForm: TForm; const AParent: TWinControl);
@@ -725,7 +716,7 @@ type
 
     // load about information
     procedure LoadAbout;
-    procedure AddToAboutStatus(const ACaption, AValue: String);
+    procedure AddToAboutStatus(const ACaption, AValue: String; APanel: TPanel = nil);
 
     procedure CloseNow;
 
@@ -968,6 +959,9 @@ resourcestring
   RS_FavoritesShowEnabled = 'Enabled';
   RS_FavoritesShowDisabled = 'Disabled';
 
+  RS_Version = 'Version';
+  RS_Revision = 'Revision';
+
 implementation
 
 {$R *.lfm}
@@ -975,7 +969,8 @@ implementation
 uses
   frmImportFavorites, frmShutdownCounter, frmSelectDirectory,
   frmWebsiteSettings, WebsiteModules, FMDVars, RegExpr, sqlite3dyn, Clipbrd,
-  ssl_openssl_lib, LazFileUtils, LazUTF8, webp, DBUpdater, LuaWebsiteModules;
+  ssl_openssl_lib, LazFileUtils, LazUTF8, webp, DBUpdater, pcre2, pcre2lib,
+  StatusBarDownload, LuaWebsiteModules, uBackupSettings;
 
 var
   // thread for open db
@@ -1158,14 +1153,13 @@ begin
   PrevWndProc := windows.WNDPROC(windows.GetWindowLongPtr(Self.Handle, GWL_WNDPROC));
   windows.SetWindowLongPtr(Self.Handle, GWL_WNDPROC, PtrInt(@WndCallback));
   {$endif}
-  btAbortUpdateList.Parent := sbUpdateList;
+
   isRunDownloadFilter := False;
   isUpdating := False;
   isPendingExitCounter:=False;
   isNormalExit:=False;
   DoAfterFMD := DO_NOTHING;
   Application.HintHidePause := 10000;
-  sbUpdateList.DoubleBuffered := True;
 
   ForceDirectoriesUTF8(CONFIG_FOLDER);
 
@@ -1310,13 +1304,26 @@ begin
     Interval := 100;
     Enabled := True;
   end;
-  
-  Caption := 'Free Manga Downloader (' + FMD_VERSION_STRING + ')';
+
+  Timer1Hour:=TTimer.Create(Self);
+  with Timer1Hour do
+  begin
+    OnTimer:=@OnTimer1Hour;
+    Interval:=1000*60*60;
+    Enabled:=True;
+  end;
+
+  Self.Caption := Self.Caption + ' v' + FMD_VERSION_STRING;
+  AddToAboutStatus(RS_Version, FMD_VERSION_STRING, pnAboutVersion);
+  if REVISION_NUMBER <> '' then
+    AddToAboutStatus(RS_Revision, REVISION_NUMBER+' ('+REVISION_SHA+')', pnAboutVersion);
+
+  if LuaWebsiteModules.AlwaysLoadLuaFromFile then
+    Caption := Caption + ' --lua-dofile';
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  Logger.Send(Self.ClassName+'.FormClose');
   if cbOptionShowQuitDialog.Checked and (DoAfterFMD = DO_NOTHING) and (not OptionRestartFMD) then
   begin
     if MessageDlg('', RS_DlgQuit, mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
@@ -1326,6 +1333,8 @@ begin
       Exit;
     end;
   end;
+  Logger.Send(Self.ClassName+'.FormClose');
+  Hide;
   CloseNow;
   CloseAction := caFree;
 end;
@@ -1341,95 +1350,41 @@ begin
     windows.SetWindowLongPtr(Self.Handle, GWL_WNDPROC, PtrInt(PrevWndProc));
   {$endif}
   if FavoriteManager.isRunning then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating check favorites threads');
     FavoriteManager.StopChekForNewChapter(True);
-    Logger.Send(Self.ClassName+'.CloseNow, check favorites threads terminated');
-  end;
   if SilentThreadManager.Count > 0 then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating silentthreads');
     SilentThreadManager.StopAll(True);
-    Logger.Send(Self.ClassName+'.CloseNow, silentthreads terminated');
-  end;
   if DLManager.ItemsActiveTask.Count > 0 then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating downloads threads');
     DLManager.StopAllDownloadTasksForExit;
-    Logger.Send(Self.ClassName+'.CloseNow, downlads threads terminated');
-  end;
-  //Terminating all threads and wait for it
-  if Assigned(CheckUpdateThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating CheckUpdateThread');
-    CheckUpdateThread.Terminate;
-    CheckUpdateThread.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, CheckUpdateThread terminated');
-  end;
-  if Assigned(SearchDBThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating SearchDBThread');
-    SearchDBThread.Terminate;
-    SearchDBThread.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, SearchDBThread terminated');
-  end;
-  if Assigned(OpenDBThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating OpenDBThread');
-    OpenDBThread.Terminate;
-    OpenDBThread.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, OpenDBThread terminated');
-  end;
-  if Assigned(GetInfosThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating GetInfosThread');
-    try
-      GetInfosThread.Terminate;
-      GetInfosThread.WaitFor;
-    except
-    end;
-    Logger.Send(Self.ClassName+'.CloseNow, GetInfosThread terminated');
-  end;
-  if isUpdating then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating UpdateListThread');
-    updateList.Terminate;
-    updateList.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, UpdateListThread terminated');
-  end;
-  if Assigned(DBUpdaterThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating DBUpdaterThread');
-    DBUpdaterThread.Terminate;
-    DBUpdaterThread.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, DBUpdaterThread terminated');
-  end;
-  if Assigned(SelfUpdaterThread) then
-  begin
-    Logger.Send(Self.ClassName+'.CloseNow, terminating SelfUpdaterThread');
-    SelfUpdaterThread.Terminate;
-    SelfUpdaterThread.WaitFor;
-    Logger.Send(Self.ClassName+'.CloseNow, SelfUpdaterThread terminated');
-  end;
 
-  Logger.Send(Self.ClassName+'.CloseNow, disabling all timer');
-  tmBackup.Enabled := False;
+  //Terminating all threads and wait for it
+  if Assigned(CheckUpdateThread) then CheckUpdateThread.Terminate;
+  if Assigned(SearchDBThread) then SearchDBThread.Terminate;
+  if Assigned(OpenDBThread) then OpenDBThread.Terminate;
+  if Assigned(GetInfosThread) then try GetInfosThread.Terminate; except end;
+  if isUpdating then updateList.Terminate;
+  if Assigned(DBUpdaterThread) then DBUpdaterThread.Terminate;
+  if Assigned(SelfUpdaterThread) then SelfUpdaterThread.Terminate;
+
+  if Assigned(CheckUpdateThread) then CheckUpdateThread.WaitFor;
+  if Assigned(SearchDBThread) then SearchDBThread.WaitFor;
+  if Assigned(OpenDBThread) then OpenDBThread.WaitFor;
+  if Assigned(GetInfosThread) then GetInfosThread.WaitFor;
+  if isUpdating then updateList.WaitFor;
+  if Assigned(DBUpdaterThread) then DBUpdaterThread.WaitFor;
+  if Assigned(SelfUpdaterThread) then SelfUpdaterThread.WaitFor;
+
+  Timer1Hour.Enabled := False;
   tmRefreshDownloadsInfo.Enabled := False;
   tmCheckFavorites.Enabled := False;
   tmAnimateMangaInfo.Enabled := False;
   tmExitCommand.Enabled := False;
 
   //Backup data
-  Logger.Send(Self.ClassName+'.CloseNow, backup downloads');
   DLManager.Backup;
-  Logger.Send(Self.ClassName+'.CloseNow, backup favorites');
   FavoriteManager.Backup;
-  Logger.Send(Self.ClassName+'.CloseNow, cleaning up dynamic HTTP settings');
-  Logger.Send(Self.ClassName+'.CloseNow, backup all data to file');
   SaveOptions;
   SaveFormInformation;
 
-  Logger.Send(Self.ClassName+'.CloseNow, close other forms');
   //embed form
   if Assigned(AccountManagerForm) then
     AccountManagerForm.Close;
@@ -1439,7 +1394,6 @@ begin
 
   if FMDInstance <> nil then
   begin
-    Logger.Send(Self.ClassName+'.CloseNow, stop ipc server');
     FMDInstance.StopServer;
     FreeAndNil(FMDInstance);
   end;
@@ -1448,18 +1402,11 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
-  Logger.Send(Self.ClassName+'.FormDestroy, freeing all objects');
-  RemoveVT(vtMangaList);
-  RemoveVT(clbChapterList);
-  RemoveVT(vtDownload);
-  RemoveVT(vtFavorites);
-  RemoveVT(vtOptionMangaSiteSelection);
-
   SetLength(ChapterList, 0);
   FreeAndNil(mangaInfo);
 
-  FreeAndNil(DLManager);
   FreeAndNil(SilentThreadManager);
+  FreeAndNil(DLManager);
   FreeAndNil(FavoriteManager);
   FreeAndNil(dataProcess);
 
@@ -1467,9 +1414,9 @@ begin
   FreeAndNil(mangaCover);
 
   if isNormalExit then
-    Logger.Send(QuotedStrd(Application.Title)+' exit normally [PID:'+IntToStr(GetProcessID)+'] [HANDLE:'+IntToStr(GetCurrentProcess)+']')
+    Logger.Send(QuotedStrd(Application.Title)+' exit normally [PID:'+IntToStr(GetProcessID)+']'{$ifdef windows}+'[HANDLE:'+IntToStr(Integer(Application.Handle))+']'){$ifend}
   else
-    Logger.SendWarning(QuotedStrd(Application.Title)+' doesn''t exit normally [PID:'+IntToStr(GetProcessID)+'] [HANDLE:'+IntToStr(GetCurrentProcess)+']');
+    Logger.SendWarning(QuotedStrd(Application.Title)+' doesn''t exit normally [PID:'+IntToStr(GetProcessID)+']'{$ifdef windows}+' [HANDLE:'+IntToStr(Integer(Application.Handle))+']'{$ifend});
 
   if OptionRestartFMD then
     DoRestartFMD;
@@ -2023,6 +1970,8 @@ begin
     FavoriteManager.CheckForNewChapter;
   end;
   DLManager.CheckAndActiveTaskAtStartup;
+
+  DoBackupToday;
 end;
 
 procedure TMainForm.medURLCutClick(Sender: TObject);
@@ -2142,7 +2091,7 @@ procedure TMainForm.miDownloadDeleteTaskClick(Sender: TObject);
 var
   xNode: PVirtualNode;
   i: Integer;
-  f, d: String;
+  f, d, s: String;
 begin
   if vtDownload.SelectedCount = 0 then Exit;
   if DLManager.Count = 0 then Exit;
@@ -2183,16 +2132,9 @@ begin
             if DirectoryExistsUTF8(f) then
               DeleteDirectory(f, False);
             f := RemovePathDelim(f);
-            if FileExistsUTF8(f + '.zip') then
-              DeleteFileUTF8(f + '.zip')
-            else if FileExistsUTF8(f + '.cbz') then
-              DeleteFileUTF8(f + '.cbz')
-            else if FileExistsUTF8(f + '.pdf') then
-              DeleteFileUTF8(f + '.pdf')
-            else if FileExistsUTF8(f + '.epub') then
-              DeleteFileUTF8(f + '.epub')
-            else if DirectoryExistsUTF8(f) then
-              DeleteDirectory(f, False);
+            for s in FMDSupportedPackedOutputExt do
+              if FileExistsUTF8(f + s) then
+                DeleteFileUTF8(f + s);
           end;
           RemoveDirUTF8(d);
         end;
@@ -2333,34 +2275,10 @@ end;
 
 procedure TMainForm.LoadAbout;
 var
-  i: Integer;
   fs: TFileStreamUTF8;
-  st: TStringList;
-  regx: TRegExpr;
 begin
   // load readme.rtf
   if FileExistsUTF8(README_FILE) then begin
-    regx := TRegExpr.Create;
-    st := TStringList.Create;
-    try
-      regx.ModifierI := True;
-      regx.Expression := '(version.*)((\d+\.){3}\d+)';
-      st.LoadFromFile(README_FILE);
-      if st.Count > 0 then
-        for i := 0 to st.Count - 1 do
-          if regx.Exec(st[i]) then
-          begin
-            if regx.Match[2] <> FMD_VERSION_STRING then begin
-              st[i] := regx.Replace(st[i], '$1\' + FMD_VERSION_STRING, True);
-              if DeleteFileUTF8(README_FILE) then
-                st.SaveToFile(README_FILE);
-            end;
-            Break;
-          end;
-    finally
-      st.Free;
-      regx.Free;
-    end;
     fs := TFileStreamUTF8.Create(README_FILE, fmOpenRead or fmShareDenyNone);
     try
       rmAbout.LoadRichText(fs);
@@ -2368,6 +2286,7 @@ begin
       fs.free;
     end;
   end;
+
   // load changelog.txt
   if FileExistsUTF8(CHANGELOG_FILE) then mmChangelog.Lines.LoadFromFile(CHANGELOG_FILE);
 
@@ -2379,17 +2298,22 @@ begin
   AddToAboutStatus('Build Time', GetBuildTime);
   if SQLiteLibraryHandle = 0 then InitializeSqlite();
   if SQLiteLibraryHandle <> 0 then try AddToAboutStatus('SQLite Version', sqlite3_version()); except end;
-  AddToAboutStatus('OpenSSL Version', OpenSSLVersion);
+  AddToAboutStatus('OpenSSL Version', SSLeayversion(0));
   if WebPLibHandle = 0 then InitWebPModule;
   if WebPLibHandle <> 0 then try AddToAboutStatus('WebP Version', WebPGetVersion); except end;
+  if PCRE2LibHandle <> 0 then try AddToAboutStatus('PCRE Version', PCRE2Version); except end;
 end;
 
-procedure TMainForm.AddToAboutStatus(const ACaption, AValue: String);
+procedure TMainForm.AddToAboutStatus(const ACaption, AValue: String;
+  APanel: TPanel);
 
   function addaboutcomplbl(const ACaption: String): TLabel;
   begin
     Result := TLabel.Create(Self);
-    Result.Parent := pnAboutComp;
+    if APanel = nil then
+      Result.Parent := pnAboutComp
+    else
+      Result.Parent := APanel;
     Result.Caption := ACaption;
   end;
 
@@ -2634,11 +2558,6 @@ begin
     HintInfo.HintMaxWidth := 500;
     HintInfo.HideTimeout := 300000;
   end;
-  if HintInfo.HintControl = sbUpdateList then
-    if isUpdating then
-      HintStr := Trim(updateList.websites.Text)
-    else
-      HintStr := '';
 end;
 
 // -----
@@ -2657,29 +2576,9 @@ procedure TMainForm.btUpdateListClick(Sender: TObject);
 var
   button: TControl;
   lowerLeft: TPoint;
-  {$IFNDEF SELFUPDATE}
-  i: Cardinal;
-  {$ENDIF}
 begin
-  {$IFDEF SELFUPDATE}
   pmUpdate.Items[0].Enabled := True;
   pmUpdate.Items[3].Enabled := True;
-  {$ELSE}
-  if dataProcess.Title.Count = 0 then
-    pmUpdate.Items[0].Enabled := False
-  else
-    pmUpdate.Items[0].Enabled := True;
-
-  pmUpdate.Items[3].Enabled := True;
-  for i := 0 to cbSelectManga.Items.Count - 1 do
-  begin
-    if not (FileExistsUTF8(DATA_FOLDER + cbSelectManga.Items.Strings[i] + DATA_EXT)) then
-    begin
-      pmUpdate.Items[3].Enabled := False;
-      Break;
-    end;
-  end;
-  {$ENDIF}
   if Sender is TControl then
   begin
     button := TControl(Sender);
@@ -2711,6 +2610,11 @@ begin
   if Length(ChapterList) > 0 then
     for i := Low(ChapterList) to High(ChapterList) do
       ChapterList[i].Downloaded := False;
+end;
+
+procedure TMainForm.OnTimer1Hour(Sender: TObject);
+begin
+  DoBackupToday;
 end;
 
 procedure TMainForm.EmbedForm(const AForm: TForm; const AParent: TWinControl);
@@ -3396,16 +3300,11 @@ var
 begin
   if (not isUpdating) then
   begin
-    {$IFNDEF SELFUPDATE}
-    if dataProcess.Title.Count > 0 then
-    {$ENDIF}
-    begin
-      isUpdating := True;
-      updateList := TUpdateListManagerThread.Create;
-      for i := 0 to cbSelectManga.Items.Count - 1 do
-        updateList.websites.Add(cbSelectManga.Items[i]);
-      updateList.Start;
-    end;
+    isUpdating := True;
+    updateList := TUpdateListManagerThread.Create;
+    for i := 0 to cbSelectManga.Items.Count - 1 do
+      updateList.websites.Add(cbSelectManga.Items[i]);
+    updateList.Start;
   end
   else
   begin
@@ -3451,16 +3350,11 @@ var
 begin
   if (not isUpdating) then
   begin
-    {$IFNDEF SELFUPDATE}
-    if dataProcess.Title.Count > 0 then
-    {$ENDIF}
-    begin
-      isUpdating := True;
-      updateList := TUpdateListManagerThread.Create;
-      updateList.numberOfThreads := 4;
-      updateList.websites.Add(cbSelectManga.Items[cbSelectManga.ItemIndex]);
-      updateList.Start;
-    end;
+    isUpdating := True;
+    updateList := TUpdateListManagerThread.Create;
+    updateList.numberOfThreads := 4;
+    updateList.websites.Add(cbSelectManga.Items[cbSelectManga.ItemIndex]);
+    updateList.Start;
   end
   else
   begin
@@ -3529,31 +3423,35 @@ end;
 
 procedure TMainForm.miMangaListDeleteClick(Sender: TObject);
 var
-  xNode: PVirtualNode;
-  DeleteCount: Integer;
+  xNode, deleteNode: PVirtualNode;
+  deleteCount: Integer;
 begin
   if vtMangaList.SelectedCount = 0 then Exit;
   if dataProcess.Table.Active = False then Exit;
   if MessageDlg('', RS_DlgRemoveItem, mtConfirmation, [mbYes, mbNo], 0) = mrNo then Exit;
   try
     vtMangaList.BeginUpdate;
-    DeleteCount := 0;
+    deleteCount := 0;
     xNode := vtMangaList.GetPreviousSelected(nil);
     while Assigned(xNode) do
     begin
       if dataProcess.DeleteData(xNode^.Index) then
+        deleteNode := xNode
+      else
+        deleteNode := nil;
+      xNode := vtMangaList.GetPreviousSelected(xNode);
+      if Assigned(deleteNode) then
       begin
-        Inc(DeleteCount);
-        vtMangaList.DeleteNode(xNode);
+        vtMangaList.DeleteNode(deleteNode);
+        Inc(deleteCount);
       end;
+    end;
+    if deleteCount > 0 then
+    begin
       dataProcess.Table.ApplyUpdates;
       dataProcess.Table.SQLTransaction.CommitRetaining;
-      xNode := vtMangaList.GetPreviousSelected(xNode);
-    end;
-    if DeleteCount <> 0 then
-    begin
       vtMangaList.ClearSelection;
-      UpdateVtMangaListFilterStatus;
+      UpdateVtMangaListFilterStatus
     end;
   finally
     vtMangaList.EndUpdate;
@@ -3941,24 +3839,17 @@ var
 begin
   if Panel.Index = 0 then
   begin
-    //Button
-    with btAbortUpdateList do
-    begin
-      Left := Rect.Right - Width - 3;
-      Top := Rect.Top + 2;
-    end;
-
     //Information
-    if ulTotalPtr = 0 then
-      ulTotalPtr := 100;
-    if ulWorkPtr > ulTotalPtr then
-      ulWorkPtr := ulTotalPtr;
-    Percents := ulWorkPtr / ulTotalPtr;
+    //if ulTotalPtr = 0 then
+    //  ulTotalPtr := 100;
+    //if ulWorkPtr > ulTotalPtr then
+    //  ulWorkPtr := ulTotalPtr;
+    //Percents := ulWorkPtr / ulTotalPtr;
     with StatusBar.Canvas do
     begin
       ClRect := Rect;
       ClRect.Left := Rect.Left + 3;
-      ClRect.Right := Rect.Right - btAbortUpdateList.Width - 6;
+      //ClRect.Right := Rect.Right - btAbortUpdateList.Width - 3;
       ClRect.Bottom := Rect.Bottom - 3;
 
       TxtRect := ClRect;
@@ -4065,6 +3956,84 @@ begin
   BringToFront;
 end;
 
+procedure TMainForm.vtDownloadAfterCellPaint(Sender: TBaseVirtualTree;
+  TargetCanvas: TCanvas; Node: PVirtualNode; Column: TColumnIndex;
+  const CellRect: TRect);
+var
+  BarRect: TRect;
+  Percents: double;
+  ww, hh: Integer;
+begin
+  if Column <> 2 then Exit;
+  with DLManager.Items[Node^.Index], TargetCanvas do
+  begin
+    if Status in [STATUS_FINISH, STATUS_COMPRESS, STATUS_FAILED] then
+      Percents := 1
+    else
+    if (DLManager.Items[Node^.Index].DownCounter = 0) or
+      (DLManager.Items[Node^.Index].PageNumber = 0) then
+      Percents := 0
+    else
+      Percents := DLManager.Items[Node^.Index].DownCounter / DLManager.Items[Node^.Index].PageNumber;
+
+    // base bar
+    BarRect := CellRect;
+    BarRect.Inflate(-2,-2);
+    BarRect.Right-=1;
+    Pen.Style := psSolid;
+    Brush.Style := bsSolid;
+    Pen.Color := CL_BarGrayLine;
+    Brush.Color := CL_BarGray;
+    Rectangle(BarRect);
+
+    // progress bar
+    if Percents > 0 then
+    begin
+      BarRect.Right := round((BarRect.Right - BarRect.Left) * Percents) + BarRect.Left;
+      case DLManager.Items[Node^.Index].Status of
+        STATUS_STOP,
+        STATUS_FAILED  : begin
+                           Pen.Color   := CL_BarRedLine;
+                           Brush.Color := CL_BarRed;
+                         end;
+        STATUS_WAIT    : begin
+                           Pen.Color   := CL_BarGrayLine;
+                           Brush.Color := CL_BarGray;
+                         end;
+        STATUS_DOWNLOAD: begin
+                           Pen.Color   := CL_BarBlueLine;
+                           Brush.Color := CL_BarBlue;
+                         end;
+        STATUS_PROBLEM : begin
+                           Pen.Color   := CL_BarYellowLine;
+                           Brush.Color := CL_BarYellow;
+                         end;
+        STATUS_FINISH  : begin
+                           Pen.Color   := CL_BarGreenLine;
+                           Brush.Color := CL_BarGreen;
+                         end;
+        else
+          begin
+            Pen.Color   := CL_BarBrownGoldLine;
+            Brush.Color := CL_BarBrownGold;
+          end;
+      end;
+      Frame(BarRect);
+      BarRect.Inflate(-2,-2);
+      GradientFill(BarRect, BlendColor(Brush.Color,CL_BarGray,128), Brush.Color, gdHorizontal);
+    end;
+    // text
+    if DownloadInfo.Progress <> '' then
+    begin
+      Font.Color := clBlack;
+      Brush.Style := bsClear;
+      GetTextSize(DownloadInfo.Progress, ww, hh);
+      TextOut(CellRect.Left + ((CellRect.Right - CellRect.Left - ww) div 2),
+        CellRect.Top + ((CellRect.Bottom - CellRect.Top - hh) div 2), DownloadInfo.Progress);
+    end;
+  end;
+end;
+
 procedure TMainForm.vtDownloadColumnDblClick(Sender: TBaseVirtualTree;
   Column: TColumnIndex; Shift: TShiftState);
 begin
@@ -4165,84 +4134,6 @@ begin
   Accept:=True;
 end;
 
-procedure TMainForm.vtDownloadDrawText(Sender: TBaseVirtualTree;
-  TargetCanvas: TCanvas; Node: PVirtualNode; Column: TColumnIndex;
-  const CellText: String; const CellRect: TRect; var DefaultDraw: Boolean);
-var
-  BarRect: TRect;
-  Percents: double;
-  ww, hh: Integer;
-begin
-  if Column <> 2 then Exit;
-  DefaultDraw := False;
-  with DLManager.Items[Node^.Index], TargetCanvas do
-  begin
-    if Status in [STATUS_FINISH, STATUS_COMPRESS, STATUS_FAILED] then
-      Percents := 1
-    else
-    if (DLManager.Items[Node^.Index].DownCounter = 0) or
-      (DLManager.Items[Node^.Index].PageNumber = 0) then
-      Percents := 0
-    else
-      Percents := DLManager.Items[Node^.Index].DownCounter / DLManager.Items[Node^.Index].PageNumber;
-
-    // base bar
-    BarRect.Left := CellRect.Left + 2;
-    BarRect.Top := CellRect.Top + 2;
-    BarRect.Right := CellRect.Right - 2;
-    BarRect.Bottom := CellRect.Bottom - 2;
-    Pen.Style := psSolid;
-    Brush.Style := bsSolid;
-    Pen.Color := CL_BarGrayLine;
-    Brush.Color := CL_BarGray;
-    Rectangle(BarRect);
-
-    // progress bar
-    if Percents > 0 then
-    begin
-      BarRect.Right := round((BarRect.Right - BarRect.Left) * Percents) + BarRect.Left;
-      case DLManager.Items[Node^.Index].Status of
-        STATUS_STOP,
-        STATUS_FAILED  : begin
-                           Pen.Color   := CL_BarRedLine;
-                           Brush.Color := CL_BarRed;
-                         end;
-        STATUS_WAIT    : begin
-                           Pen.Color   := CL_BarGrayLine;
-                           Brush.Color := CL_BarGray;
-                         end;
-        STATUS_DOWNLOAD: begin
-                           Pen.Color   := CL_BarBlueLine;
-                           Brush.Color := CL_BarBlue;
-                         end;
-        STATUS_PROBLEM : begin
-                           Pen.Color   := CL_BarYellowLine;
-                           Brush.Color := CL_BarYellow;
-                         end;
-        STATUS_FINISH  : begin
-                           Pen.Color   := CL_BarGreenLine;
-                           Brush.Color := CL_BarGreen;
-                         end;
-        else
-          begin
-            Pen.Color   := CL_BarBrownGoldLine;
-            Brush.Color := CL_BarBrownGold;
-          end;
-      end;
-      Rectangle(BarRect);
-    end;
-    // text
-    if DownloadInfo.Progress <> '' then
-    begin
-      Font.Color := clBlack;
-      Brush.Style := bsClear;
-      GetTextSize(DownloadInfo.Progress, ww, hh);
-      TextOut(CellRect.Left + ((CellRect.Right - CellRect.Left - ww) div 2),
-        CellRect.Top + ((CellRect.Bottom - CellRect.Top - hh) div 2), DownloadInfo.Progress);
-    end;
-  end;
-end;
-
 procedure TMainForm.vtDownloadFocusChanged(Sender: TBaseVirtualTree;
   Node: PVirtualNode; Column: TColumnIndex);
 begin
@@ -4321,30 +4212,17 @@ begin
     end;
 end;
 
-{$if VTMajorVersion < 5}
-procedure TMainForm.vtDownloadHeaderClick(Sender: TVTHeader;
-  Column: TColumnIndex; Button: TMouseButton; Shift: TShiftState; X, Y: Integer
-  );
-{$else}
 procedure TMainForm.vtDownloadHeaderClick(Sender: TVTHeader; HitInfo: TVTHeaderHitInfo);
-var
-  Column: TColumnIndex;
-  Button: TMouseButton;
-{$endif}
 begin
-  {$if VTMajorVersion >= 5}
-  Column := HitInfo.Column;
-  Button := HitInfo.Button;
-  {$endif}
-  if Button <> mbLeft then Exit;
-  if (Column = 2) or (Column = 3) then Exit;
-  if DLManager.SortColumn = Column then
+  if HitInfo.Button <> mbLeft then Exit;
+  if (HitInfo.Column = 2) or (HitInfo.Column = 3) then Exit;
+  if DLManager.SortColumn = HitInfo.Column then
     DLManager.SortDirection := not DLManager.SortDirection;
-  DLManager.SortColumn := Column;
+  DLManager.SortColumn := HitInfo.Column;
   vtDownload.Header.SortDirection := TSortDirection(DLManager.SortDirection);
-  vtDownload.Header.SortColumn := Column;
+  vtDownload.Header.SortColumn := HitInfo.Column;
   if DLManager.Count > 1 then
-    DLManager.Sort(Column);
+    DLManager.Sort(HitInfo.Column);
   UpdateVtDownload;
 end;
 
@@ -4532,33 +4410,20 @@ begin
     end;
 end;
 
-{$if VTMajorVersion < 5}
-procedure TMainForm.vtFavoritesHeaderClick(Sender: TVTHeader;
-  Column: TColumnIndex; Button: TMouseButton; Shift: TShiftState; X, Y: Integer
-  );
-{$else}
 procedure TMainForm.vtFavoritesHeaderClick(Sender: TVTHeader; HitInfo: TVTHeaderHitInfo);
-var
-  Column: TColumnIndex;
-  Button: TMouseButton;
-{$endif}
 begin
-  {$if VTMajorVersion >= 5}
-  Column := HitInfo.Column;
-  Button := HitInfo.Button;
-  {$endif}
-  if Button <> mbLeft then Exit;
+  if HitInfo.Button <> mbLeft then Exit;
   if FavoriteManager.isRunning then Exit;
-  if Column = 0 then Exit;
+  if HitInfo.Column = 0 then Exit;
   FavoriteManager.isRunning := True;
-  if FavoriteManager.SortColumn = Column then
+  if FavoriteManager.SortColumn = HitInfo.Column then
     FavoriteManager.sortDirection := not FavoriteManager.sortDirection
   else
-    FavoriteManager.SortColumn := Column;
-  vtFavorites.Header.SortColumn := Column;
+    FavoriteManager.SortColumn := HitInfo.Column;
+  vtFavorites.Header.SortColumn := HitInfo.Column;
   vtFavorites.Header.SortDirection := TSortDirection(FavoriteManager.sortDirection);
   if FavoriteManager.Count > 1 then
-    FavoriteManager.Sort(Column);
+    FavoriteManager.Sort(HitInfo.Column);
   UpdateVtFavorites;
   FavoriteManager.isRunning := False;
 end;
@@ -5153,9 +5018,9 @@ begin
     cbOptionUseProxy.Checked := ReadBool('connections', 'UseProxy', False);
     cbOptionProxyType.Text := ReadString('connections', 'ProxyType', 'HTTP');
     edOptionHost.Text := ReadString('connections', 'Host', '');
-    edOptionPass.Text := ReadString('connections', 'Pass', '');
     edOptionPort.Text := ReadString('connections', 'Port', '');
-    edOptionUser.Text := ReadString('connections', 'User', '');
+    edOptionUser.Text := DecryptString(ReadString('connections', 'User', ''));
+    edOptionPass.Text := DecryptString(ReadString('connections', 'Pass', ''));
 
     // saveto
     edOptionDefaultPath.Text := ReadString('saveto', 'SaveTo', DEFAULT_PATH);
@@ -5266,9 +5131,9 @@ begin
       WriteBool('connections', 'UseProxy', cbOptionUseProxy.Checked);
       WriteString('connections', 'ProxyType', cbOptionProxyType.Text);
       WriteString('connections', 'Host', edOptionHost.Text);
-      WriteString('connections', 'Pass', edOptionPass.Text);
       WriteString('connections', 'Port', edOptionPort.Text);
-      WriteString('connections', 'User', edOptionUser.Text);
+      WriteString('connections', 'User', EncryptString(edOptionUser.Text));
+      WriteString('connections', 'Pass', EncryptString(edOptionPass.Text));
 
       // saveto
       if Trim(edOptionDefaultPath.Text) = '' then
@@ -5776,14 +5641,12 @@ begin
     vtFavorites.RootNodeCount := FavoriteManager.Count;
     vtFavorites.EndUpdate;
     vtFavoritesFilterRefresh;
-    
-    if rbFavoritesShowAll.Checked then
-      rbFavoritesShowAllChange(nil)
-    else if rbFavoritesShowEnabled.Checked then
-      rbFavoritesShowEnabledChange(nil)
-    else
-      rbFavoritesShowDisabledChange(nil);
   end;
+
+  if rbFavoritesShowEnabled.Checked then
+    rbFavoritesShowEnabledChange(rbFavoritesShowEnabled)
+  else if rbFavoritesShowDisabled.Checked then
+    rbFavoritesShowDisabledChange(rbFavoritesShowDisabled);
 end;
 
 procedure TMainForm.UpdateVtMangaListFilterStatus;
@@ -5879,7 +5742,7 @@ procedure TMainForm.SaveFormInformation;
       WriteInteger(name, 'SortDirection', Integer(SortDirection));
       for i := 0 to Columns.Count - 1 do
       begin
-        WriteInteger(name, 'Column' + IntToStr(i) + 'Width', Columns[i].Width);
+        WriteInteger(name, 'Column' + IntToStr(i) + 'Width', ScaleFontTo96(Columns[i].Width));
         WriteInteger(name, 'Column' + IntToStr(i) + 'Position', Columns[i].Position);
       end;
     end;
@@ -6038,19 +5901,18 @@ procedure TMainForm.OpenWithExternalProgramChapters(const Dir: String;
 
   function FindSupportedOutputExt(const Dir, Filename: String): String;
   var
-    i: Integer;
-    ADir, SDir: String;
+    ADir, SDir, s: String;
   begin
     Result := '';
     if Filename = '' then Exit;
     ADir := CorrectPathSys(Dir);
     if not DirectoryExistsUTF8(ADir) then Exit;
-    for i := Low(FMDSupportedOutputExt) to High(FMDSupportedOutputExt) do
+    for s in FMDSupportedPackedOutputExt do
     begin
       SDir := ChompPathDelim(CorrectPathSys(ADir + Filename));
-      if FileExistsUTF8(SDir + FMDSupportedOutputExt[i]) then
+      if FileExistsUTF8(SDir + s) then
       begin
-        Result := GetLastDir(SDir) + FMDSupportedOutputExt[i];
+        Result := GetLastDir(SDir) + s;
         Break;
       end;
     end;
@@ -6159,14 +6021,6 @@ end;
 procedure TMainForm.ExceptionHandler(Sender: TObject; E: Exception);
 begin
   SimpleException.ExceptionHandle(Sender, E);
-end;
-
-procedure TMainForm.tmBackupTimer(Sender: TObject);
-begin
-  if not DLManager.isRunningBackup then
-    DLManager.Backup;
-  if not FavoriteManager.isRunning then
-    FavoriteManager.Backup;
 end;
 
 procedure TMainForm.vtMangaListInitNode(Sender: TBaseVirtualTree; ParentNode,

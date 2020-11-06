@@ -3,6 +3,31 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Last-Translator: Havokdan <havokdan@yahoo.com.br>\n"
 "Language-Team: Havokdan <havokdan@yahoo.com.br>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.3\n"
+
+#: checkupdate.rs_btncheckupdates
+#, fuzzy
+msgctxt "checkupdate.rs_btncheckupdates"
+msgid "Check for latest version"
+msgstr "Checar pela última versão"
+
+#: checkupdate.rs_currentversion
+msgid "Installed Version"
+msgstr ""
+
+#: checkupdate.rs_latestversion
+msgid "Latest Version   "
+msgstr ""
+
+#: checkupdate.rs_newversionfound
+msgid "New Version found!"
+msgstr ""
 
 #: dbupdater.rs_buttoncancel
 msgctxt "dbupdater.rs_buttoncancel"
@@ -10,27 +35,35 @@ msgid "Abort"
 msgstr "Abortar"
 
 #: dbupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading %s"
 msgstr "Baixando %s"
 
 #: dbupdater.rs_extracting
+#, object-pascal-format
 msgid "Extracting %s"
 msgstr "Extraindo %s"
 
 #: dbupdater.rs_faileddownload
+#, object-pascal-format
 msgid "%s: %d %s"
 msgstr "%s: %d %s"
 
 #: dbupdater.rs_failedextract
+#, object-pascal-format
 msgid "%s: failed to extract, exitstatus = %d"
 msgstr "%s: falhou ao extrair, exitstatus = %d"
 
 #: dbupdater.rs_faileditems
+#, object-pascal-format
 msgid ""
 "Failed to finish:\n"
 "\n"
-"%s\n"
-msgstr "Falha ao terminar:\n\n%s\n"
+"%s"
+msgstr ""
+"Falha ao terminar:\n"
+"\n"
+"%s"
 
 #: dbupdater.rs_faileditemstitle
 msgctxt "dbupdater.rs_faileditemstitle"
@@ -38,31 +71,14 @@ msgid "Failed"
 msgstr "Falhou"
 
 #: dbupdater.rs_failedtosave
+#, object-pascal-format
 msgid "%s: failed to save"
 msgstr "%s: falhou ao salvar"
 
 #: dbupdater.rs_missingzipexe
+#, object-pascal-format
 msgid "%s: Missing %s"
 msgstr "%s: Faltando %s"
-
-#: ehentai.rs_downloadoriginalimage
-msgid "Download original image(require ExHentai account)"
-msgstr "Baixar imagem original (exige uma conta ExHentai)"
-
-#: ehentai.rs_settingsimagesize
-msgid "Image size:"
-msgstr "Tam. da imagem:"
-
-#: ehentai.rs_settingsimagesizeitems
-msgid ""
-"Auto\n"
-"780x\n"
-"980x\n"
-"1280x\n"
-"1600x\n"
-"2400x\n"
-"Original\n"
-msgstr "Auto\n780x\n980x\n1280x\n1600x\n2400x\nOriginal\n"
 
 #: frmaccountmanager.rs_accountdeleteconfirmation
 msgid "Are you sure you want to delete this account?"
@@ -117,22 +133,16 @@ msgid "Finish download"
 msgstr "Terminar donwload"
 
 #: frmluamodulesupdater.rs_modulesupdatedrestart
-msgid ""
-"Modules updated, restart now?\n"
-"\n"
-"%s\n"
-msgstr "Módulos atualizados, reiniciar agora?\n\n%s\n"
+msgid "Modules updated, restart now?"
+msgstr "Módulos atualizados, reiniciar agora?"
 
 #: frmluamodulesupdater.rs_modulesupdatedtitle
 msgid "Modules updated!"
 msgstr "Módulos atualizados!"
 
 #: frmluamodulesupdater.rs_newupdatefoundlostchanges
-msgid ""
-"Modules update found, any local changes will be lost, procced?\n"
-"\n"
-"%s\n"
-msgstr "Atualização de módulos encontrada, todas as mudanças locais serão perdidas, continuar?\n\n%s\n"
+msgid "Modules update found, any local changes will be lost, procced?"
+msgstr "Atualização de módulos encontrada, todas as mudanças locais serão perdidas, continuar?"
 
 #: frmluamodulesupdater.rs_newupdatefoundtitle
 msgid "Modules update found!"
@@ -143,26 +153,31 @@ msgid "Downloading..."
 msgstr "Baixando..."
 
 #: frmluamodulesupdater.rs_statusdelete
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusdelete"
 msgid "%s DELETE*"
 msgstr "%s EXCLUIR*"
 
 #: frmluamodulesupdater.rs_statusfailed
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusfailed"
 msgid "%s FAILED*"
 msgstr "%s FALHOU*"
 
 #: frmluamodulesupdater.rs_statusnew
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusnew"
 msgid "%s NEW*"
 msgstr "%s NOVO*"
 
 #: frmluamodulesupdater.rs_statusredownloaded
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusredownloaded"
 msgid "%s REDOWNLOAD*"
 msgstr "%s BAIXAR_NOVAMENTE*"
 
 #: frmluamodulesupdater.rs_statusupdate
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusupdate"
 msgid "%s UPDATE*"
 msgstr "%s ATUALIZAR*"
@@ -198,10 +213,6 @@ msgstr "Não foi possível obter informações do mangá. Verifique a sua conex�
 msgid "Download count:"
 msgstr "Número de downloads:"
 
-#: frmmain.rs_dlgmangalistselect
-msgid "You must choose at least 1 manga website!"
-msgstr "Você deve escolher ao menos um site de mangá!"
-
 #: frmmain.rs_dlgquit
 msgid "Are you sure you want to exit?"
 msgstr "Você está certo que quer sair?"
@@ -230,8 +241,10 @@ msgstr "Dividir download"
 #: frmmain.rs_dlgtitleexistindllist
 msgid ""
 "This title are already in download list.\n"
-"Do you want to download it anyway?\n"
-msgstr "Este título já está na lista de download.\nVocê quer baixá-lo mesmo assim?\n"
+"Do you want to download it anyway?"
+msgstr ""
+"Este título já está na lista de download.\n"
+"Você quer baixá-lo mesmo assim?"
 
 #: frmmain.rs_dlgtypeinnewchapter
 msgid "Type in new chapter:"
@@ -256,25 +269,55 @@ msgstr "URL não suportada!"
 #: frmmain.rs_droptargetmodeitems
 msgid ""
 "Download all\n"
-"Add to favorites\n"
-msgstr "Baixar tudo\nAdicionar aos favoritos\n"
+"Add to favorites"
+msgstr ""
+"Baixar tudo\n"
+"Adicionar aos favoritos"
+
+#: frmmain.rs_favoritesshowall
+msgctxt "frmmain.rs_favoritesshowall"
+msgid "All"
+msgstr "Todos"
+
+#: frmmain.rs_favoritesshowdisabled
+msgctxt "frmmain.rs_favoritesshowdisabled"
+msgid "Disabled"
+msgstr "Desabilitado"
+
+#: frmmain.rs_favoritesshowenabled
+msgctxt "frmmain.rs_favoritesshowenabled"
+msgid "Enabled"
+msgstr ""
 
 #: frmmain.rs_filterstatusitems
 msgid ""
 "Completed\n"
 "Ongoing\n"
-"<none>\n"
-msgstr "Completo\nEm Andamento\n<vazio>\n"
+"<none>"
+msgstr ""
+"Completo\n"
+"Em Andamento\n"
+"<vazio>"
+
+#: frmmain.rs_fiveyears
+msgid "Five years"
+msgstr "Cinco anos"
 
 #: frmmain.rs_fmdalreadyrunning
 msgid "Free Manga Downloader already running!"
 msgstr "Free Manga Downloader já está em execução!"
 
+#: frmmain.rs_fouryears
+msgid "Four years"
+msgstr "Quatro anos"
+
 #: frmmain.rs_hintfavoriteproblem
 msgid ""
 "There is a problem with this data!\n"
-"Removing and re-adding this data may fix the problem.\n"
-msgstr "Há um problema com estes dados!\nRemovendo e re-adicionando estes dados pode corrigir o problema.\n"
+"Removing and re-adding this data may fix the problem."
+msgstr ""
+"Há um problema com estes dados!\n"
+"Removendo e re-adicionando estes dados pode corrigir o problema."
 
 #: frmmain.rs_history
 msgid "History"
@@ -318,27 +361,35 @@ msgid "In progress"
 msgstr "Em progresso"
 
 #: frmmain.rs_lblautochecknewchapterminute
+#, object-pascal-format
 msgctxt "frmmain.rs_lblautochecknewchapterminute"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Auto checar por novos capítulos a cada %d minutos"
 
 #: frmmain.rs_lbloptionexternalparamshint
+#, object-pascal-format
 msgid ""
 "%s : Path to the manga\n"
 "%s : Chapter filename\n"
 "\n"
-"Example : \"%s%s\"\n"
-msgstr "%s : Caminho para o mangá\n%s : Nome do capítulo\n\nExamplo : \"%s%s\"\n"
+"Example : \"%s%s\""
+msgstr ""
+"%s : Caminho para o mangá\n"
+"%s : Nome do capítulo\n"
+"\n"
+"Examplo : \"%s%s\""
 
 #: frmmain.rs_loading
 msgid "Loading ..."
 msgstr "Carregando ..."
 
 #: frmmain.rs_modeall
+#, object-pascal-format
 msgid "Mode: Show all (%d)"
 msgstr "Modo: Exibir Tudo (%d)"
 
 #: frmmain.rs_modefiltered
+#, object-pascal-format
 msgid "Mode: Filtered (%d)"
 msgstr "Modo: Filtrado (%d)"
 
@@ -355,60 +406,48 @@ msgstr "Um mês"
 msgid "One week"
 msgstr "Uma semana"
 
-#: frmmain.rs_sixmonths
-msgid "Six months"
-msgstr "Seis meses"
-
 #: frmmain.rs_oneyear
 msgid "One year"
 msgstr "Um ano"
 
-#: frmmain.rs_twoyears
-msgid "Two years"
-msgstr "Dois anos"
-
-#: frmmain.rs_threeyears
-msgid "Three years"
-msgstr "Três ano"
-
-#: frmmain.rs_fouryears
-msgid "Four years"
-msgstr "Quatro anos"
-
-#: frmmain.rs_fiveyears
-msgid "Five years"
-msgstr "Cinco anos"
-
-#: frmmain.rs_tenyears
-msgid "Ten years"
-msgstr "Dez anos"
-
 #: frmmain.rs_optioncompress
-#, fuzzy
-#| msgid ""
-#| "None\n"
-#| "ZIP\n"
-#| "CBZ\n"
-#| "PDF\n"
 msgid ""
 "None\n"
 "ZIP\n"
 "CBZ\n"
 "PDF\n"
-"EPUB\n"
-msgstr "Nenhum\nZIP\nCBZ\nPDF\nEPUB\n"
+"EPUB"
+msgstr ""
+"None\n"
+"ZIP\n"
+"CBZ\n"
+"PDF\n"
+"EPUB"
 
 #: frmmain.rs_optionfmddoitems
 msgid ""
 "Nothing\n"
 "Exit\n"
 "Shutdown\n"
-"Hibernate\n"
-msgstr "Nada\nSair\nDesligar\nHibernar\n"
+"Hibernate"
+msgstr ""
+"Nada\n"
+"Sair\n"
+"Desligar\n"
+"Hibernar"
+
+#: frmmain.rs_revision
+msgid "Revision"
+msgstr ""
 
 #: frmmain.rs_selected
+#, object-pascal-format
 msgid "Selected: %d"
 msgstr "Selecionado: %d"
+
+#: frmmain.rs_sixmonths
+msgid "Six months"
+msgstr "Seis meses"
 
 #: frmmain.rs_software
 msgid "Software"
@@ -419,24 +458,47 @@ msgctxt "frmmain.rs_softwarepath"
 msgid "Path to the software (e.g. C:\\MangaDownloader)"
 msgstr "Caminho para o software (e.g. C:\\MangaDownloader)"
 
+#: frmmain.rs_tenyears
+msgid "Ten years"
+msgstr "Dez anos"
+
+#: frmmain.rs_threeyears
+msgid "Three years"
+msgstr "Três ano"
+
 #: frmmain.rs_today
 msgid "Today"
 msgstr "Hoje"
+
+#: frmmain.rs_twoyears
+msgid "Two years"
+msgstr "Dois anos"
+
+#: frmmain.rs_version
+msgid "Version"
+msgstr ""
 
 #: frmmain.rs_webpconvertto
 msgid ""
 "WebP\n"
 "PNG\n"
-"JPEG\n"
-msgstr "WebP\nPNG\nJPEG\n"
+"JPEG"
+msgstr ""
+"WebP\n"
+"PNG\n"
+"JPEG"
 
 #: frmmain.rs_webppnglevel
 msgid ""
 "None\n"
 "Fastest\n"
 "Default\n"
-"Maximum\n"
-msgstr "Nenhum\nO mais rápido\nPadrão\nMáximo"
+"Maximum"
+msgstr ""
+"Nenhum\n"
+"O mais rápido\n"
+"Padrão\n"
+"Máximo"
 
 #: frmmain.rs_wronginput
 msgid "Invalid input!"
@@ -447,14 +509,17 @@ msgid "Yesterday"
 msgstr "Ontem"
 
 #: frmshutdowncounter.rs_lblmessageexit
+#, object-pascal-format
 msgid "FMD will exit in %d second."
 msgstr "FMD irá sair em %d segundos."
 
 #: frmshutdowncounter.rs_lblmessagehibernate
+#, object-pascal-format
 msgid "System will hibernate in %d second."
 msgstr "Sistema irá hibernar em %d segundos."
 
 #: frmshutdowncounter.rs_lblmessageshutdown
+#, object-pascal-format
 msgid "System will shutdown in %d second."
 msgstr "Sistema irá desligar em %d segundos."
 
@@ -473,57 +538,29 @@ msgctxt "frmtransferfavorites.rs_valid"
 msgid "Valid"
 msgstr "Válido"
 
-#: kissmanga.rs_kissmanga_initvector
-msgid "Initialization Vector:"
-msgstr "Vetor de Inicialização:"
-
-#: kissmanga.rs_kissmanga_key
-msgid "Key:"
-msgstr "Chave:"
-
-#: kissmanga.rs_kissmanga_usegoogledcp
-msgid "Use Google DCP"
-msgstr "Usar Google DCP"
-
-#: mangarock.rs_mangarock_country
-msgid "Country (change this if some manga or chapters are missing):"
-msgstr ""
-
-#: mangadex.rs_showalllang
-msgctxt "mangadex.rs_showalllang"
-msgid "Show all language"
-msgstr "Exibir todos os idiomas"
-
-#: mangadex.rs_showscangroup
-msgctxt "mangadex.rs_showscangroup"
-msgid "Show scanlation group"
-msgstr "Exibir grupo de scans"
-
-#: mangafox.rs_removewatermark
-msgid "Remove watermark"
-msgstr "Remover a marca d'água"
-
-#: mangafox.rs_saveaspng
-msgid "Save as PNG"
-msgstr "Salvar como PNG"
-
 #: selfupdater.rs_buttoncancel
 msgctxt "selfupdater.rs_buttoncancel"
 msgid "Abort"
 msgstr "Abortar"
 
 #: selfupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading new version %s"
 msgstr "Baixar nova versão %s"
 
 #: selfupdater.rs_faileddownload
+#, object-pascal-format
 msgid ""
 "Failed to download new version %s\n"
 "\n"
-"%d %s\n"
-msgstr "Falha ao baixar a nova versão %s\n\n%d %s\n"
+"%d %s"
+msgstr ""
+"Falha ao baixar a nova versão %s\n"
+"\n"
+"%d %s"
 
 #: selfupdater.rs_failedextract
+#, object-pascal-format
 msgid "Failed to extract %s, exitstatus = %d"
 msgstr "Falha ao extrair %s, exitstatus = %d"
 
@@ -533,6 +570,7 @@ msgid "Failed"
 msgstr "Falhou"
 
 #: selfupdater.rs_failedtosave
+#, object-pascal-format
 msgid "Failed to save %s"
 msgstr "Falha ao salvar %s"
 
@@ -545,9 +583,38 @@ msgid "Download finished"
 msgstr "Download concluído"
 
 #: selfupdater.rs_missingfile
+#, object-pascal-format
 msgctxt "selfupdater.rs_missingfile"
 msgid "Missing %s"
 msgstr "Faltando %s"
+
+#: simpleexception.sbuttoncontinue
+msgid "&Continue"
+msgstr ""
+
+#: simpleexception.sbuttondetails
+msgid "&Show Details"
+msgstr ""
+
+#: simpleexception.sbuttonterminate
+msgid "&Terminate"
+msgstr ""
+
+#: simpleexception.scanthandleexception
+msgid "Can't handle exception"
+msgstr ""
+
+#: simpleexception.scheckboxignoreexception
+msgid "Ignore this exception for next time"
+msgstr ""
+
+#: simpleexception.sexceptioncaption
+msgid "An error occured during program execution:"
+msgstr ""
+
+#: simpleexception.sexceptiondialogtitle
+msgid "Exception Info"
+msgstr ""
 
 #: taccountmanagerform.btedit.caption
 msgctxt "taccountmanagerform.btedit.caption"
@@ -665,6 +732,22 @@ msgctxt "tformlogger.micopy.caption"
 msgid "Copy"
 msgstr "Copiar"
 
+#: tfrmdialogyn.btno.caption
+msgid "&No"
+msgstr ""
+
+#: tfrmdialogyn.btyes.caption
+msgid "&Yes"
+msgstr ""
+
+#: tfrmdialogyn.caption
+msgid "Dialog"
+msgstr ""
+
+#: tfrmdialogyn.lbmessage.caption
+msgid "lbMessage"
+msgstr ""
+
 #: timportfavorites.btcancel.caption
 msgctxt "TIMPORTFAVORITES.BTCANCEL.CAPTION"
 msgid "Cancel"
@@ -716,10 +799,6 @@ msgstr "Última modificação"
 #: tluamodulesupdaterform.vtluamodulesrepos.header.columns[2].text
 msgid "Last message"
 msgstr "Última mensagem"
-
-#: tmainform.btabortupdatelist.hint
-msgid "Abort update list"
-msgstr "Abortar atualizações das lista"
 
 #: tmainform.btaddtofavorites.caption
 msgctxt "tmainform.btaddtofavorites.caption"
@@ -830,8 +909,8 @@ msgstr "Auto-checar por novos capítulos ao iniciar"
 
 #: tmainform.cboptionautochecklatestversion.caption
 msgctxt "TMAINFORM.CBOPTIONAUTOCHECKLATESTVERSION.CAPTION"
-msgid "Auto check for latest version "
-msgstr "Auto-checar pela última versão "
+msgid "Auto check for latest version"
+msgstr "Auto-checar pela última versão"
 
 #: tmainform.cboptionautoopenfavstartup.caption
 msgid "Open Favorites at startup"
@@ -911,11 +990,6 @@ msgstr "Baixar lista de mangá se vazia"
 msgid "Show Downloads tab when adding new tasks"
 msgstr "Exibir aba de Downloads quando adicionando nova tarefa"
 
-#: tmainform.cboptionshowfavoritestabonnewmanga.caption
-msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
-msgid "Show Favorites tab when adding new manga"
-msgstr "Exibir aba de Favoritos quando adicionando novo mangá"
-
 #: tmainform.cboptionshowdownloadtoolbar.caption
 msgid "Show downloads toolbar"
 msgstr "Exibir Barra de Ferramentas de Downloads"
@@ -927,6 +1001,11 @@ msgstr "Exibir \"Apagar todas tarefas concluídas\" na barra de ferramentas"
 #: tmainform.cboptionshowdownloadtoolbarleft.caption
 msgid "Show left downloads toolbar"
 msgstr "Mostrar barra de ferramentas de downloads à esquerda"
+
+#: tmainform.cboptionshowfavoritestabonnewmanga.caption
+msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
+msgid "Show Favorites tab when adding new manga"
+msgstr "Exibir aba de Favoritos quando adicionando novo mangá"
 
 #: tmainform.cboptionshowquitdialog.caption
 msgid "Exit FMD"
@@ -1050,8 +1129,10 @@ msgstr "Troca de Sexo"
 #: tmainform.ckfiltergenderbender.hint
 msgid ""
 "Girls dressing up as guys, guys dressing up as girls.\n"
-"Guys turning into girls, girls turning into guys.\n"
-msgstr "Meninas vestindo-se como caras, caras vestir-se como meninas.\nRapazes se transformando em garotas, garotas se transformando em caras.\n"
+"Guys turning into girls, girls turning into guys."
+msgstr ""
+"Meninas vestindo-se como caras, caras vestir-se como meninas.\n"
+"Rapazes se transformando em garotas, garotas se transformando em caras."
 
 #: tmainform.ckfilterharem.caption
 msgid "Harem"
@@ -1466,8 +1547,17 @@ msgid ""
 "Custom Genres:\n"
 "- Separate multiple genres with ','.\n"
 "- Exclude a genre by placing '!' or '-' at the beginning of a genre.\n"
-"- Example: Adventure,!Ecchi,Comedy.\n"
-msgstr "Géneros:\n- Marcado: Inclua este gênero.\n- Desmarcado: exclua esse gênero.\n- Cinzento: Não importa.\n\nGéneros Personalizados:\n- Separar vários gêneros com ','.\n- Excluir um gênero colocando '!' Ou '-' no início de um gênero.\n- Exemplo: Aventura, Ecchi, Comédia.\n"
+"- Example: Adventure,!Ecchi,Comedy."
+msgstr ""
+"Géneros:\n"
+"- Marcado: Inclua este gênero.\n"
+"- Desmarcado: exclua esse gênero.\n"
+"- Cinzento: Não importa.\n"
+"\n"
+"Géneros Personalizados:\n"
+"- Separar vários gêneros com ','.\n"
+"- Excluir um gênero colocando '!' Ou '-' no início de um gênero.\n"
+"- Exemplo: Aventura, Ecchi, Comédia."
 
 #: tmainform.lbfilterstatus.caption
 msgctxt "TMAINFORM.LBFILTERSTATUS.CAPTION"
@@ -1496,6 +1586,7 @@ msgid "Mode: Show all (0)"
 msgstr "Modo: Exibir Tudo (0)"
 
 #: tmainform.lboptionautocheckfavintervalminutes.caption
+#, object-pascal-format
 msgctxt "TMAINFORM.LBOPTIONAUTOCHECKFAVINTERVALMINUTES.CAPTION"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Auto checar por novos capítulos a cada %d minutos"
@@ -1521,8 +1612,17 @@ msgid ""
 "%NUMBERING% : Numbering\n"
 "\n"
 "Note:\n"
-"Chapter folder name must have at least %CHAPTER% or %NUMBERING%.\n"
-msgstr "%WEBSITE% : Nome doWebsite\n%MANGA% : Título do Mangá\n%CHAPTER% : Título do capítulo\n%AUTHOR% : Autor\n%ARTIST% : Artista\n%NUMBERING% : Número\n\nNota:\nO nome da pasta do capítulo deve ter pelo menos %CHAPTER% ou %NUMBERING%.\n"
+"Chapter folder name must have at least %CHAPTER% or %NUMBERING%."
+msgstr ""
+"%WEBSITE% : Nome doWebsite\n"
+"%MANGA% : Título do Mangá\n"
+"%CHAPTER% : Título do capítulo\n"
+"%AUTHOR% : Autor\n"
+"%ARTIST% : Artista\n"
+"%NUMBERING% : Número\n"
+"\n"
+"Nota:\n"
+"O nome da pasta do capítulo deve ter pelo menos %CHAPTER% ou %NUMBERING%."
 
 #: tmainform.lboptionconnectiontimeout.caption
 msgid "Connection timeout (seconds)"
@@ -1558,8 +1658,15 @@ msgid ""
 "%FILENAME% : Filename\n"
 "\n"
 "Note:\n"
-"Filename must have at least %FILENAME%\n"
-msgstr "%WEBSITE% : Nome do Website\n%MANGA% : Título do Mangá\n%CHAPTER% : Título do Capítulo\n%FILENAME% : Nome do arquivo\n\nNota:\nNome do arquivo deve ter pelo menos %FILENAME%\n"
+"Filename must have at least %FILENAME%"
+msgstr ""
+"%WEBSITE% : Nome do Website\n"
+"%MANGA% : Título do Mangá\n"
+"%CHAPTER% : Título do Capítulo\n"
+"%FILENAME% : Nome do arquivo\n"
+"\n"
+"Nota:\n"
+"Nome do arquivo deve ter pelo menos %FILENAME%"
 
 #: tmainform.lboptionhost.caption
 msgid "Host"
@@ -1591,8 +1698,15 @@ msgid ""
 "%ARTIST% : Artist\n"
 "\n"
 "Note:\n"
-"Manga folder name must have at least %MANGA%.\n"
-msgstr "%WEBSITE% : Nome do Website\n%MANGA% : Título do Mangá\n%AUTHOR% : Autor\n%ARTIST% : Artista\n\nNota:\nNome da pasta Manga deve ter pelo menos %MANGA%.\n"
+"Manga folder name must have at least %MANGA%."
+msgstr ""
+"%WEBSITE% : Nome do Website\n"
+"%MANGA% : Título do Mangá\n"
+"%AUTHOR% : Autor\n"
+"%ARTIST% : Artista\n"
+"\n"
+"Nota:\n"
+"Nome da pasta Manga deve ter pelo menos %MANGA%."
 
 #: tmainform.lboptionmaxparallel.caption
 msgid "Number of downloaded tasks at the same time"
@@ -1809,6 +1923,31 @@ msgctxt "TMAINFORM.MIFAVORITESCHECKNEWCHAPTER.CAPTION"
 msgid "Check for new chapter"
 msgstr "Checar por novos capítulos"
 
+#: tmainform.mifavoritesdefaultaction.caption
+msgctxt "tmainform.mifavoritesdefaultaction.caption"
+msgid "Default Action"
+msgstr "Default Action"
+
+#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
+msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
+msgid "Check for new Chapters"
+msgstr "Check for new Chapters"
+
+#: tmainform.mifavoritesdefaultactionopenfolder.caption
+msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
+msgid "Open Folder"
+msgstr "Open Folder"
+
+#: tmainform.mifavoritesdefaultactionrename.caption
+msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
+msgid "Rename"
+msgstr "Rename"
+
+#: tmainform.mifavoritesdefaultactionshowinfo.caption
+msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
+msgid "View Manga Info"
+msgstr "View Manga Info"
+
 #: tmainform.mifavoritesdelete.caption
 msgctxt "TMAINFORM.MIFAVORITESDELETE.CAPTION"
 msgid "Delete"
@@ -1840,6 +1979,7 @@ msgid "Open ..."
 msgstr "Abrir ..."
 
 #: tmainform.mifavoritesrename.caption
+msgctxt "tmainform.mifavoritesrename.caption"
 msgid "Rename"
 msgstr "Renomear"
 
@@ -1956,6 +2096,21 @@ msgstr "Atualizar lista de mangá"
 #: tmainform.rball.caption
 msgid "Have all genre checked"
 msgstr "Todos os gêneros marcados"
+
+#: tmainform.rbfavoritesshowall.caption
+msgctxt "tmainform.rbfavoritesshowall.caption"
+msgid "All"
+msgstr "Todos"
+
+#: tmainform.rbfavoritesshowdisabled.caption
+msgctxt "tmainform.rbfavoritesshowdisabled.caption"
+msgid "Disabled"
+msgstr "Desabilitado"
+
+#: tmainform.rbfavoritesshowenabled.caption
+msgctxt "tmainform.rbfavoritesshowenabled.caption"
+msgid "Enabled"
+msgstr ""
 
 #: tmainform.rbone.caption
 msgid "Have one of genres checked"
@@ -2207,6 +2362,14 @@ msgstr "OK"
 msgid "Select directory"
 msgstr "Selecionar Diretório"
 
+#: tselectdirectoryform.lbdescription.caption
+msgid ""
+"If you change multiple entries at once, the new paths will be constructed like this:\n"
+"\"{New_Path}\\{Manga_Title}\"\n"
+"\n"
+"Old folder structures will be ignored. However, if the only part you change is the drive letter (e.g. 'D:'), only the letter will be replaced. This only works for absolute paths, relative paths will be ignored."
+msgstr ""
+
 #: tshutdowncounterform.btabort.caption
 msgid "&Abort"
 msgstr "&Abortar"
@@ -2274,104 +2437,10 @@ msgstr "&Atualizar"
 #: tupdatedialogform.lbmessage.caption
 msgid ""
 "New version found! Do you want to update now?\n"
-"FMD will be closed to finish the update.\n"
-msgstr "Nova versão encontrada! Você quer atualizar agora?\nFMD irá fechar para terminar a atualização.\n"
-
-#: twebsiteoptionadvancedform.menuitem1.caption
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.MENUITEM1.CAPTION"
-msgid "Add"
-msgstr "Adic"
-
-#: twebsiteoptionadvancedform.menuitem2.caption
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.MENUITEM2.CAPTION"
-msgid "Edit"
-msgstr "Editar"
-
-#: twebsiteoptionadvancedform.menuitem4.caption
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.MENUITEM4.CAPTION"
-msgid "Delete"
-msgstr "Apagar"
-
-#: twebsiteoptionadvancedform.tscookies.caption
-msgctxt "twebsiteoptionadvancedform.tscookies.caption"
-msgid "Cookies"
-msgstr "Cookies"
-
-#: twebsiteoptionadvancedform.tsdirectorypagenumber.caption
-msgid "Directory page number"
-msgstr "Número de páginas do diretório"
-
-#: twebsiteoptionadvancedform.tsdownloads.caption
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.TSDOWNLOADS.CAPTION"
-msgid "Downloads"
-msgstr "Downloads"
-
-#: twebsiteoptionadvancedform.tsmaxthreadspertask.caption
-msgid "Max threads per task"
-msgstr "Máx. de processos por tarefa"
-
-#: twebsiteoptionadvancedform.tsnumberofthreads.caption
-msgid "Number of threads"
-msgstr "Número de processos"
-
-#: twebsiteoptionadvancedform.tsupdatelist.caption
-msgid "Update List"
-msgstr "Atualizar Lista"
-
-#: twebsiteoptionadvancedform.tsuseragent.caption
-msgctxt "twebsiteoptionadvancedform.tsuseragent.caption"
-msgid "User Agent"
-msgstr "User Agent"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[0].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTCOOKIES.HEADER.COLUMNS[0].TEXT"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[1].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTCOOKIES.HEADER.COLUMNS[1].TEXT"
-msgid "Cookies"
-msgstr "Cookies"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[0].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTDOWNLOADMAXTHREADSPERTASK.HEADER.COLUMNS[0].TEXT"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text"
-msgid "Value"
-msgstr "Valor"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[0].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUPDATELISTDIRECTORYPAGENUMBER.HEADER.COLUMNS[0].TEXT"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[1].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUPDATELISTDIRECTORYPAGENUMBER.HEADER.COLUMNS[1].TEXT"
-msgid "Value"
-msgstr "Valor"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[0].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUPDATELISTNUMBEROFTHREADS.HEADER.COLUMNS[0].TEXT"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[1].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUPDATELISTNUMBEROFTHREADS.HEADER.COLUMNS[1].TEXT"
-msgid "Value"
-msgstr "Valor"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[0].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUSERAGENT.HEADER.COLUMNS[0].TEXT"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[1].text
-msgctxt "TWEBSITEOPTIONADVANCEDFORM.VTUSERAGENT.HEADER.COLUMNS[1].TEXT"
-msgid "User Agent"
-msgstr "User Agent"
+"FMD will be closed to finish the update."
+msgstr ""
+"Nova versão encontrada! Você quer atualizar agora?\n"
+"FMD irá fechar para terminar a atualização."
 
 #: twebsiteselectionform.caption
 msgid "Select a website"
@@ -2391,241 +2460,170 @@ msgstr "Nome da configuração"
 
 #: udownloadsmanager.rs_compressing
 msgid "Compressing..."
-msgstr "Compactando..."
+msgstr ""
 
 #: udownloadsmanager.rs_disabled
+#, fuzzy
+msgctxt "udownloadsmanager.rs_disabled"
 msgid "Disabled"
 msgstr "Desabilitado"
 
 #: udownloadsmanager.rs_downloading
 msgid "Downloading"
-msgstr "Baixando"
+msgstr ""
 
 #: udownloadsmanager.rs_failed
+#, fuzzy
 msgctxt "udownloadsmanager.rs_failed"
 msgid "Failed"
 msgstr "Falhou"
 
 #: udownloadsmanager.rs_failedtocreatedir
 msgid "Failed to create directory!"
-msgstr "Falha ao criar diretório!"
+msgstr ""
 
 #: udownloadsmanager.rs_failedtryresumetask
 msgid "Failed, try resuming this task!"
-msgstr "Falha, tente continuar com esta tarefa!"
+msgstr ""
 
 #: udownloadsmanager.rs_finish
 msgid "Completed"
-msgstr "Completo"
+msgstr ""
 
 #: udownloadsmanager.rs_preparing
 msgctxt "udownloadsmanager.rs_preparing"
 msgid "Preparing"
-msgstr "Preparando"
+msgstr ""
 
 #: udownloadsmanager.rs_stopped
 msgid "Stopped"
-msgstr "Parado"
+msgstr ""
 
 #: udownloadsmanager.rs_waiting
 msgid "Waiting..."
-msgstr "Aguardando..."
+msgstr ""
 
 #: ufavoritesmanager.rs_btnaddtoqueue
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btnaddtoqueue"
 msgid "&Add to queue"
 msgstr "&Adic. à fila"
 
 #: ufavoritesmanager.rs_btncancel
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncancel"
 msgid "&Cancel"
 msgstr "&Cancelar"
 
 #: ufavoritesmanager.rs_btncheckfavorites
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncheckfavorites"
 msgid "Check for new chapter"
 msgstr "Checar por novos capítulos"
 
 #: ufavoritesmanager.rs_btndownload
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btndownload"
 msgid "&Download"
 msgstr "&Baixar"
 
 #: ufavoritesmanager.rs_btnremove
 msgid "&Remove"
-msgstr "&Remover"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgcompletedmangacaption
+#, object-pascal-format
 msgid "Found %d completed manga"
-msgstr "Encontrado %d mangá completado"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgfavoritescheckisrunning
 msgid "Favorites check is running!"
-msgstr "A verificação de favoritos está em execução!"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgnewchaptercaption
-msgid "Found %d new chapter(s)"
+#, object-pascal-format
+msgid "%d manga(s) have new chapter(s)"
 msgstr ""
 
 #: ufavoritesmanager.rs_favoritehasnewchapter
+#, object-pascal-format
 msgid "%s <%s> has %d new chapter(s)."
-msgstr "%s <%s> tem %d novo(s) capítulo(s)."
+msgstr ""
 
 #: ufavoritesmanager.rs_lblmangawillberemoved
 msgid "Completed manga will be removed:"
-msgstr "O mangá completo será removido:"
+msgstr ""
 
 #: ufavoritesmanager.rs_lblnewchapterfound
-msgid "%d new chapter(s) from %d manga(s):"
+#, object-pascal-format
+msgid "Found %d new chapter from %d manga(s):"
 msgstr ""
 
 #: usilentthread.rs_silentthreadloadstatus
+#, object-pascal-format
 msgid "Loading: %d/%d"
-msgstr "Carregando: %d/%d"
-
-#: usubthread.rs_btncheckupdates
-msgctxt "usubthread.rs_btncheckupdates"
-msgid "Check for new version"
-msgstr "Verificar a nova versão"
-
-#: usubthread.rs_currentversion
-msgid "Installed Version"
-msgstr "Versão Instalada"
-
-#: usubthread.rs_latestversion
-msgid "Latest Version   "
-msgstr "Última versão   "
-
-#: usubthread.rs_newversionfound
-msgid "New Version found!"
-msgstr "Nova Versão encontrada!"
+msgstr ""
 
 #: uupdatethread.rs_dlghasnewmanga
+#, object-pascal-format
 msgid "%s has %d new manga(s)"
-msgstr "%s tem %d novo(s) mangá(s)"
+msgstr ""
 
 #: uupdatethread.rs_gettingdirectory
 msgid "Getting directory"
-msgstr "Obtendo diretório"
+msgstr ""
 
 #: uupdatethread.rs_gettinginfo
 msgid "Getting info"
-msgstr "Obtendo info"
+msgstr ""
 
 #: uupdatethread.rs_gettinglistfor
 msgid "Getting list for"
-msgstr "Obtendo lista para"
+msgstr ""
 
 #: uupdatethread.rs_indexingnewtitle
 msgid "Indexing new title(s)"
-msgstr "Indexando novo(s) título(s)"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitle
 msgid "Looking for new title(s)"
-msgstr "Procurando por novo(s) título(s)"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitlefromanotherdirectory
 msgid "Looking for new title(s) from another directory"
-msgstr "Procurando por novo(s) título(s) de outro diretório"
+msgstr ""
 
 #: uupdatethread.rs_preparing
 msgctxt "uupdatethread.rs_preparing"
 msgid "Preparing"
-msgstr "Preparando"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromcurrentdata
 msgid "Removing duplicate from current data"
-msgstr "Removendo duplicados dos dados atuais"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromlocaldata
 msgid "Removing duplicate from local data"
-msgstr "Removendo duplicados dos dados locais"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromnewtitle
 msgid "Removing duplicate from new title(s)"
-msgstr "Removendo duplicados dos novo(s) título(s)"
+msgstr ""
 
 #: uupdatethread.rs_savingdata
 msgid "Saving data"
-msgstr "Salvando dados"
+msgstr ""
 
 #: uupdatethread.rs_synchronizingdata
 msgid "Synchronizing data"
-msgstr "Sincronizando dados"
+msgstr ""
 
 #: uupdatethread.rs_updatinglist
 msgid "Updating list"
-msgstr "Atualizando a lista"
-
-#: tmainform.ckoptionautomaticallydisablecloudflarebypass.caption
-msgid "Automatically disable Cloudflare Bypass for websites on error or if not needed"
 msgstr ""
 
-#: tmainform.ckoptionenablecloudflarebypass.caption
-msgid "Enable Cloudflare Bypass"
+#: webp.serrloadfailed
+#, object-pascal-format
+msgid "Can not load WebP codec library \"%s\". Check your installation."
 msgstr ""
 
-#: tmainform.gboptionscloudflarebypass.caption
-msgid "Cloudflare Bypass (global settings)"
-msgstr ""
-
-#: tmainform.rbfavoritesshowall.caption
-msgctxt "tmainform.rbfavoritesshowall.caption"
-msgid "All"
-msgstr ""
-
-#: tmainform.rbfavoritesshowdisabled.caption
-msgid "Disabled"
-msgstr ""
-
-#: tmainform.rbfavoritesshowenabled.caption
-msgid "Enabled"
-msgstr ""
-
-#: frmmain.rs_favoritesshowall
-msgctxt "frmmain.rs_favoritesshowall"
-msgid "All"
-msgstr ""
-
-#: frmmain.rs_favoritesshowdisabled
-msgctxt "frmmain.rs_favoritesshowdisabled"
-msgid "Disabled"
-msgstr ""
-
-#: frmmain.rs_favoritesshowenabled
-msgctxt "frmmain.rs_favoritesshowenabled"
-msgid "Enabled"
-msgstr ""
-
-#: tmainform.mifavoritesdefaultaction.caption
-msgctxt "tmainform.mifavoritesdefaultaction.caption"
-msgid "Default Action"
-msgstr "Default Action"
-
-#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
-msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
-msgid "Check for new Chapters"
-msgstr "Check for new Chapters"
-
-#: tmainform.mifavoritesdefaultactionopenfolder.caption
-msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
-msgid "Open Folder"
-msgstr "Open Folder"
-
-#: tmainform.mifavoritesdefaultactionrename.caption
-msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
-msgid "Rename"
-msgstr "Rename"
-
-#: tmainform.mifavoritesdefaultactionshowinfo.caption
-msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
-msgid "View Manga Info"
-msgstr "View Manga Info"
-
-#: tselectdirectoryform.lbdescription.caption
-msgid ""
-"If you change multiple entries at once, the new paths will be constructed like this:\n"
-"\"{New_Path}\\{Manga_Title}\"\n"
-"\n"
-"Old folder structures will be ignored. However, if the only part you change is the drive letter (e.g. 'D:'), only the letter will be replaced. This only works for absolute paths, relative paths will be ignored.\n"
-msgstr ""

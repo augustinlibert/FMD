@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -27,21 +27,31 @@ function GetInfo()
   if not http.Get(u) then return net_problem end
   
   x = TXQuery.Create(http.Document)
-  mangainfo.Title     = x.XPathString('//meta[@property="og:title"]/@content'):gsub(' | MangaLife', '')
+  mangainfo.Title     = x.XPathString('//meta[@property="og:title"]/@content'):gsub(' | ' .. module.Website, '')
   mangainfo.CoverLink = x.XPathString('//meta[@property="og:image"]/@content')
   mangainfo.Status    = MangaInfoStatusIfPos(x.XPathString('//span[@class="mlabel" and contains(., "Status")]/following-sibling::a[1]'))
   mangainfo.Authors   = x.XPathString('//span[@class="mlabel" and contains(., "Author")]/following-sibling::a[1]')
   mangainfo.Genres    = x.XPathStringAll('//span[@class="mlabel" and contains(., "Genre")]/following-sibling::a')
   mangainfo.Summary   = x.XPathString('//span[@class="mlabel" and contains(., "Description")]/following-sibling::div[1]')
-  
-  if not http.Get(x.XPathString('//link[@rel="alternate" and @type="application/rss+xml"]/@href')) then return net_problem end
-  x = TXQuery.Create(http.Document)
-  
-  v = x.XPath('//item')
-  for i = 1, v.Count do
-    mangainfo.ChapterLinks.Add(x.XPathString('link', v.Get(i)))
-    mangainfo.ChapterNames.Add(x.XPathString('title', v.Get(i)))
+
+
+  -- vm.ChapterURLEncode=function(e){Index="";var t=e.substring(0,1);1!=t&&(Index="-index-"+t);var n=parseInt(e.slice(1,-1)),m="",a=e[e.length-1];return 0!=a&&(m="."+a),"-chapter-"+n+m+Index+vm.PageOne+".html"}
+  local chapter_uri = x.XPathString('//div[@ng-if]/a/@href'):gsub('%{.*$', '')
+  local chapters = x.XPathString('//script[contains(.,"vm.Chapters =")]'):match('(%[.-%])')
+  x.ParseHTML(chapters)
+  for i, c in ipairs(x.XPathI('json(*)().Chapter')) do
+    local indexnum, chpnum, partnum = c.toString:match('(%d)(%d%d%d%d)(%d)')
+    local chapter_id = tostring(tonumber(chpnum))
+    if partnum ~= '0' then chapter_id = chapter_id .. '.' .. partnum end
+	if indexnum ~= '1' then
+	  mangainfo.ChapterNames.Add('S' .. indexnum .. ' Chapter ' .. chapter_id)
+	  mangainfo.ChapterLinks.Add(chapter_uri .. '-chapter-' .. chapter_id .. '-index-' .. indexnum .. '.html')
+	else
+	  mangainfo.ChapterNames.Add('Chapter ' .. chapter_id)
+	  mangainfo.ChapterLinks.Add(chapter_uri .. '-chapter-' .. chapter_id .. '.html')
+	end
   end
+  
   InvertStrings(mangainfo.ChapterLinks, mangainfo.ChapterNames)
   
   --[[Debug]] LuaDebug.PrintMangaInfo()
@@ -64,7 +74,6 @@ function GetNameAndLink()
   json = GetBetween('vm.FullDirectory = ', '}]};', x.XPathString('//script[contains(., "vm.FullDirectory = ")]')) .. '}]}'
   json = json:gsub('\\"', ''):gsub('\\u2019', '\''):gsub('&#', '')
   x.ParseHTML(json)
-  print(x.XPathString('json(*).Directory()'))
   v = x.XPath('json(*).Directory()')
   
   for i = 1, v.Count do
@@ -116,6 +125,7 @@ end
 
 function Init()
   AddWebsiteModule('MangaLife', 'https://manga4life.com', 'English')
+  AddWebsiteModule('MangaSee', 'https://mangasee123.com', 'English')
 end
 
 function AddWebsiteModule(name, url, category)

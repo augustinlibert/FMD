@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -11,7 +11,7 @@ local LuaDebug   = require 'Modules.LuaDebugging'
 -- Local Constants
 ----------------------------------------------------------------------------------------------------
 
-local Template   = require 'Modules.Template-ReadMangaRU'
+local Template   = require 'templates.ReadMangaRU'
 -- DirectoryPagination = '/'            --> Override template variable by uncommenting this line.
 -- DirectoryOffset     = 0              --> Override template variable by uncommenting this line.
 
@@ -57,7 +57,7 @@ end
 ----------------------------------------------------------------------------------------------------
 
 function Init()
-  AddWebsiteModule('ReadMangaRU', 'http://readmanga.me', 'Russian')
+  AddWebsiteModule('ReadMangaRU', 'https://readmanga.live', 'Russian')
 end
 
 function AddWebsiteModule(name, url, category)

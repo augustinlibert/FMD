@@ -9,9 +9,27 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+
+#: checkupdate.rs_btncheckupdates
+#, fuzzy
+msgctxt "checkupdate.rs_btncheckupdates"
+msgid "Check for latest version"
+msgstr "Son sürümü kontrol et"
+
+#: checkupdate.rs_currentversion
+msgid "Installed Version"
+msgstr ""
+
+#: checkupdate.rs_latestversion
+msgid "Latest Version   "
+msgstr ""
+
+#: checkupdate.rs_newversionfound
+msgid "New Version found!"
+msgstr ""
 
 #: dbupdater.rs_buttoncancel
 msgctxt "dbupdater.rs_buttoncancel"
@@ -19,30 +37,35 @@ msgid "Abort"
 msgstr "İptal"
 
 #: dbupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading %s"
 msgstr "%s indiriliyor"
 
 #: dbupdater.rs_extracting
+#, object-pascal-format
 msgid "Extracting %s"
 msgstr "%s çıkartılıyor"
 
 #: dbupdater.rs_faileddownload
+#, object-pascal-format
 msgid "%s: %d %s"
 msgstr "%s: %d %s"
 
 #: dbupdater.rs_failedextract
+#, object-pascal-format
 msgid "%s: failed to extract, exitstatus = %d"
 msgstr "%s: çıkartma başarısız, çıkış durumu = %d"
 
 #: dbupdater.rs_faileditems
+#, object-pascal-format
 msgid ""
 "Failed to finish:\n"
 "\n"
-"%s\n"
+"%s"
 msgstr ""
 "Bitirme başarısız:\n"
 "\n"
-"%s\n"
+"%s"
 
 #: dbupdater.rs_faileditemstitle
 msgctxt "dbupdater.rs_faileditemstitle"
@@ -50,39 +73,14 @@ msgid "Failed"
 msgstr "Başarısız oldu"
 
 #: dbupdater.rs_failedtosave
+#, object-pascal-format
 msgid "%s: failed to save"
 msgstr "%s: kaydetme başarısız"
 
 #: dbupdater.rs_missingzipexe
+#, object-pascal-format
 msgid "%s: Missing %s"
 msgstr "%s: eksik %s"
-
-#: ehentai.rs_downloadoriginalimage
-msgid "Download original image(require ExHentai account)"
-msgstr "Orijinal resmi indir(ExHentai hesabı gerektirir)"
-
-#: ehentai.rs_settingsimagesize
-#| msgid "Image size"
-msgid "Image size:"
-msgstr "Resim boyutu:"
-
-#: ehentai.rs_settingsimagesizeitems
-msgid ""
-"Auto\n"
-"780x\n"
-"980x\n"
-"1280x\n"
-"1600x\n"
-"2400x\n"
-"Original\n"
-msgstr ""
-"Otomatik\n"
-"780x\n"
-"980x\n"
-"1280x\n"
-"1600x\n"
-"2400x\n"
-"Orjinal\n"
 
 #: frmaccountmanager.rs_accountdeleteconfirmation
 msgid "Are you sure you want to delete this account?"
@@ -137,28 +135,16 @@ msgid "Finish download"
 msgstr "İndirmeyi durdur"
 
 #: frmluamodulesupdater.rs_modulesupdatedrestart
-msgid ""
-"Modules updated, restart now?\n"
-"\n"
-"%s\n"
-msgstr ""
-"Modüller güncellendi, yeniden başlasın mı?\n"
-"\n"
-"%s\n"
+msgid "Modules updated, restart now?"
+msgstr "Modüller güncellendi, yeniden başlasın mı?"
 
 #: frmluamodulesupdater.rs_modulesupdatedtitle
 msgid "Modules updated!"
 msgstr "Modüller güncellendi!"
 
 #: frmluamodulesupdater.rs_newupdatefoundlostchanges
-msgid ""
-"Modules update found, any local changes will be lost, procced?\n"
-"\n"
-"%s\n"
-msgstr ""
-"Modül güncellemeleri bulundu, herhangi bir yerel değişim kaybolacaktır, devam edilsin mi?\n"
-"\n"
-"%s\n"
+msgid "Modules update found, any local changes will be lost, procced?"
+msgstr "Modül güncellemeleri bulundu, herhangi bir yerel değişim kaybolacaktır, devam edilsin mi?"
 
 #: frmluamodulesupdater.rs_newupdatefoundtitle
 msgid "Modules update found!"
@@ -169,26 +155,31 @@ msgid "Downloading..."
 msgstr "İndiriliyor..."
 
 #: frmluamodulesupdater.rs_statusdelete
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusdelete"
 msgid "%s DELETE*"
 msgstr "%s SİLİNDİ*"
 
 #: frmluamodulesupdater.rs_statusfailed
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusfailed"
 msgid "%s FAILED*"
 msgstr "%s BAŞARISIZ*"
 
 #: frmluamodulesupdater.rs_statusnew
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusnew"
 msgid "%s NEW*"
 msgstr "%s YENİ*"
 
 #: frmluamodulesupdater.rs_statusredownloaded
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusredownloaded"
 msgid "%s REDOWNLOAD*"
 msgstr "%s TEKRAR İNDİRME*"
 
 #: frmluamodulesupdater.rs_statusupdate
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusupdate"
 msgid "%s UPDATE*"
 msgstr "%s GÜNCELLENDİ*"
@@ -224,10 +215,6 @@ msgstr "Manga bilgisi alınamıyor. Lütfen internet bağlantınızı kontrol ed
 msgid "Download count:"
 msgstr "İndirme sayısı:"
 
-#: frmmain.rs_dlgmangalistselect
-msgid "You must choose at least 1 manga website!"
-msgstr "En az 1 manga sitesi seçmelisin!"
-
 #: frmmain.rs_dlgquit
 msgid "Are you sure you want to exit?"
 msgstr "Çıkmak istediğine emin misin?"
@@ -256,10 +243,10 @@ msgstr "Bölünmüş indirme"
 #: frmmain.rs_dlgtitleexistindllist
 msgid ""
 "This title are already in download list.\n"
-"Do you want to download it anyway?\n"
+"Do you want to download it anyway?"
 msgstr ""
 "Bu başlık zaten indirme listesinde.\n"
-"Yine de indirmek istiyor musun?\n"
+"Yine de indirmek istiyor musun?"
 
 #: frmmain.rs_dlgtypeinnewchapter
 msgid "Type in new chapter:"
@@ -284,32 +271,55 @@ msgstr "URL desteklenmiyor!"
 #: frmmain.rs_droptargetmodeitems
 msgid ""
 "Download all\n"
-"Add to favorites\n"
+"Add to favorites"
 msgstr ""
 "Tümünü indir\n"
-"Favorilere ekle\n"
+"Favorilere ekle"
+
+#: frmmain.rs_favoritesshowall
+msgctxt "frmmain.rs_favoritesshowall"
+msgid "All"
+msgstr "Tümü"
+
+#: frmmain.rs_favoritesshowdisabled
+msgctxt "frmmain.rs_favoritesshowdisabled"
+msgid "Disabled"
+msgstr "Pasifler"
+
+#: frmmain.rs_favoritesshowenabled
+msgctxt "frmmain.rs_favoritesshowenabled"
+msgid "Enabled"
+msgstr "Aktifler"
 
 #: frmmain.rs_filterstatusitems
 msgid ""
 "Completed\n"
 "Ongoing\n"
-"<none>\n"
+"<none>"
 msgstr ""
 "Tamamlandı\n"
 "Devam Ediyor\n"
-"<Hiçbiri>\n"
+"<Hiçbiri>"
+
+#: frmmain.rs_fiveyears
+msgid "Five years"
+msgstr "Beş yıl"
 
 #: frmmain.rs_fmdalreadyrunning
 msgid "Free Manga Downloader already running!"
 msgstr "Free Manga Downloader zaten çalışıyor!"
 
+#: frmmain.rs_fouryears
+msgid "Four years"
+msgstr "Dört yıl"
+
 #: frmmain.rs_hintfavoriteproblem
 msgid ""
 "There is a problem with this data!\n"
-"Removing and re-adding this data may fix the problem.\n"
+"Removing and re-adding this data may fix the problem."
 msgstr ""
 "Bu veriyle ilgili bir sorun var!\n"
-"Silip tekrardan eklemek bu soruna çözüm olabilir.\n"
+"Silip tekrardan eklemek bu soruna çözüm olabilir."
 
 #: frmmain.rs_history
 msgid "History"
@@ -353,36 +363,39 @@ msgid "In progress"
 msgstr "Devam ediyor"
 
 #: frmmain.rs_lblautochecknewchapterminute
+#, object-pascal-format
 msgctxt "frmmain.rs_lblautochecknewchapterminute"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Yeni bölümleri her %d dakikada bir kontrol et"
 
 #: frmmain.rs_lbloptionexternalparamshint
+#, object-pascal-format
 msgid ""
 "%s : Path to the manga\n"
 "%s : Chapter filename\n"
 "\n"
-"Example : \"%s%s\"\n"
+"Example : \"%s%s\""
 msgstr ""
 "%s : Manga yolu\n"
 "%s : Bölüm dosya adı\n"
 "\n"
-"Örnek : \"%s%s\"\n"
+"Örnek : \"%s%s\""
 
 #: frmmain.rs_loading
 msgid "Loading ..."
 msgstr "Yükleniyor ..."
 
 #: frmmain.rs_modeall
+#, object-pascal-format
 msgid "Mode: Show all (%d)"
 msgstr "Mod: Tümünü göster (%d)"
 
 #: frmmain.rs_modefiltered
+#, object-pascal-format
 msgid "Mode: Filtered (%d)"
 msgstr "Mod: Filtrelenmiş (%d)"
 
 #: frmmain.rs_modesearching
-#| msgid "Searching..."
 msgctxt "frmmain.rs_modesearching"
 msgid "Mode: Searching..."
 msgstr "Mod: Aranıyor..."
@@ -395,33 +408,9 @@ msgstr "Bir ay"
 msgid "One week"
 msgstr "Bir hafta"
 
-#: frmmain.rs_sixmonths
-msgid "Six months"
-msgstr "Altı ay"
-
 #: frmmain.rs_oneyear
 msgid "One year"
 msgstr "Bir yıl"
-
-#: frmmain.rs_twoyears
-msgid "Two years"
-msgstr "İki yıl"
-
-#: frmmain.rs_threeyears
-msgid "Three years"
-msgstr "Üç yıl"
-
-#: frmmain.rs_fouryears
-msgid "Four years"
-msgstr "Dört yıl"
-
-#: frmmain.rs_fiveyears
-msgid "Five years"
-msgstr "Beş yıl"
-
-#: frmmain.rs_tenyears
-msgid "Ten years"
-msgstr "On yıl"
 
 #: frmmain.rs_optioncompress
 msgid ""
@@ -429,29 +418,38 @@ msgid ""
 "ZIP\n"
 "CBZ\n"
 "PDF\n"
-"EPUB\n"
+"EPUB"
 msgstr ""
 "Hiçbiri\n"
 "ZIP\n"
 "CBZ\n"
 "PDF\n"
-"EPUB\n"
+"EPUB"
 
 #: frmmain.rs_optionfmddoitems
 msgid ""
 "Nothing\n"
 "Exit\n"
 "Shutdown\n"
-"Hibernate\n"
+"Hibernate"
 msgstr ""
 "Hiçbiri\n"
 "Çıkış\n"
 "Kapat\n"
-"Uyku\n"
+"Uyku"
+
+#: frmmain.rs_revision
+msgid "Revision"
+msgstr ""
 
 #: frmmain.rs_selected
+#, object-pascal-format
 msgid "Selected: %d"
 msgstr "Seçildi: %d"
+
+#: frmmain.rs_sixmonths
+msgid "Six months"
+msgstr "Altı ay"
 
 #: frmmain.rs_software
 msgid "Software"
@@ -462,31 +460,47 @@ msgctxt "frmmain.rs_softwarepath"
 msgid "Path to the software (e.g. C:\\MangaDownloader)"
 msgstr "Yazılım yolu (mesela c:\\MangaDownloader)"
 
+#: frmmain.rs_tenyears
+msgid "Ten years"
+msgstr "On yıl"
+
+#: frmmain.rs_threeyears
+msgid "Three years"
+msgstr "Üç yıl"
+
 #: frmmain.rs_today
 msgid "Today"
 msgstr "Bugün"
+
+#: frmmain.rs_twoyears
+msgid "Two years"
+msgstr "İki yıl"
+
+#: frmmain.rs_version
+msgid "Version"
+msgstr ""
 
 #: frmmain.rs_webpconvertto
 msgid ""
 "WebP\n"
 "PNG\n"
-"JPEG\n"
+"JPEG"
 msgstr ""
 "WebP\n"
 "PNG\n"
-"JPEG\n"
+"JPEG"
 
 #: frmmain.rs_webppnglevel
 msgid ""
 "None\n"
 "Fastest\n"
 "Default\n"
-"Maximum\n"
+"Maximum"
 msgstr ""
 "Hiçbiri\n"
 "En hızlı\n"
 "Varsayılan\n"
-"Maksimum\n"
+"Maksimum"
 
 #: frmmain.rs_wronginput
 msgid "Invalid input!"
@@ -497,14 +511,17 @@ msgid "Yesterday"
 msgstr "Dün"
 
 #: frmshutdowncounter.rs_lblmessageexit
+#, object-pascal-format
 msgid "FMD will exit in %d second."
 msgstr "FMD %d saniye içinde kapanacak."
 
 #: frmshutdowncounter.rs_lblmessagehibernate
+#, object-pascal-format
 msgid "System will hibernate in %d second."
 msgstr "Sistem %d saniye içinde uykuya geçecek."
 
 #: frmshutdowncounter.rs_lblmessageshutdown
+#, object-pascal-format
 msgid "System will shutdown in %d second."
 msgstr "Sistem %d saniye içinde kapanacak."
 
@@ -523,60 +540,29 @@ msgctxt "frmtransferfavorites.rs_valid"
 msgid "Valid"
 msgstr "Geçerli"
 
-#: kissmanga.rs_kissmanga_initvector
-msgid "Initialization Vector:"
-msgstr "Başlatma Vektörü (IV):"
-
-#: kissmanga.rs_kissmanga_key
-msgid "Key:"
-msgstr "Anahtar:"
-
-#: kissmanga.rs_kissmanga_usegoogledcp
-msgid "Use Google DCP"
-msgstr "Google DCP kullan"
-
-#: mangarock.rs_mangarock_country
-msgid "Country (change this if some manga or chapters are missing):"
-msgstr "Ülke (eğer bazı mangalar ya da bölümler eksikse bunu değiştirin)"
-
-#: mangadex.rs_showalllang
-msgctxt "mangadex.rs_showalllang"
-msgid "Show all language"
-msgstr "Tüm dilleri göster"
-
-#: mangadex.rs_showscangroup
-msgctxt "mangadex.rs_showscangroup"
-msgid "Show scanlation group"
-msgstr "Scanlation grubunu göster"
-
-#: mangafox.rs_removewatermark
-msgid "Remove watermark"
-msgstr "Filigranı kaldır"
-
-#: mangafox.rs_saveaspng
-msgid "Save as PNG"
-msgstr "PNG olarak kaydet"
-
 #: selfupdater.rs_buttoncancel
 msgctxt "selfupdater.rs_buttoncancel"
 msgid "Abort"
 msgstr "Durdur"
 
 #: selfupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading new version %s"
 msgstr "%s yeni sürümü indiriliyor"
 
 #: selfupdater.rs_faileddownload
+#, object-pascal-format
 msgid ""
 "Failed to download new version %s\n"
 "\n"
-"%d %s\n"
+"%d %s"
 msgstr ""
 "%s yeni sürümü indirmesi başarısız\n"
 "\n"
-"%d %s\n"
+"%d %s"
 
 #: selfupdater.rs_failedextract
+#, object-pascal-format
 msgid "Failed to extract %s, exitstatus = %d"
 msgstr "%s çıkartma başarısız, çıkış durumu = %d"
 
@@ -586,6 +572,7 @@ msgid "Failed"
 msgstr "Başarısız oldu"
 
 #: selfupdater.rs_failedtosave
+#, object-pascal-format
 msgid "Failed to save %s"
 msgstr "%s kaydetme başarısız"
 
@@ -598,9 +585,38 @@ msgid "Download finished"
 msgstr "İndirme tamamlandı"
 
 #: selfupdater.rs_missingfile
+#, object-pascal-format
 msgctxt "selfupdater.rs_missingfile"
 msgid "Missing %s"
 msgstr "%s eksik"
+
+#: simpleexception.sbuttoncontinue
+msgid "&Continue"
+msgstr ""
+
+#: simpleexception.sbuttondetails
+msgid "&Show Details"
+msgstr ""
+
+#: simpleexception.sbuttonterminate
+msgid "&Terminate"
+msgstr ""
+
+#: simpleexception.scanthandleexception
+msgid "Can't handle exception"
+msgstr ""
+
+#: simpleexception.scheckboxignoreexception
+msgid "Ignore this exception for next time"
+msgstr ""
+
+#: simpleexception.sexceptioncaption
+msgid "An error occured during program execution:"
+msgstr ""
+
+#: simpleexception.sexceptiondialogtitle
+msgid "Exception Info"
+msgstr ""
 
 #: taccountmanagerform.btedit.caption
 msgctxt "taccountmanagerform.btedit.caption"
@@ -616,19 +632,16 @@ msgid "AccountManagerForm"
 msgstr "HesapYöneticisiFormu"
 
 #: taccountmanagerform.vtaccountlist.header.columns[1].text
-#| msgid "Username"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[1].text"
 msgid "Website"
 msgstr "Site"
 
 #: taccountmanagerform.vtaccountlist.header.columns[2].text
-#| msgid "Status"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[2].text"
 msgid "Username"
 msgstr "Kullanıcı Adı"
 
 #: taccountmanagerform.vtaccountlist.header.columns[3].text
-#| msgid "Status"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[3].text"
 msgid "Status"
 msgstr "Durum"
@@ -656,13 +669,11 @@ msgid "Password"
 msgstr "Şifre"
 
 #: taccountsetform.edusername.texthint
-#| msgid "Status"
 msgctxt "taccountsetform.edusername.texthint"
 msgid "Username"
 msgstr "Kullanıcı Adı"
 
 #: taccountsetform.label2.caption
-#| msgid "Status"
 msgctxt "taccountsetform.label2.caption"
 msgid "Username"
 msgstr "Kullanıcı Adı"
@@ -723,6 +734,22 @@ msgctxt "tformlogger.micopy.caption"
 msgid "Copy"
 msgstr "Kopyala"
 
+#: tfrmdialogyn.btno.caption
+msgid "&No"
+msgstr ""
+
+#: tfrmdialogyn.btyes.caption
+msgid "&Yes"
+msgstr ""
+
+#: tfrmdialogyn.caption
+msgid "Dialog"
+msgstr ""
+
+#: tfrmdialogyn.lbmessage.caption
+msgid "lbMessage"
+msgstr ""
+
 #: timportfavorites.btcancel.caption
 msgctxt "TIMPORTFAVORITES.BTCANCEL.CAPTION"
 msgid "Cancel"
@@ -775,17 +802,12 @@ msgstr "Son değişim"
 msgid "Last message"
 msgstr "Son mesaj"
 
-#: tmainform.btabortupdatelist.hint
-msgid "Abort update list"
-msgstr "Liste güncellemeyi iptal et"
-
 #: tmainform.btaddtofavorites.caption
 msgctxt "tmainform.btaddtofavorites.caption"
 msgid "Add to favorites"
 msgstr "Favorilere ekle"
 
 #: tmainform.btchecklatestversion.caption
-#| msgid "Check for new version"
 msgctxt "tmainform.btchecklatestversion.caption"
 msgid "Check for latest version"
 msgstr "Son sürümü kontrol et"
@@ -884,22 +906,19 @@ msgid "Automatic remove completed manga from Favorites"
 msgstr "Tamamlanmış mangayı Favorilerden otomatik kaldır"
 
 #: tmainform.cboptionautocheckfavstartup.caption
-#| msgid "Automatic check for new chapter at startup"
 msgid "Auto check for new chapter at startup"
 msgstr "Başlangıça yeni bölümleri otomatik kontrol et"
 
 #: tmainform.cboptionautochecklatestversion.caption
-#| msgid "Check for new version "
 msgctxt "tmainform.cboptionautochecklatestversion.caption"
-msgid "Auto check for latest version "
-msgstr "Son sürümü otomatik kontrol et "
+msgid "Auto check for latest version"
+msgstr "Son sürümü otomatik kontrol et"
 
 #: tmainform.cboptionautoopenfavstartup.caption
 msgid "Open Favorites at startup"
 msgstr "Başlangıçta Favorileri aç"
 
 #: tmainform.cboptionchangeunicodecharacter.caption
-#| msgid "Change all all character to"
 msgctxt "tmainform.cboptionchangeunicodecharacter.caption"
 msgid "Replace all unicode character with"
 msgstr "Tüm Unicode karakterleri şununla değiştir"
@@ -973,11 +992,6 @@ msgstr "Boşsa manga listesini indir"
 msgid "Show Downloads tab when adding new tasks"
 msgstr "Yeni görevler eklerken İndirmeler sekmesini göster"
 
-#: tmainform.cboptionshowfavoritestabonnewmanga.caption
-msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
-msgid "Show Favorites tab when adding new manga"
-msgstr "Yeni manga eklerken Favoriler sekmesini göster"
-
 #: tmainform.cboptionshowdownloadtoolbar.caption
 msgid "Show downloads toolbar"
 msgstr "İndirmeler araç çubuğunu göster"
@@ -989,6 +1003,11 @@ msgstr "\"Tüm tamamlanmış görevleri sil\" seçeneğini indirmeler araç çub
 #: tmainform.cboptionshowdownloadtoolbarleft.caption
 msgid "Show left downloads toolbar"
 msgstr "Sol indirmeler araç çubuğunu göster"
+
+#: tmainform.cboptionshowfavoritestabonnewmanga.caption
+msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
+msgid "Show Favorites tab when adding new manga"
+msgstr "Yeni manga eklerken Favoriler sekmesini göster"
 
 #: tmainform.cboptionshowquitdialog.caption
 msgid "Exit FMD"
@@ -1112,10 +1131,10 @@ msgstr "Gender Bender"
 #: tmainform.ckfiltergenderbender.hint
 msgid ""
 "Girls dressing up as guys, guys dressing up as girls.\n"
-"Guys turning into girls, girls turning into guys.\n"
+"Guys turning into girls, girls turning into guys."
 msgstr ""
 "Kızlar erkek gibi giyinebilir, erkekler kız gibi giyinebilir.\n"
-"Erkekler kıza dönüşebilir, kızlar erkeğe dönüşebilir.\n"
+"Erkekler kıza dönüşebilir, kızlar erkeğe dönüşebilir."
 
 #: tmainform.ckfilterharem.caption
 msgid "Harem"
@@ -1370,7 +1389,6 @@ msgid "Input custom genres, separated by comma"
 msgstr "Kişisel tür ekle, virgülle ayırarak"
 
 #: tmainform.eddownloadssearch.texthint
-#| msgid "Search favorites..."
 msgctxt "tmainform.eddownloadssearch.texthint"
 msgid "Search downloads..."
 msgstr "İndirmeleri ara..."
@@ -1419,13 +1437,11 @@ msgid "Default download path"
 msgstr "Varsayılan indirme yolu"
 
 #: tmainform.edoptionexternalparams.texthint
-#| msgid "External program parameters"
 msgctxt "tmainform.edoptionexternalparams.texthint"
 msgid "External program parameters"
 msgstr "Harici program parametreleri"
 
 #: tmainform.edoptionexternalpath.texthint
-#| msgid "External program parameters"
 msgctxt "tmainform.edoptionexternalpath.texthint"
 msgid "External program path"
 msgstr "Harici program yolu"
@@ -1462,7 +1478,6 @@ msgid "Input URL here"
 msgstr "Buraya URL ekle"
 
 #: tmainform.edwebsitessearch.texthint
-#| msgid "Search..."
 msgctxt "tmainform.edwebsitessearch.texthint"
 msgid "Search website..."
 msgstr "Websitesi ara..."
@@ -1533,7 +1548,7 @@ msgid ""
 "Custom Genres:\n"
 "- Separate multiple genres with ','.\n"
 "- Exclude a genre by placing '!' or '-' at the beginning of a genre.\n"
-"- Example: Adventure,!Ecchi,Comedy.\n"
+"- Example: Adventure,!Ecchi,Comedy."
 msgstr ""
 "Türler:\n"
 "- Seçili: Bu türü dahil et.\n"
@@ -1543,7 +1558,7 @@ msgstr ""
 "Kişisel türler:\n"
 "- Birden fazla türü ',' ile ayır.\n"
 "- Başına '!' ya da '-' ekleyerek bir türü hariç tutun.\n"
-"- Örnek: Macera,!Ecchi,Komedi.\n"
+"- Örnek: Macera,!Ecchi,Komedi."
 
 #: tmainform.lbfilterstatus.caption
 msgctxt "TMAINFORM.LBFILTERSTATUS.CAPTION"
@@ -1572,12 +1587,12 @@ msgid "Mode: Show all (0)"
 msgstr "Mod: Tümünü göster (0)"
 
 #: tmainform.lboptionautocheckfavintervalminutes.caption
+#, object-pascal-format
 msgctxt "tmainform.lboptionautocheckfavintervalminutes.caption"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Her %d dakikada bir yeni bölüm kontrolü yap"
 
 #: tmainform.lboptionchaptercustomrename.caption
-#| msgid "Chapter folder name:"
 msgctxt "tmainform.lboptionchaptercustomrename.caption"
 msgid "Chapter name:"
 msgstr "Bölüm adı:"
@@ -1598,7 +1613,7 @@ msgid ""
 "%NUMBERING% : Numbering\n"
 "\n"
 "Note:\n"
-"Chapter folder name must have at least %CHAPTER% or %NUMBERING%.\n"
+"Chapter folder name must have at least %CHAPTER% or %NUMBERING%."
 msgstr ""
 "%WEBSITE% : Website adı\n"
 "%MANGA% : Manga başlığı\n"
@@ -1608,7 +1623,7 @@ msgstr ""
 "%NUMBERING% : Numaralama\n"
 "\n"
 "Not:\n"
-"Bölüm klasörü en azından %CHAPTER% ya da %NUMBERING% içermelidir.\n"
+"Bölüm klasörü en azından %CHAPTER% ya da %NUMBERING% içermelidir."
 
 #: tmainform.lboptionconnectiontimeout.caption
 msgid "Connection timeout (seconds)"
@@ -1644,7 +1659,7 @@ msgid ""
 "%FILENAME% : Filename\n"
 "\n"
 "Note:\n"
-"Filename must have at least %FILENAME%\n"
+"Filename must have at least %FILENAME%"
 msgstr ""
 "%WEBSITE% : Website adı\n"
 "%MANGA% : Manga başlığı\n"
@@ -1652,7 +1667,7 @@ msgstr ""
 "%FILENAME% : Dosya adı\n"
 "\n"
 "Not:\n"
-"Dosya adı en azından %FILENAME% içermelidir\n"
+"Dosya adı en azından %FILENAME% içermelidir"
 
 #: tmainform.lboptionhost.caption
 msgid "Host"
@@ -1684,7 +1699,7 @@ msgid ""
 "%ARTIST% : Artist\n"
 "\n"
 "Note:\n"
-"Manga folder name must have at least %MANGA%.\n"
+"Manga folder name must have at least %MANGA%."
 msgstr ""
 "%WEBSITE% : Website adı\n"
 "%MANGA% : Manga başlığı\n"
@@ -1692,14 +1707,13 @@ msgstr ""
 "%ARTIST% : Çizer\n"
 "\n"
 "Not:\n"
-"Manga klasörü adı en azından %MANGA% içermelidir.\n"
+"Manga klasörü adı en azından %MANGA% içermelidir."
 
 #: tmainform.lboptionmaxparallel.caption
 msgid "Number of downloaded tasks at the same time"
 msgstr "Eşzamanlı indirilen görev sayısı (Maks: 8)"
 
 #: tmainform.lboptionmaxretry.caption
-#| msgid "Number of retry times if tasks have download problems (0 = always retry)"
 msgid "Number of retry times if tasks have download problems (-1 = always retry)"
 msgstr "İndirmede sorun varsa tekrar deneme sayısı (-1 = sürekli yeniden dene)"
 
@@ -1826,7 +1840,6 @@ msgid "Hide downloaded chapters"
 msgstr "İndirilmiş bölümleri gizle"
 
 #: tmainform.michapterlisthighlight.caption
-#| msgid "Highlight download chapters"
 msgid "Highlight downloaded chapters"
 msgstr "İndirilmiş bölümleri vurgula"
 
@@ -1911,6 +1924,31 @@ msgctxt "tmainform.mifavoriteschecknewchapter.caption"
 msgid "Check for new chapter"
 msgstr "Yeni bölüm kontrolü yap"
 
+#: tmainform.mifavoritesdefaultaction.caption
+msgctxt "tmainform.mifavoritesdefaultaction.caption"
+msgid "Default Action"
+msgstr "Varsayılan Eylem"
+
+#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
+msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
+msgid "Check for new Chapters"
+msgstr "Yeni Bölümler için kontrol et"
+
+#: tmainform.mifavoritesdefaultactionopenfolder.caption
+msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
+msgid "Open Folder"
+msgstr "Klasörü Aç"
+
+#: tmainform.mifavoritesdefaultactionrename.caption
+msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#: tmainform.mifavoritesdefaultactionshowinfo.caption
+msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
+msgid "View Manga Info"
+msgstr "Manga Bilgisini Göster"
+
 #: tmainform.mifavoritesdelete.caption
 msgctxt "TMAINFORM.MIFAVORITESDELETE.CAPTION"
 msgid "Delete"
@@ -1942,6 +1980,7 @@ msgid "Open ..."
 msgstr "Aç ..."
 
 #: tmainform.mifavoritesrename.caption
+msgctxt "tmainform.mifavoritesrename.caption"
 msgid "Rename"
 msgstr "Yeniden adlandır"
 
@@ -2058,6 +2097,21 @@ msgstr "Manga listesini güncelle"
 #: tmainform.rball.caption
 msgid "Have all genre checked"
 msgstr "Tüm türleri seç"
+
+#: tmainform.rbfavoritesshowall.caption
+msgctxt "tmainform.rbfavoritesshowall.caption"
+msgid "All"
+msgstr "Tümü"
+
+#: tmainform.rbfavoritesshowdisabled.caption
+msgctxt "tmainform.rbfavoritesshowdisabled.caption"
+msgid "Disabled"
+msgstr "Pasifler"
+
+#: tmainform.rbfavoritesshowenabled.caption
+msgctxt "tmainform.rbfavoritesshowenabled.caption"
+msgid "Enabled"
+msgstr "Aktifler"
 
 #: tmainform.rbone.caption
 msgid "Have one of genres checked"
@@ -2309,6 +2363,14 @@ msgstr "Tamam"
 msgid "Select directory"
 msgstr "Yolu seç"
 
+#: tselectdirectoryform.lbdescription.caption
+msgid ""
+"If you change multiple entries at once, the new paths will be constructed like this:\n"
+"\"{New_Path}\\{Manga_Title}\"\n"
+"\n"
+"Old folder structures will be ignored. However, if the only part you change is the drive letter (e.g. 'D:'), only the letter will be replaced. This only works for absolute paths, relative paths will be ignored."
+msgstr ""
+
 #: tshutdowncounterform.btabort.caption
 msgid "&Abort"
 msgstr "&Durdur"
@@ -2376,106 +2438,10 @@ msgstr "&Güncelle"
 #: tupdatedialogform.lbmessage.caption
 msgid ""
 "New version found! Do you want to update now?\n"
-"FMD will be closed to finish the update.\n"
+"FMD will be closed to finish the update."
 msgstr ""
 "Yeni sürüm bulundu! Şimdi güncellemek ister misiniz?\n"
-"FMD, güncelleme için kapatılacak.\n"
-
-#: twebsiteoptionadvancedform.menuitem1.caption
-msgctxt "twebsiteoptionadvancedform.menuitem1.caption"
-msgid "Add"
-msgstr "Ekle"
-
-#: twebsiteoptionadvancedform.menuitem2.caption
-msgctxt "twebsiteoptionadvancedform.menuitem2.caption"
-msgid "Edit"
-msgstr "Düzenle"
-
-#: twebsiteoptionadvancedform.menuitem4.caption
-msgctxt "twebsiteoptionadvancedform.menuitem4.caption"
-msgid "Delete"
-msgstr "Sil"
-
-#: twebsiteoptionadvancedform.tscookies.caption
-msgctxt "twebsiteoptionadvancedform.tscookies.caption"
-msgid "Cookies"
-msgstr "Çerezler"
-
-#: twebsiteoptionadvancedform.tsdirectorypagenumber.caption
-msgid "Directory page number"
-msgstr "Dizin sayfa numarası"
-
-#: twebsiteoptionadvancedform.tsdownloads.caption
-msgctxt "twebsiteoptionadvancedform.tsdownloads.caption"
-msgid "Downloads"
-msgstr "İndirmeler"
-
-#: twebsiteoptionadvancedform.tsmaxthreadspertask.caption
-msgid "Max threads per task"
-msgstr "Her bir görev için maksimum iş parçacığı"
-
-#: twebsiteoptionadvancedform.tsnumberofthreads.caption
-msgid "Number of threads"
-msgstr "İş parçacığı sayısı"
-
-#: twebsiteoptionadvancedform.tsupdatelist.caption
-msgid "Update List"
-msgstr "Listeyi Güncelle"
-
-#: twebsiteoptionadvancedform.tsuseragent.caption
-msgctxt "twebsiteoptionadvancedform.tsuseragent.caption"
-msgid "User Agent"
-msgstr "User Agent"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtcookies.header.columns[0].text"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtcookies.header.columns[1].text"
-msgid "Cookies"
-msgstr "Çerezler"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[0].text"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text"
-msgid "Value"
-msgstr "Değer"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[0].text"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[1].text"
-msgid "Value"
-msgstr "Değer"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[0].text"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[1].text"
-msgid "Value"
-msgstr "Değer"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtuseragent.header.columns[0].text"
-msgid "Website"
-msgstr "Website"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtuseragent.header.columns[1].text"
-msgid "User Agent"
-msgstr "User Agent"
+"FMD, güncelleme için kapatılacak."
 
 #: twebsiteselectionform.caption
 msgid "Select a website"
@@ -2495,241 +2461,170 @@ msgstr "Ayar ismi"
 
 #: udownloadsmanager.rs_compressing
 msgid "Compressing..."
-msgstr "Sıkıştırılıyor..."
+msgstr ""
 
 #: udownloadsmanager.rs_disabled
+#, fuzzy
+msgctxt "udownloadsmanager.rs_disabled"
 msgid "Disabled"
-msgstr "Pasifleştirilmiş"
+msgstr "Pasifler"
 
 #: udownloadsmanager.rs_downloading
 msgid "Downloading"
-msgstr "İndiriliyor"
+msgstr ""
 
 #: udownloadsmanager.rs_failed
+#, fuzzy
 msgctxt "udownloadsmanager.rs_failed"
 msgid "Failed"
 msgstr "Başarısız oldu"
 
 #: udownloadsmanager.rs_failedtocreatedir
 msgid "Failed to create directory!"
-msgstr "Dizin oluşturma başarısız oldu!"
+msgstr ""
 
 #: udownloadsmanager.rs_failedtryresumetask
 msgid "Failed, try resuming this task!"
-msgstr "Başarısız, görevi devam ettirmeyi deneyin!"
+msgstr ""
 
 #: udownloadsmanager.rs_finish
 msgid "Completed"
-msgstr "Tamamlandı"
+msgstr ""
 
 #: udownloadsmanager.rs_preparing
 msgctxt "udownloadsmanager.rs_preparing"
 msgid "Preparing"
-msgstr "Hazırlanıyor"
+msgstr ""
 
 #: udownloadsmanager.rs_stopped
 msgid "Stopped"
-msgstr "Durduruldu"
+msgstr ""
 
 #: udownloadsmanager.rs_waiting
 msgid "Waiting..."
-msgstr "Bekliyor..."
+msgstr ""
 
 #: ufavoritesmanager.rs_btnaddtoqueue
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btnaddtoqueue"
 msgid "&Add to queue"
 msgstr "&Sıraya ekle"
 
 #: ufavoritesmanager.rs_btncancel
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncancel"
 msgid "&Cancel"
-msgstr "&İptal Et"
+msgstr "&İptal"
 
 #: ufavoritesmanager.rs_btncheckfavorites
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncheckfavorites"
 msgid "Check for new chapter"
-msgstr "Yeni bölüme bak"
+msgstr "Yeni bölümü kontrol et"
 
 #: ufavoritesmanager.rs_btndownload
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btndownload"
 msgid "&Download"
 msgstr "&İndir"
 
 #: ufavoritesmanager.rs_btnremove
 msgid "&Remove"
-msgstr "&Kaldır"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgcompletedmangacaption
+#, object-pascal-format
 msgid "Found %d completed manga"
-msgstr "%d tamamlanmış manga bulundu"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgfavoritescheckisrunning
 msgid "Favorites check is running!"
-msgstr "Favorilerin kontrolü devam ediyor!"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgnewchaptercaption
-msgid "Found %d new chapter(s)"
-msgstr "%d yeni bölüm(ler) bulundu"
+#, object-pascal-format
+msgid "%d manga(s) have new chapter(s)"
+msgstr ""
 
 #: ufavoritesmanager.rs_favoritehasnewchapter
+#, object-pascal-format
 msgid "%s <%s> has %d new chapter(s)."
-msgstr "%s <%s> %d yeni bölümü var."
+msgstr ""
 
 #: ufavoritesmanager.rs_lblmangawillberemoved
 msgid "Completed manga will be removed:"
-msgstr "Tamamlanmış manga kaldırılacak:"
+msgstr ""
 
 #: ufavoritesmanager.rs_lblnewchapterfound
-msgid "%d new chapter(s) from %d manga(s):"
-msgstr "%d yeni bölüm(ler) bulundu %d manga(lar)dan:"
+#, object-pascal-format
+msgid "Found %d new chapter from %d manga(s):"
+msgstr ""
 
 #: usilentthread.rs_silentthreadloadstatus
+#, object-pascal-format
 msgid "Loading: %d/%d"
-msgstr "Yükleniyor: %d/%d"
-
-#: usubthread.rs_btncheckupdates
-msgctxt "usubthread.rs_btncheckupdates"
-msgid "Check for new version"
-msgstr "Yeni sürümü kontrol et"
-
-#: usubthread.rs_currentversion
-msgid "Installed Version"
-msgstr "İndirilmiş Sürüm"
-
-#: usubthread.rs_latestversion
-msgid "Latest Version   "
-msgstr "Son Sürüm  "
-
-#: usubthread.rs_newversionfound
-msgid "New Version found!"
-msgstr "Yeni Sürüm bulundu!"
+msgstr ""
 
 #: uupdatethread.rs_dlghasnewmanga
+#, object-pascal-format
 msgid "%s has %d new manga(s)"
-msgstr "%s için %d yeni manga bulundu"
+msgstr ""
 
 #: uupdatethread.rs_gettingdirectory
 msgid "Getting directory"
-msgstr "Dizin alınıyor"
+msgstr ""
 
 #: uupdatethread.rs_gettinginfo
 msgid "Getting info"
-msgstr "Bilgi alınıyor"
+msgstr ""
 
 #: uupdatethread.rs_gettinglistfor
 msgid "Getting list for"
-msgstr "Şunun için liste alınıyor"
+msgstr ""
 
 #: uupdatethread.rs_indexingnewtitle
 msgid "Indexing new title(s)"
-msgstr "Yeni başlık(lar) indeksleniyor"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitle
 msgid "Looking for new title(s)"
-msgstr "Yeni başlık(lar) aranıyor"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitlefromanotherdirectory
 msgid "Looking for new title(s) from another directory"
-msgstr "Başka bir dizinden yeni başlık(lar) aranıyor"
+msgstr ""
 
 #: uupdatethread.rs_preparing
 msgctxt "uupdatethread.rs_preparing"
 msgid "Preparing"
-msgstr "Hazırlanıyor"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromcurrentdata
 msgid "Removing duplicate from current data"
-msgstr "Şu anki veriden çiftler kaldırılıyor"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromlocaldata
 msgid "Removing duplicate from local data"
-msgstr "Yerel veriden çiftler kaldırılıyor"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromnewtitle
 msgid "Removing duplicate from new title(s)"
-msgstr "Başlıktan çiftler kaldırılıyor"
+msgstr ""
 
 #: uupdatethread.rs_savingdata
 msgid "Saving data"
-msgstr "Veri kaydediliyor"
+msgstr ""
 
 #: uupdatethread.rs_synchronizingdata
 msgid "Synchronizing data"
-msgstr "Veri eşitleniyor"
+msgstr ""
 
 #: uupdatethread.rs_updatinglist
 msgid "Updating list"
-msgstr "Liste güncelleniyor"
-
-#: tmainform.ckoptionautomaticallydisablecloudflarebypass.caption
-msgid "Automatically disable Cloudflare Bypass for websites on error or if not needed"
-msgstr "Cloudflare Bypass'ı gerekmediği zaman ya da hata olduğunda otomatik olarak devredışı bırak"
-
-#: tmainform.ckoptionenablecloudflarebypass.caption
-msgid "Enable Cloudflare Bypass"
-msgstr "Cloudflare Bypass'ı Etkinleştir"
-
-#: tmainform.gboptionscloudflarebypass.caption
-msgid "Cloudflare Bypass (global settings)"
-msgstr "Cloudflare Bypass (genel ayarlar)"
-
-#: tmainform.rbfavoritesshowall.caption
-msgctxt "tmainform.rbfavoritesshowall.caption"
-msgid "All"
-msgstr "Tümü"
-
-#: tmainform.rbfavoritesshowdisabled.caption
-msgid "Disabled"
-msgstr "Pasifler"
-
-#: tmainform.rbfavoritesshowenabled.caption
-msgid "Enabled"
-msgstr "Aktifler"
-
-#: frmmain.rs_favoritesshowall
-msgctxt "frmmain.rs_favoritesshowall"
-msgid "All"
-msgstr "Tümü"
-
-#: frmmain.rs_favoritesshowdisabled
-msgctxt "frmmain.rs_favoritesshowdisabled"
-msgid "Disabled"
-msgstr "Pasifler"
-
-#: frmmain.rs_favoritesshowenabled
-msgctxt "frmmain.rs_favoritesshowenabled"
-msgid "Enabled"
-msgstr "Aktifler"
-
-#: tmainform.mifavoritesdefaultaction.caption
-msgctxt "tmainform.mifavoritesdefaultaction.caption"
-msgid "Default Action"
-msgstr "Varsayılan Eylem"
-
-#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
-msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
-msgid "Check for new Chapters"
-msgstr "Yeni Bölümler için kontrol et"
-
-#: tmainform.mifavoritesdefaultactionopenfolder.caption
-msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
-msgid "Open Folder"
-msgstr "Klasörü Aç"
-
-#: tmainform.mifavoritesdefaultactionrename.caption
-msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
-msgid "Rename"
-msgstr "Yeniden Adlandır"
-
-#: tmainform.mifavoritesdefaultactionshowinfo.caption
-msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
-msgid "View Manga Info"
-msgstr "Manga Bilgisini Göster"
-
-#: tselectdirectoryform.lbdescription.caption
-msgid ""
-"Eğer birden çok girdiyi tek seferde değiştirirseniz, yeni yollar şu şekilde oluşturulacaktır:\n"
-"\"{Yeni_Yol}\\{Manga_Başlığı}\"\n"
-"\n"
-"Önceki klasör yapılanması gözardı edilecektir. Yine de, eğer değiştirdiğiniz kısım sadece sürücü harfiyse (örn. 'D:'), sadece harf değiştirilecektir. Bu sadece kesin yollarda çalışmaktadır, göreceli yollar gözardı edilecektir.\n"
 msgstr ""
+
+#: webp.serrloadfailed
+#, object-pascal-format
+msgid "Can not load WebP codec library \"%s\". Check your installation."
+msgstr ""
+

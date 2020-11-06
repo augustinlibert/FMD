@@ -9,12 +9,28 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_US\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,29,-1,-1\n"
-"X-Poedit-Language: Greek\n"
-"X-Poedit-Country: GREECE\n"
+
+#: checkupdate.rs_btncheckupdates
+#, fuzzy
+msgctxt "checkupdate.rs_btncheckupdates"
+msgid "Check for latest version"
+msgstr "Έλεγχος για νεότερη έκδοση"
+
+#: checkupdate.rs_currentversion
+msgid "Installed Version"
+msgstr ""
+
+#: checkupdate.rs_latestversion
+msgid "Latest Version   "
+msgstr ""
+
+#: checkupdate.rs_newversionfound
+msgid "New Version found!"
+msgstr ""
 
 #: dbupdater.rs_buttoncancel
 msgctxt "dbupdater.rs_buttoncancel"
@@ -22,26 +38,31 @@ msgid "Abort"
 msgstr "Άκυρο"
 
 #: dbupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading %s"
 msgstr ""
 
 #: dbupdater.rs_extracting
+#, object-pascal-format
 msgid "Extracting %s"
 msgstr ""
 
 #: dbupdater.rs_faileddownload
+#, object-pascal-format
 msgid "%s: %d %s"
-msgstr ""
+msgstr "%s: %d %s"
 
 #: dbupdater.rs_failedextract
+#, object-pascal-format
 msgid "%s: failed to extract, exitstatus = %d"
 msgstr ""
 
 #: dbupdater.rs_faileditems
+#, object-pascal-format
 msgid ""
 "Failed to finish:\n"
 "\n"
-"%s\n"
+"%s"
 msgstr ""
 
 #: dbupdater.rs_faileditemstitle
@@ -50,39 +71,14 @@ msgid "Failed"
 msgstr "Απέτυχε"
 
 #: dbupdater.rs_failedtosave
+#, object-pascal-format
 msgid "%s: failed to save"
 msgstr ""
 
 #: dbupdater.rs_missingzipexe
+#, object-pascal-format
 msgid "%s: Missing %s"
 msgstr ""
-
-#: ehentai.rs_downloadoriginalimage
-msgid "Download original image(require ExHentai account)"
-msgstr "Λήψη αρχικής εικόνας (απαιτείται λογαριασμός ExHentai)"
-
-#: ehentai.rs_settingsimagesize
-#| msgid "Image size"
-msgid "Image size:"
-msgstr "Μέγεθος εικόνας:"
-
-#: ehentai.rs_settingsimagesizeitems
-msgid ""
-"Auto\n"
-"780x\n"
-"980x\n"
-"1280x\n"
-"1600x\n"
-"2400x\n"
-"Original\n"
-msgstr ""
-"Αυτόματα\n"
-"780x\n"
-"980x\n"
-"1280x\n"
-"1600x\n"
-"2400x\n"
-"Αρχικό\n"
 
 #: frmaccountmanager.rs_accountdeleteconfirmation
 msgid "Are you sure you want to delete this account?"
@@ -137,10 +133,7 @@ msgid "Finish download"
 msgstr ""
 
 #: frmluamodulesupdater.rs_modulesupdatedrestart
-msgid ""
-"Modules updated, restart now?\n"
-"\n"
-"%s\n"
+msgid "Modules updated, restart now?"
 msgstr ""
 
 #: frmluamodulesupdater.rs_modulesupdatedtitle
@@ -148,10 +141,7 @@ msgid "Modules updated!"
 msgstr ""
 
 #: frmluamodulesupdater.rs_newupdatefoundlostchanges
-msgid ""
-"Modules update found, any local changes will be lost, procced?\n"
-"\n"
-"%s\n"
+msgid "Modules update found, any local changes will be lost, procced?"
 msgstr ""
 
 #: frmluamodulesupdater.rs_newupdatefoundtitle
@@ -163,26 +153,31 @@ msgid "Downloading..."
 msgstr ""
 
 #: frmluamodulesupdater.rs_statusdelete
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusdelete"
 msgid "%s DELETE*"
 msgstr ""
 
 #: frmluamodulesupdater.rs_statusfailed
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusfailed"
 msgid "%s FAILED*"
 msgstr ""
 
 #: frmluamodulesupdater.rs_statusnew
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusnew"
 msgid "%s NEW*"
 msgstr ""
 
 #: frmluamodulesupdater.rs_statusredownloaded
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusredownloaded"
 msgid "%s REDOWNLOAD*"
 msgstr ""
 
 #: frmluamodulesupdater.rs_statusupdate
+#, object-pascal-format
 msgctxt "frmluamodulesupdater.rs_statusupdate"
 msgid "%s UPDATE*"
 msgstr ""
@@ -218,10 +213,6 @@ msgstr "Δεν είναι δυνατή η λήψη πληροφοριών του
 msgid "Download count:"
 msgstr "Πλήθος λήψεων:"
 
-#: frmmain.rs_dlgmangalistselect
-msgid "You must choose at least 1 manga website!"
-msgstr "Πρέπει να επιλέξετε τουλάχιστον 1 ιστότοπο manga!"
-
 #: frmmain.rs_dlgquit
 msgid "Are you sure you want to exit?"
 msgstr "Είστε βέβαιος ότι θέλετε έξοδο;"
@@ -250,10 +241,10 @@ msgstr "Διαχωρισμός λήψης"
 #: frmmain.rs_dlgtitleexistindllist
 msgid ""
 "This title are already in download list.\n"
-"Do you want to download it anyway?\n"
+"Do you want to download it anyway?"
 msgstr ""
 "Ο τίτλος αυτός είναι ήδη στη λίστα λήψης.\n"
-"Θέλετε οπωσδήποτε να τον κατεβάσετε;\n"
+"Θέλετε οπωσδήποτε να τον κατεβάσετε;"
 
 #: frmmain.rs_dlgtypeinnewchapter
 msgid "Type in new chapter:"
@@ -278,32 +269,55 @@ msgstr "Η URL δεν υποστηρίζεται!"
 #: frmmain.rs_droptargetmodeitems
 msgid ""
 "Download all\n"
-"Add to favorites\n"
+"Add to favorites"
 msgstr ""
 "Λήψη όλων\n"
-"Προσθήκη στα αγαπημένα\n"
+"Προσθήκη στα αγαπημένα"
+
+#: frmmain.rs_favoritesshowall
+msgctxt "frmmain.rs_favoritesshowall"
+msgid "All"
+msgstr ""
+
+#: frmmain.rs_favoritesshowdisabled
+msgctxt "frmmain.rs_favoritesshowdisabled"
+msgid "Disabled"
+msgstr "Απενεργ/μένο"
+
+#: frmmain.rs_favoritesshowenabled
+msgctxt "frmmain.rs_favoritesshowenabled"
+msgid "Enabled"
+msgstr ""
 
 #: frmmain.rs_filterstatusitems
 msgid ""
 "Completed\n"
 "Ongoing\n"
-"<none>\n"
+"<none>"
 msgstr ""
 "Ολοκληρωμένο\n"
 "Σε εξέλιξη\n"
-"<καμία>\n"
+"<καμία>"
+
+#: frmmain.rs_fiveyears
+msgid "Five years"
+msgstr ""
 
 #: frmmain.rs_fmdalreadyrunning
 msgid "Free Manga Downloader already running!"
 msgstr "Το Free Manga Downloader εκτελείται ήδη!"
 
+#: frmmain.rs_fouryears
+msgid "Four years"
+msgstr ""
+
 #: frmmain.rs_hintfavoriteproblem
 msgid ""
 "There is a problem with this data!\n"
-"Removing and re-adding this data may fix the problem.\n"
+"Removing and re-adding this data may fix the problem."
 msgstr ""
 "Υπάρχει ένα πρόβλημα με αυτά τα δεδομένα!\n"
-"Η αφαίρεση και προσθήκη ξανά αυτών των δεδομένων μπορεί να διορθώσει το πρόβλημα.\n"
+"Η αφαίρεση και προσθήκη ξανά αυτών των δεδομένων μπορεί να διορθώσει το πρόβλημα."
 
 #: frmmain.rs_history
 msgid "History"
@@ -347,36 +361,39 @@ msgid "In progress"
 msgstr "Σε εξέλιξη"
 
 #: frmmain.rs_lblautochecknewchapterminute
+#, object-pascal-format
 msgctxt "frmmain.rs_lblautochecknewchapterminute"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Αυτόματος έλεγχος για νέα κεφάλαια κάθε %d λεπτά"
 
 #: frmmain.rs_lbloptionexternalparamshint
+#, object-pascal-format
 msgid ""
 "%s : Path to the manga\n"
 "%s : Chapter filename\n"
 "\n"
-"Example : \"%s%s\"\n"
+"Example : \"%s%s\""
 msgstr ""
 "%s : Η διαδρομή του manga\n"
 "%s : Όνομα αρχείου κεφαλαίου\n"
 "\n"
-"Παράδειγμα : \"%s%s\"\n"
+"Παράδειγμα : \"%s%s\""
 
 #: frmmain.rs_loading
 msgid "Loading ..."
 msgstr "Φόρτωση..."
 
 #: frmmain.rs_modeall
+#, object-pascal-format
 msgid "Mode: Show all (%d)"
 msgstr "Λειτ.: Εμφάνιση όλων (%d)"
 
 #: frmmain.rs_modefiltered
+#, object-pascal-format
 msgid "Mode: Filtered (%d)"
 msgstr "Λειτ.: Φιλτράρισμα (%d)"
 
 #: frmmain.rs_modesearching
-#| msgid "Searching..."
 msgctxt "frmmain.rs_modesearching"
 msgid "Mode: Searching..."
 msgstr "Λειτ.: Αναζήτηση..."
@@ -389,32 +406,8 @@ msgstr "Ένας μήνας"
 msgid "One week"
 msgstr "Μια εβδομάδα"
 
-#: frmmain.rs_sixmonths
-msgid "Six months"
-msgstr ""
-
 #: frmmain.rs_oneyear
 msgid "One year"
-msgstr ""
-
-#: frmmain.rs_twoyears
-msgid "Two years"
-msgstr ""
-
-#: frmmain.rs_threeyears
-msgid "Three years"
-msgstr ""
-
-#: frmmain.rs_fouryears
-msgid "Four years"
-msgstr ""
-
-#: frmmain.rs_fiveyears
-msgid "Five years"
-msgstr ""
-
-#: frmmain.rs_tenyears
-msgid "Ten years"
 msgstr ""
 
 #: frmmain.rs_optioncompress
@@ -423,24 +416,38 @@ msgid ""
 "ZIP\n"
 "CBZ\n"
 "PDF\n"
-"EPUB\n"
+"EPUB"
 msgstr ""
+"Καμία ενέργεια\n"
+"ZIP\n"
+"CBZ\n"
+"PDF\n"
+"EPUB"
 
 #: frmmain.rs_optionfmddoitems
 msgid ""
 "Nothing\n"
 "Exit\n"
 "Shutdown\n"
-"Hibernate\n"
+"Hibernate"
 msgstr ""
 "Καμία ενέργεια\n"
 "Έξοδος\n"
 "Τερματισμός υπολογιστή\n"
-"Αδρανοποίηση υπολογιστή\n"
+"Αδρανοποίηση υπολογιστή"
+
+#: frmmain.rs_revision
+msgid "Revision"
+msgstr ""
 
 #: frmmain.rs_selected
+#, object-pascal-format
 msgid "Selected: %d"
 msgstr "Επιλεγμένα: %d"
+
+#: frmmain.rs_sixmonths
+msgid "Six months"
+msgstr ""
 
 #: frmmain.rs_software
 msgid "Software"
@@ -451,23 +458,42 @@ msgctxt "frmmain.rs_softwarepath"
 msgid "Path to the software (e.g. C:\\MangaDownloader)"
 msgstr "Διαδρομή του προγράμματος (π.χ. C:\\MangaDownloader)"
 
+#: frmmain.rs_tenyears
+msgid "Ten years"
+msgstr ""
+
+#: frmmain.rs_threeyears
+msgid "Three years"
+msgstr ""
+
 #: frmmain.rs_today
 msgid "Today"
 msgstr "Σήμερα"
+
+#: frmmain.rs_twoyears
+msgid "Two years"
+msgstr ""
+
+#: frmmain.rs_version
+msgid "Version"
+msgstr ""
 
 #: frmmain.rs_webpconvertto
 msgid ""
 "WebP\n"
 "PNG\n"
-"JPEG\n"
+"JPEG"
 msgstr ""
+"WebP\n"
+"PNG\n"
+"JPEG"
 
 #: frmmain.rs_webppnglevel
 msgid ""
 "None\n"
 "Fastest\n"
 "Default\n"
-"Maximum\n"
+"Maximum"
 msgstr ""
 
 #: frmmain.rs_wronginput
@@ -479,14 +505,17 @@ msgid "Yesterday"
 msgstr "Χθές"
 
 #: frmshutdowncounter.rs_lblmessageexit
+#, object-pascal-format
 msgid "FMD will exit in %d second."
 msgstr "Θα γίνει έξοδος του FMD σε %d δευτερόλεπτα."
 
 #: frmshutdowncounter.rs_lblmessagehibernate
+#, object-pascal-format
 msgid "System will hibernate in %d second."
 msgstr "Το σύστημα θα αδρανοποιηθεί σε %d δευτερόλεπτα."
 
 #: frmshutdowncounter.rs_lblmessageshutdown
+#, object-pascal-format
 msgid "System will shutdown in %d second."
 msgstr "Το σύστημα θα τερματιστεί σε %d δευτερόλεπτα."
 
@@ -505,57 +534,26 @@ msgctxt "frmtransferfavorites.rs_valid"
 msgid "Valid"
 msgstr ""
 
-#: kissmanga.rs_kissmanga_initvector
-msgid "Initialization Vector:"
-msgstr "Διάνυσμα προετοιμασίας:"
-
-#: kissmanga.rs_kissmanga_key
-msgid "Key:"
-msgstr "Κλειδί:"
-
-#: kissmanga.rs_kissmanga_usegoogledcp
-msgid "Use Google DCP"
-msgstr ""
-
-#: mangarock.rs_mangarock_country
-msgid "Country (change this if some manga or chapters are missing):"
-msgstr ""
-
-#: mangadex.rs_showalllang
-msgctxt "mangadex.rs_showalllang"
-msgid "Show all language"
-msgstr "Εμφάνιση όλων των γλωσσών"
-
-#: mangadex.rs_showscangroup
-msgctxt "mangadex.rs_showscangroup"
-msgid "Show scanlation group"
-msgstr "Εμφάνιση ομάδας scanlation"
-
-#: mangafox.rs_removewatermark
-msgid "Remove watermark"
-msgstr "Αφαίρεση υδατογραφήματος"
-
-#: mangafox.rs_saveaspng
-msgid "Save as PNG"
-msgstr "Αποθήκευση ως PNG"
-
 #: selfupdater.rs_buttoncancel
 msgctxt "selfupdater.rs_buttoncancel"
 msgid "Abort"
 msgstr "Ματαίωση"
 
 #: selfupdater.rs_downloading
+#, object-pascal-format
 msgid "Downloading new version %s"
 msgstr ""
 
 #: selfupdater.rs_faileddownload
+#, object-pascal-format
 msgid ""
 "Failed to download new version %s\n"
 "\n"
-"%d %s\n"
+"%d %s"
 msgstr ""
 
 #: selfupdater.rs_failedextract
+#, object-pascal-format
 msgid "Failed to extract %s, exitstatus = %d"
 msgstr ""
 
@@ -565,6 +563,7 @@ msgid "Failed"
 msgstr "Απέτυχε"
 
 #: selfupdater.rs_failedtosave
+#, object-pascal-format
 msgid "Failed to save %s"
 msgstr ""
 
@@ -577,8 +576,37 @@ msgid "Download finished"
 msgstr ""
 
 #: selfupdater.rs_missingfile
+#, object-pascal-format
 msgctxt "selfupdater.rs_missingfile"
 msgid "Missing %s"
+msgstr ""
+
+#: simpleexception.sbuttoncontinue
+msgid "&Continue"
+msgstr ""
+
+#: simpleexception.sbuttondetails
+msgid "&Show Details"
+msgstr ""
+
+#: simpleexception.sbuttonterminate
+msgid "&Terminate"
+msgstr ""
+
+#: simpleexception.scanthandleexception
+msgid "Can't handle exception"
+msgstr ""
+
+#: simpleexception.scheckboxignoreexception
+msgid "Ignore this exception for next time"
+msgstr ""
+
+#: simpleexception.sexceptioncaption
+msgid "An error occured during program execution:"
+msgstr ""
+
+#: simpleexception.sexceptiondialogtitle
+msgid "Exception Info"
 msgstr ""
 
 #: taccountmanagerform.btedit.caption
@@ -595,19 +623,16 @@ msgid "AccountManagerForm"
 msgstr ""
 
 #: taccountmanagerform.vtaccountlist.header.columns[1].text
-#| msgid "Username"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[1].text"
 msgid "Website"
 msgstr "Ιστότοπος"
 
 #: taccountmanagerform.vtaccountlist.header.columns[2].text
-#| msgid "Status"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[2].text"
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
 #: taccountmanagerform.vtaccountlist.header.columns[3].text
-#| msgid "Status"
 msgctxt "taccountmanagerform.vtaccountlist.header.columns[3].text"
 msgid "Status"
 msgstr "Κατάσταση"
@@ -635,13 +660,11 @@ msgid "Password"
 msgstr "Κωδικός"
 
 #: taccountsetform.edusername.texthint
-#| msgid "Status"
 msgctxt "taccountsetform.edusername.texthint"
 msgid "Username"
 msgstr "Όνομα χρήστη"
 
 #: taccountsetform.label2.caption
-#| msgid "Status"
 msgctxt "taccountsetform.label2.caption"
 msgid "Username"
 msgstr "Όνομα χρήστη"
@@ -702,6 +725,22 @@ msgctxt "tformlogger.micopy.caption"
 msgid "Copy"
 msgstr "Αντιγραφή"
 
+#: tfrmdialogyn.btno.caption
+msgid "&No"
+msgstr ""
+
+#: tfrmdialogyn.btyes.caption
+msgid "&Yes"
+msgstr ""
+
+#: tfrmdialogyn.caption
+msgid "Dialog"
+msgstr ""
+
+#: tfrmdialogyn.lbmessage.caption
+msgid "lbMessage"
+msgstr ""
+
 #: timportfavorites.btcancel.caption
 msgctxt "TIMPORTFAVORITES.BTCANCEL.CAPTION"
 msgid "Cancel"
@@ -754,17 +793,12 @@ msgstr ""
 msgid "Last message"
 msgstr ""
 
-#: tmainform.btabortupdatelist.hint
-msgid "Abort update list"
-msgstr "Ματαίωση ενημέρωσης λίστας"
-
 #: tmainform.btaddtofavorites.caption
 msgctxt "tmainform.btaddtofavorites.caption"
 msgid "Add to favorites"
 msgstr "Προσθήκη στα αγαπημένα"
 
 #: tmainform.btchecklatestversion.caption
-#| msgid "Check for new version"
 msgctxt "tmainform.btchecklatestversion.caption"
 msgid "Check for latest version"
 msgstr "Έλεγχος για νεότερη έκδοση"
@@ -863,14 +897,12 @@ msgid "Automatic remove completed manga from Favorites"
 msgstr "Αυτόματη κατάργηση ολοκληρωμένων mangas από τα Αγαπημένα"
 
 #: tmainform.cboptionautocheckfavstartup.caption
-#| msgid "Automatic check for new chapter at startup"
 msgid "Auto check for new chapter at startup"
 msgstr "Αυτόματος έλεγχος για νέα κεφάλαια στην έναρξη"
 
 #: tmainform.cboptionautochecklatestversion.caption
-#| msgid "Check for new version "
 msgctxt "tmainform.cboptionautochecklatestversion.caption"
-msgid "Auto check for latest version "
+msgid "Auto check for latest version"
 msgstr "Αυτόματος έλεγχος για την τελευταία έκδοση"
 
 #: tmainform.cboptionautoopenfavstartup.caption
@@ -878,7 +910,6 @@ msgid "Open Favorites at startup"
 msgstr "Άνοιγμα αγαπημένων στην έναρξη"
 
 #: tmainform.cboptionchangeunicodecharacter.caption
-#| msgid "Change all all character to"
 msgctxt "tmainform.cboptionchangeunicodecharacter.caption"
 msgid "Replace all unicode character with"
 msgstr "Αλλαγή όλων των unicode χαρακτήρων με"
@@ -952,11 +983,6 @@ msgstr "Λήψη λίστας manga εάν είναι κενή"
 msgid "Show Downloads tab when adding new tasks"
 msgstr ""
 
-#: tmainform.cboptionshowfavoritestabonnewmanga.caption
-msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
-msgid "Show Favorites tab when adding new manga"
-msgstr ""
-
 #: tmainform.cboptionshowdownloadtoolbar.caption
 msgid "Show downloads toolbar"
 msgstr "Εμφάνιση εργαλειοθήκης λήψεων"
@@ -967,6 +993,11 @@ msgstr "Εμφάνιση \"Διαγραφή όλων των ολοκληρωμέ
 
 #: tmainform.cboptionshowdownloadtoolbarleft.caption
 msgid "Show left downloads toolbar"
+msgstr ""
+
+#: tmainform.cboptionshowfavoritestabonnewmanga.caption
+msgctxt "tmainform.cboptionshowfavoritestabonnewmanga.caption"
+msgid "Show Favorites tab when adding new manga"
 msgstr ""
 
 #: tmainform.cboptionshowquitdialog.caption
@@ -1009,7 +1040,7 @@ msgstr "Κανονική έκφραση"
 #: tmainform.cbwebpsaveas.text
 msgctxt "tmainform.cbwebpsaveas.text"
 msgid "PNG"
-msgstr ""
+msgstr "PNG"
 
 #: tmainform.ckdroptarget.caption
 msgctxt "tmainform.ckdroptarget.caption"
@@ -1037,7 +1068,7 @@ msgid "Contains content that is suitable only for adults. Titles in this categor
 msgstr ""
 "Περιέχει περιεχόμενο που είναι κατάλληλο μόνο για ενήλικες.\n"
 " Οι τίτλοι σε αυτή την κατηγορία μπορεί να περιέχουν σκηνές παρατεταμένης έντονης \n"
-"βίας ή/και γραφικά με σεξουαλικό περιεχόμενο και γυμνό.\n"
+"βίας ή/και γραφικά με σεξουαλικό περιεχόμενο και γυμνό."
 
 #: tmainform.ckfilteradventure.caption
 msgid "Adventure"
@@ -1048,7 +1079,7 @@ msgid "If a character in the story goes on a trip or along that line, your best 
 msgstr ""
 "Αν ένας χαρακτήρας στην ιστορία πηγαίνει σε ταξίδι ή κατά μήκος αυτής της γραμμής, \n"
 "το πιθανότερο είναι ότι πρόκειται για μια περιπέτεια manga. Ειδάλλως, είναι στο χέρι σας\n"
-" να αποφασίσετε γι αυτή την περίπτωση.\n"
+" να αποφασίσετε γι αυτή την περίπτωση."
 
 #: tmainform.ckfiltercomedy.caption
 msgid "Comedy"
@@ -1082,7 +1113,7 @@ msgstr "Ecchi"
 msgid "Possibly the line between hentai and non-hentai, ecchi usually refers to fanservice put in to attract a certain group of fans."
 msgstr ""
 "Ενδεχομένως η γραμμή μεταξύ Hentai και μη-Hentai, το Ecchi συνήθως αναφέρεται \n"
-"σε υπηρεσία οπαδών που θέλει να προσελκύσει μια συγκεκριμένη ομάδα οπαδών.\n"
+"σε υπηρεσία οπαδών που θέλει να προσελκύσει μια συγκεκριμένη ομάδα οπαδών."
 
 #: tmainform.ckfilterfantasy.caption
 msgid "Fantasy"
@@ -1099,10 +1130,10 @@ msgstr "Gender Bender"
 #: tmainform.ckfiltergenderbender.hint
 msgid ""
 "Girls dressing up as guys, guys dressing up as girls.\n"
-"Guys turning into girls, girls turning into guys.\n"
+"Guys turning into girls, girls turning into guys."
 msgstr ""
 "Κορίτσια που ντύνονται σαν αγόρια και αγόρια που ντύνονται σαν κορίτσια.\n"
-"Αγόρια που γίνονται κορίτσια και κορίτσια που γίνονται αγόρια.\n"
+"Αγόρια που γίνονται κορίτσια και κορίτσια που γίνονται αγόρια."
 
 #: tmainform.ckfilterharem.caption
 msgid "Harem"
@@ -1113,7 +1144,7 @@ msgid "A series involving one male character and many female characters (usually
 msgstr ""
 "Μια σειρά που περιλαμβάνει έναν αρσενικό χαρακτήρα και πολλούς γυναικείους \n"
 "(συνήθως έλκονται από τον αρσενικό χαρακτήρα). \n"
-"Το Reverse Harem είναι όταν τα φύλα αντιστρέφονται.\n"
+"Το Reverse Harem είναι όταν τα φύλα αντιστρέφονται."
 
 #: tmainform.ckfilterhentai.caption
 msgctxt "tmainform.ckfilterhentai.caption"
@@ -1141,7 +1172,7 @@ msgstr "Horror"
 msgid "A painful emotion of fear, dread, and abhorrence; a shuddering with terror and detestation; the feeling inspired by something frightful and shocking."
 msgstr ""
 "Ένα οδυνηρό συναίσθημα φόβου, τρόμου και αποστροφής. Ένα ανατριχιαστικό με τρόμο \n"
-"και αποστροφή. Το αίσθημα που είναι εμπνευσμένο από κάτι τρομακτικό και συγκλονιστικό.\n"
+"και αποστροφή. Το αίσθημα που είναι εμπνευσμένο από κάτι τρομακτικό και συγκλονιστικό."
 
 #: tmainform.ckfilterjosei.caption
 msgid "Josei"
@@ -1152,7 +1183,7 @@ msgid "Literally \"Woman\". Targets women 18-30. Female equivalent to seinen. Un
 msgstr ""
 "Κυριολεκτικά «Γυναίκα». Απευθύνεται σε γυναίκες 18-30. Ισοδύναμο με το θηλυκό. \n"
 "Σε αντίθεση με το Shoujo το ειδύλλιο είναι πιο ρεαλιστικό και λιγότερο εξιδανικευμένο. \n"
-"Η αφήγηση είναι πιο σαφής και ώριμη.\n"
+"Η αφήγηση είναι πιο σαφής και ώριμη."
 
 #: tmainform.ckfilterlolicon.caption
 msgid "Lolicon"
@@ -1171,7 +1202,7 @@ msgid "As the name suggests, anything martial arts related. Any of several arts 
 msgstr ""
 "Όπως υποδηλώνει το όνομα, οτιδήποτε σχετικό με πολεμικές τέχνες. \n"
 "Οποιεσδήποτε από τις διάφορες τέχνες μάχης ή αυτοάμυνας, όπως αϊκίντο, \n"
-"καράτε, τζούντο, τάε κβον ντο ή κέντο κ.ά.\n"
+"καράτε, τζούντο, τάε κβον ντο ή κέντο κ.ά."
 
 #: tmainform.ckfiltermature.caption
 msgid "Mature"
@@ -1182,7 +1213,7 @@ msgid "Contains subject matter which may be too extreme for people under the age
 msgstr ""
 "Περιέχει θέμα το οποίο μπορεί να είναι πολύ ακραίο για άτομα κάτω των 17 ετών. \n"
 "Οι τίτλοι σε αυτή την κατηγορία μπορεί να περιέχουν έντονη βία, έντονη αιματοχυσία, \n"
-"σεξουαλικό περιεχόμενο και σκληρή γλώσσα.\n"
+"σεξουαλικό περιεχόμενο και σκληρή γλώσσα."
 
 #: tmainform.ckfiltermecha.caption
 msgid "Mecha"
@@ -1192,7 +1223,7 @@ msgstr "Mecha"
 msgid "A work involving and usually concentrating on all types of large robotic machines."
 msgstr ""
 "Ένα έργο που περιλαμβάνει και συνήθως επικεντρώνεται σε όλους \n"
-"τους τύπους των μεγάλων ρομποτικών μηχανημάτων.\n"
+"τους τύπους των μεγάλων ρομποτικών μηχανημάτων."
 
 #: tmainform.ckfiltermusical.caption
 msgctxt "tmainform.ckfiltermusical.caption"
@@ -1212,7 +1243,7 @@ msgstr "Mystery"
 msgid "Usually an unexplained event occurs, and the main protagonist attempts to find out what caused it."
 msgstr ""
 "Συνήθως συμβαίνει κάποιο ανεξήγητο γεγονός και ο κεντρικός \n"
-"πρωταγωνιστής προσπαθεί να ανακαλύψει τι το προκάλεσε.\n"
+"πρωταγωνιστής προσπαθεί να ανακαλύψει τι το προκάλεσε."
 
 #: tmainform.ckfilterpsychological.caption
 msgid "Psychological"
@@ -1222,7 +1253,7 @@ msgstr "Psychological"
 msgid "Usually deals with the philosophy of a state of mind, in most cases detailing abnormal psychology."
 msgstr ""
 "Συνήθως ασχολείται με τη φιλοσοφία μιας κατάστασης του μυαλού. \n"
-"Στις περισσότερες περιπτώσεις σε μια ανώμαλη ψυχολογική κατάσταση.\n"
+"Στις περισσότερες περιπτώσεις σε μια ανώμαλη ψυχολογική κατάσταση."
 
 #: tmainform.ckfilterromance.caption
 msgid "Romance"
@@ -1232,7 +1263,7 @@ msgstr "Romance"
 msgid "Any love related story. We will define love as between man and woman in this case. Other than that, it is up to your own imagination of what love is."
 msgstr ""
 "Οποιαδήποτε ιστορία σχετική με αγάπη. Εμείς θεωρούμε την αγάπη μεταξύ άνδρα και γυναίκας. \n"
-"Εκτός από αυτήν, είναι θέμα της φαντασίας σας ποια αγάπη μπορεί να είναι.\n"
+"Εκτός από αυτήν, είναι θέμα της φαντασίας σας ποια αγάπη μπορεί να είναι."
 
 #: tmainform.ckfilterschoollife.caption
 msgid "School Life"
@@ -1250,7 +1281,7 @@ msgstr "Sci-Fi"
 msgid "Short for science fiction, these works involve twists on technology and other science related phenomena which are contrary or stretches of the modern day scientific world."
 msgstr ""
 "Τα έργα αυτά αφορούν ανατροπές στην τεχνολογία και σε άλλα φαινόμενα σχετικά με την επιστήμη \n"
-"που είναι αντίθετα ή παραποιιημένα τμήματα του σύγχρονου επιστημονικού κόσμου.\n"
+"που είναι αντίθετα ή παραποιιημένα τμήματα του σύγχρονου επιστημονικού κόσμου."
 
 #: tmainform.ckfilterseinen.caption
 msgid "Seinen"
@@ -1261,7 +1292,7 @@ msgid "From Google: Seinen means 'young Man'. Manga and anime that specifically 
 msgstr ""
 "Seinen σημαίνει «νέος άνθρωπος». Τα manga και anime που στοχεύουν ειδικά σε νεαρά ενήλικα αρσενικά,\n"
 " ηλικίας μεταξύ 18 και 25 ετών. Οι ιστορίες αυτές εμφανίζουν φοιτητές Πανεπιστημίου και άτομα από τον \n"
-"κόσμο της εργασίας. Σε γενικές γραμμές οι ιστορίες αυτές ασχολούνται με θέματα της ενήλικης ζωής.\n"
+"κόσμο της εργασίας. Σε γενικές γραμμές οι ιστορίες αυτές ασχολούνται με θέματα της ενήλικης ζωής."
 
 #: tmainform.ckfiltershotacon.caption
 msgid "Shotacon"
@@ -1279,7 +1310,7 @@ msgstr "Shoujo"
 msgid "A work intended and primarily written for females. Usually involves a lot of romance and strong character development."
 msgstr ""
 "Ένα έργο που προορίζεται και είναι κυρίως γραμμένο για γυναίκες. \n"
-"Συνήθως περιλαμβάνει ειδύλλια και ανάπτυξη ισχυρού χαρακτήρα.\n"
+"Συνήθως περιλαμβάνει ειδύλλια και ανάπτυξη ισχυρού χαρακτήρα."
 
 #: tmainform.ckfiltershoujoai.caption
 msgid "Shoujo Ai"
@@ -1290,7 +1321,7 @@ msgctxt "TMAINFORM.CKFILTERSHOUJOAI.HINT"
 msgid "Often synonymous with yuri, this can be thought of as somewhat less extreme. \"Girl''s Love\", so to speak."
 msgstr ""
 "Συχνά συνώνυμη με το Yuri. Αυτό μπορεί να θεωρηθεί ως κάπως λιγότερο ακραίο. \n"
-"Μπορείτε να το πείτε και «Έρωτας κοριτσιών».\n"
+"Μπορείτε να το πείτε και «Έρωτας κοριτσιών»."
 
 #: tmainform.ckfiltershounen.caption
 msgid "Shounen"
@@ -1301,7 +1332,7 @@ msgctxt "tmainform.ckfiltershounen.hint"
 msgid "A work intended and primarily written for males. These works usually involve fighting and/or violence."
 msgstr ""
 "Ένα έργο που προορίζεται και είναι γραμμένο κυρίως για άνδρες. \n"
-"Τα έργα αυτά αφορούν συνήθως σκηνές μάχης ή/και βία.\n"
+"Τα έργα αυτά αφορούν συνήθως σκηνές μάχης ή/και βία."
 
 #: tmainform.ckfiltershounenai.caption
 msgid "Shounen Ai"
@@ -1311,7 +1342,7 @@ msgstr "Shounen Ai"
 msgid "Often synonymous with yaoi, this can be thought of as somewhat less extreme. \"Boy''s Love\", so to speak"
 msgstr ""
 "Συχνά συνώνυμη με το Yaoi. Αυτό μπορεί να θεωρηθεί ως κάπως λιγότερο ακραίο. \n"
-"Μπορείτε να το πείτε και «Έρωτας αγοριών».\n"
+"Μπορείτε να το πείτε και «Έρωτας αγοριών»."
 
 #: tmainform.ckfiltersliceoflife.caption
 msgid "Slice of Life"
@@ -1323,7 +1354,7 @@ msgstr ""
 "Όπως υποδηλώνει το όνομα, το είδος αυτό αντιπροσωπεύει καθημερινές δοκιμασίες \n"
 "από έναν ή περισσότερους χαρακτήρες. Αυτές οι προκλήσεις / εκδηλώσεις θα μπορούσαν \n"
 "τεχνικά να συμβούν στην πραγματική ζωή και εμφανίζονται συχνά, αν όχι συνεχώς, σε \n"
-"έναν κόσμο που αντικατοπτρίζει τις δικές μας ζωές.\n"
+"έναν κόσμο που αντικατοπτρίζει τις δικές μας ζωές."
 
 #: tmainform.ckfiltersmut.caption
 msgid "Smut"
@@ -1341,7 +1372,7 @@ msgstr "Sports"
 msgid "As the name suggests, anything sports related. Baseball, basketball, hockey, soccer, golf, and racing just to name a few."
 msgstr ""
 "Όπως υποδηλώνει το όνομα, οτιδήποτε σχετικό με αθλήματα. \n"
-"Για παράδειγμα μπέιζμπολ, μπάσκετ, χόκεϊ, ποδόσφαιρο, γκολφ και μηχανοκίνητα.\n"
+"Για παράδειγμα μπέιζμπολ, μπάσκετ, χόκεϊ, ποδόσφαιρο, γκολφ και μηχανοκίνητα."
 
 #: tmainform.ckfiltersupernatural.caption
 msgid "Supernatural"
@@ -1351,7 +1382,7 @@ msgstr "Supernatural"
 msgid "Usually entails amazing and unexplained powers or events which defy the laws of physics."
 msgstr ""
 "Συνήθως συνεπάγεται εκπληκτικές και ανεξήγητες δυνάμεις ή γεγονότα \n"
-"τα οποία αψηφούν τους νόμους της φυσικής.\n"
+"τα οποία αψηφούν τους νόμους της φυσικής."
 
 #: tmainform.ckfiltertragedy.caption
 msgid "Tragedy"
@@ -1401,7 +1432,6 @@ msgid "Input custom genres, separated by comma"
 msgstr "Εισαγωγή προσαρμοσμένων ειδών, χωρισμένα με κόμμα"
 
 #: tmainform.eddownloadssearch.texthint
-#| msgid "Search favorites..."
 msgctxt "tmainform.eddownloadssearch.texthint"
 msgid "Search downloads..."
 msgstr "Αναζήτηση λήψεων..."
@@ -1450,13 +1480,11 @@ msgid "Default download path"
 msgstr "Προεπιλεγμένη διαδρομή λήψης"
 
 #: tmainform.edoptionexternalparams.texthint
-#| msgid "External program parameters"
 msgctxt "tmainform.edoptionexternalparams.texthint"
 msgid "External program parameters"
 msgstr "Ρυθμίσεις εξωτερικού προγράμματος"
 
 #: tmainform.edoptionexternalpath.texthint
-#| msgid "External program parameters"
 msgctxt "tmainform.edoptionexternalpath.texthint"
 msgid "External program path"
 msgstr "Διαδρομή εξωτερικού προγράμματος"
@@ -1493,7 +1521,6 @@ msgid "Input URL here"
 msgstr "Εισαγωγή της URL εδώ"
 
 #: tmainform.edwebsitessearch.texthint
-#| msgid "Search..."
 msgctxt "tmainform.edwebsitessearch.texthint"
 msgid "Search website..."
 msgstr "Αναζήτηση ιστότοπου..."
@@ -1564,7 +1591,7 @@ msgid ""
 "Custom Genres:\n"
 "- Separate multiple genres with ','.\n"
 "- Exclude a genre by placing '!' or '-' at the beginning of a genre.\n"
-"- Example: Adventure,!Ecchi,Comedy.\n"
+"- Example: Adventure,!Ecchi,Comedy."
 msgstr ""
 "Είδη:\n"
 " - Τσεκαρισμένο: Συμπερίληψη αυτού του είδους.\n"
@@ -1574,7 +1601,7 @@ msgstr ""
 "Προσαρμοσμένα είδη:\n"
 " - Διαχωρισμός πολλαπλών ειδών με ','.\n"
 " - Αποκλεισμός ενός είδους βάζοντας '!' ή '-' στην αρχή του είδους.\n"
-" - Παράδειγμα: Adventure,!Ecchi,Comedy.\n"
+" - Παράδειγμα: Adventure,!Ecchi,Comedy."
 
 #: tmainform.lbfilterstatus.caption
 msgctxt "TMAINFORM.LBFILTERSTATUS.CAPTION"
@@ -1603,12 +1630,12 @@ msgid "Mode: Show all (0)"
 msgstr "Λειτ.: Εμφάνιση όλων (0)"
 
 #: tmainform.lboptionautocheckfavintervalminutes.caption
+#, object-pascal-format
 msgctxt "tmainform.lboptionautocheckfavintervalminutes.caption"
 msgid "Auto check for new chapter every %d minutes"
 msgstr "Αυτόματος έλεγχος για νέα κεφάλαια κάθε %d λεπτά"
 
 #: tmainform.lboptionchaptercustomrename.caption
-#| msgid "Chapter folder name:"
 msgctxt "tmainform.lboptionchaptercustomrename.caption"
 msgid "Chapter name:"
 msgstr "Όνομα κεφαλαίου:"
@@ -1629,7 +1656,7 @@ msgid ""
 "%NUMBERING% : Numbering\n"
 "\n"
 "Note:\n"
-"Chapter folder name must have at least %CHAPTER% or %NUMBERING%.\n"
+"Chapter folder name must have at least %CHAPTER% or %NUMBERING%."
 msgstr ""
 "%WEBSITE% : Όνομα ιστότοπου\n"
 "%MANGA% : Τίτλος manga\n"
@@ -1639,7 +1666,7 @@ msgstr ""
 "%NUMBERING% : Αρίθμηση\n"
 "\n"
 "Σημείωση:\n"
-"Το όνομα φακέλου κεφαλαίου πρέπει να έχει τουλάχιστον %CHAPTER% ή %NUMBERING%.\n"
+"Το όνομα φακέλου κεφαλαίου πρέπει να έχει τουλάχιστον %CHAPTER% ή %NUMBERING%."
 
 #: tmainform.lboptionconnectiontimeout.caption
 msgid "Connection timeout (seconds)"
@@ -1675,7 +1702,7 @@ msgid ""
 "%FILENAME% : Filename\n"
 "\n"
 "Note:\n"
-"Filename must have at least %FILENAME%\n"
+"Filename must have at least %FILENAME%"
 msgstr ""
 "%WEBSITE% : Όνομα ιστότοπου\n"
 "%MANGA% : Τίτλος Manga\n"
@@ -1683,7 +1710,7 @@ msgstr ""
 "%FILENAME% : Όνομα αρχείου\n"
 "\n"
 "Σημείωση:\n"
-"Το όνομα αρχείου πρέπει να έχει τουλάχιστο %FILENAME%\n"
+"Το όνομα αρχείου πρέπει να έχει τουλάχιστο %FILENAME%"
 
 #: tmainform.lboptionhost.caption
 msgid "Host"
@@ -1715,7 +1742,7 @@ msgid ""
 "%ARTIST% : Artist\n"
 "\n"
 "Note:\n"
-"Manga folder name must have at least %MANGA%.\n"
+"Manga folder name must have at least %MANGA%."
 msgstr ""
 "%WEBSITE% : Όνομα ιστότοπου\n"
 "%MANGA% : Τίτλος manga\n"
@@ -1723,14 +1750,13 @@ msgstr ""
 "%ARTIST% : Καλλιτέχνης\n"
 "\n"
 "Σημείωση:\n"
-"Το όνομα φακέλου Manga πρέπει να έχει τουλάχιστον %MANGA%.\n"
+"Το όνομα φακέλου Manga πρέπει να έχει τουλάχιστον %MANGA%."
 
 #: tmainform.lboptionmaxparallel.caption
 msgid "Number of downloaded tasks at the same time"
 msgstr "Αριθμός ταυτόχρονων εργασιών λήψης"
 
 #: tmainform.lboptionmaxretry.caption
-#| msgid "Number of retry times if tasks have download problems (0 = always retry)"
 msgid "Number of retry times if tasks have download problems (-1 = always retry)"
 msgstr "Αριθμός επαναλήψεων αν οι εργασίες έχουν προβλήματα λήψης (-1 = συνεχής επανάληψη)"
 
@@ -1857,7 +1883,6 @@ msgid "Hide downloaded chapters"
 msgstr "Απόκρυψη ληφθέντων κεφαλαίων"
 
 #: tmainform.michapterlisthighlight.caption
-#| msgid "Highlight download chapters"
 msgid "Highlight downloaded chapters"
 msgstr "Επισήμανση ληφθέντων κεφαλαίων"
 
@@ -1942,6 +1967,31 @@ msgctxt "tmainform.mifavoriteschecknewchapter.caption"
 msgid "Check for new chapter"
 msgstr "Έλεγχος για νέα κεφάλαια"
 
+#: tmainform.mifavoritesdefaultaction.caption
+msgctxt "tmainform.mifavoritesdefaultaction.caption"
+msgid "Default Action"
+msgstr "Default Action"
+
+#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
+msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
+msgid "Check for new Chapters"
+msgstr "Check for new Chapters"
+
+#: tmainform.mifavoritesdefaultactionopenfolder.caption
+msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
+msgid "Open Folder"
+msgstr "Open Folder"
+
+#: tmainform.mifavoritesdefaultactionrename.caption
+msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
+msgid "Rename"
+msgstr "Rename"
+
+#: tmainform.mifavoritesdefaultactionshowinfo.caption
+msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
+msgid "View Manga Info"
+msgstr "View Manga Info"
+
 #: tmainform.mifavoritesdelete.caption
 msgctxt "TMAINFORM.MIFAVORITESDELETE.CAPTION"
 msgid "Delete"
@@ -1973,8 +2023,10 @@ msgid "Open ..."
 msgstr "Άνοιγμα..."
 
 #: tmainform.mifavoritesrename.caption
+#, fuzzy
+msgctxt "tmainform.mifavoritesrename.caption"
 msgid "Rename"
-msgstr ""
+msgstr "Rename"
 
 #: tmainform.mifavoritesstopchecknewchapter.caption
 msgid "Stop check for new chapter"
@@ -2089,6 +2141,21 @@ msgstr "Ενημέρωση λίστας manga"
 #: tmainform.rball.caption
 msgid "Have all genre checked"
 msgstr "Όλα τα είδη που έχουν σημανθεί"
+
+#: tmainform.rbfavoritesshowall.caption
+msgctxt "tmainform.rbfavoritesshowall.caption"
+msgid "All"
+msgstr ""
+
+#: tmainform.rbfavoritesshowdisabled.caption
+msgctxt "tmainform.rbfavoritesshowdisabled.caption"
+msgid "Disabled"
+msgstr "Απενεργ/μένο"
+
+#: tmainform.rbfavoritesshowenabled.caption
+msgctxt "tmainform.rbfavoritesshowenabled.caption"
+msgid "Enabled"
+msgstr ""
 
 #: tmainform.rbone.caption
 msgid "Have one of genres checked"
@@ -2340,6 +2407,14 @@ msgstr "Εντάξει"
 msgid "Select directory"
 msgstr ""
 
+#: tselectdirectoryform.lbdescription.caption
+msgid ""
+"If you change multiple entries at once, the new paths will be constructed like this:\n"
+"\"{New_Path}\\{Manga_Title}\"\n"
+"\n"
+"Old folder structures will be ignored. However, if the only part you change is the drive letter (e.g. 'D:'), only the letter will be replaced. This only works for absolute paths, relative paths will be ignored."
+msgstr ""
+
 #: tshutdowncounterform.btabort.caption
 msgid "&Abort"
 msgstr "&Ματαίωση"
@@ -2407,106 +2482,10 @@ msgstr "&Ενημέρωση"
 #: tupdatedialogform.lbmessage.caption
 msgid ""
 "New version found! Do you want to update now?\n"
-"FMD will be closed to finish the update.\n"
+"FMD will be closed to finish the update."
 msgstr ""
 "Βρέθηκε νέα έκδοση! Θέλετε να γίνει ενημέρωση τώρα;\n"
-"Το FMD θα κλείσει για να ολοκληρωθεί η ενημέρωση.\n"
-
-#: twebsiteoptionadvancedform.menuitem1.caption
-msgctxt "twebsiteoptionadvancedform.menuitem1.caption"
-msgid "Add"
-msgstr "Προσθήκη"
-
-#: twebsiteoptionadvancedform.menuitem2.caption
-msgctxt "twebsiteoptionadvancedform.menuitem2.caption"
-msgid "Edit"
-msgstr "Επεξεργασία"
-
-#: twebsiteoptionadvancedform.menuitem4.caption
-msgctxt "twebsiteoptionadvancedform.menuitem4.caption"
-msgid "Delete"
-msgstr "Διαγραφή"
-
-#: twebsiteoptionadvancedform.tscookies.caption
-msgctxt "twebsiteoptionadvancedform.tscookies.caption"
-msgid "Cookies"
-msgstr "Cookies"
-
-#: twebsiteoptionadvancedform.tsdirectorypagenumber.caption
-msgid "Directory page number"
-msgstr "Αριθμός σελίδας καταλόγου"
-
-#: twebsiteoptionadvancedform.tsdownloads.caption
-msgctxt "twebsiteoptionadvancedform.tsdownloads.caption"
-msgid "Downloads"
-msgstr "Λήψεις"
-
-#: twebsiteoptionadvancedform.tsmaxthreadspertask.caption
-msgid "Max threads per task"
-msgstr "Μέγιστος αριθμός νημάτων ανά έργο"
-
-#: twebsiteoptionadvancedform.tsnumberofthreads.caption
-msgid "Number of threads"
-msgstr "Αριθμός νημάτων"
-
-#: twebsiteoptionadvancedform.tsupdatelist.caption
-msgid "Update List"
-msgstr "Ενημέρωση λίστας"
-
-#: twebsiteoptionadvancedform.tsuseragent.caption
-msgctxt "twebsiteoptionadvancedform.tsuseragent.caption"
-msgid "User Agent"
-msgstr "Παράγοντας χρήστη"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtcookies.header.columns[0].text"
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: twebsiteoptionadvancedform.vtcookies.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtcookies.header.columns[1].text"
-msgid "Cookies"
-msgstr "Cookies"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[0].text"
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtdownloadmaxthreadspertask.header.columns[1].text"
-msgid "Value"
-msgstr "Τιμή"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[0].text"
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistdirectorypagenumber.header.columns[1].text"
-msgid "Value"
-msgstr "Τιμή"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[0].text"
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtupdatelistnumberofthreads.header.columns[1].text"
-msgid "Value"
-msgstr "Τιμή"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[0].text
-msgctxt "twebsiteoptionadvancedform.vtuseragent.header.columns[0].text"
-msgid "Website"
-msgstr "Ιστότοπος"
-
-#: twebsiteoptionadvancedform.vtuseragent.header.columns[1].text
-msgctxt "twebsiteoptionadvancedform.vtuseragent.header.columns[1].text"
-msgid "User Agent"
-msgstr "Παράγοντας χρήστη"
+"Το FMD θα κλείσει για να ολοκληρωθεί η ενημέρωση."
 
 #: twebsiteselectionform.caption
 msgid "Select a website"
@@ -2526,241 +2505,170 @@ msgstr ""
 
 #: udownloadsmanager.rs_compressing
 msgid "Compressing..."
-msgstr "Συμπίεση..."
+msgstr ""
 
 #: udownloadsmanager.rs_disabled
+#, fuzzy
+msgctxt "udownloadsmanager.rs_disabled"
 msgid "Disabled"
 msgstr "Απενεργ/μένο"
 
 #: udownloadsmanager.rs_downloading
 msgid "Downloading"
-msgstr "Λήψη"
+msgstr ""
 
 #: udownloadsmanager.rs_failed
+#, fuzzy
 msgctxt "udownloadsmanager.rs_failed"
 msgid "Failed"
 msgstr "Απέτυχε"
 
 #: udownloadsmanager.rs_failedtocreatedir
 msgid "Failed to create directory!"
-msgstr "Δεν ήταν δυνατή η δημιουργία καταλόγου!"
+msgstr ""
 
 #: udownloadsmanager.rs_failedtryresumetask
 msgid "Failed, try resuming this task!"
-msgstr "Απέτυχε. Δοκιμάστε να επαναλάβετε αυτή την εργασία!"
+msgstr ""
 
 #: udownloadsmanager.rs_finish
 msgid "Completed"
-msgstr "Ολοκληρωμένο"
+msgstr ""
 
 #: udownloadsmanager.rs_preparing
 msgctxt "udownloadsmanager.rs_preparing"
 msgid "Preparing"
-msgstr "Προετοιμασία"
+msgstr ""
 
 #: udownloadsmanager.rs_stopped
 msgid "Stopped"
-msgstr "Σταματημένο"
+msgstr ""
 
 #: udownloadsmanager.rs_waiting
 msgid "Waiting..."
-msgstr "Αναμονή..."
+msgstr ""
 
 #: ufavoritesmanager.rs_btnaddtoqueue
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btnaddtoqueue"
 msgid "&Add to queue"
 msgstr "&Προσθήκη στην ουρά"
 
 #: ufavoritesmanager.rs_btncancel
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncancel"
 msgid "&Cancel"
 msgstr "Ά&κυρο"
 
 #: ufavoritesmanager.rs_btncheckfavorites
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btncheckfavorites"
 msgid "Check for new chapter"
 msgstr "Έλεγχος για νέα κεφάλαια"
 
 #: ufavoritesmanager.rs_btndownload
+#, fuzzy
 msgctxt "ufavoritesmanager.rs_btndownload"
 msgid "&Download"
 msgstr "&Λήψη"
 
 #: ufavoritesmanager.rs_btnremove
 msgid "&Remove"
-msgstr "&Κατάργηση"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgcompletedmangacaption
+#, object-pascal-format
 msgid "Found %d completed manga"
-msgstr "Βρέθηκαν %d ολοκληρωμένα manga"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgfavoritescheckisrunning
 msgid "Favorites check is running!"
-msgstr "Ό έλεγχος αγαπημένων εκτελείται ήδη!"
+msgstr ""
 
 #: ufavoritesmanager.rs_dlgnewchaptercaption
-msgid "Found %d new chapter(s)"
+#, object-pascal-format
+msgid "%d manga(s) have new chapter(s)"
 msgstr ""
 
 #: ufavoritesmanager.rs_favoritehasnewchapter
+#, object-pascal-format
 msgid "%s <%s> has %d new chapter(s)."
-msgstr "Το %s <%s> έχει %d νέο(α) κεφάλαιο(α)."
+msgstr ""
 
 #: ufavoritesmanager.rs_lblmangawillberemoved
 msgid "Completed manga will be removed:"
-msgstr "Το ολοκληρωμένο manga θα αφαιρεθεί:"
+msgstr ""
 
 #: ufavoritesmanager.rs_lblnewchapterfound
-msgid "%d new chapter(s) from %d manga(s):"
+#, object-pascal-format
+msgid "Found %d new chapter from %d manga(s):"
 msgstr ""
 
 #: usilentthread.rs_silentthreadloadstatus
+#, object-pascal-format
 msgid "Loading: %d/%d"
-msgstr "Φόρτωση: %d/%d"
-
-#: usubthread.rs_btncheckupdates
-msgctxt "usubthread.rs_btncheckupdates"
-msgid "Check for new version"
-msgstr "Έλεγχος για νέα έκδοση"
-
-#: usubthread.rs_currentversion
-msgid "Installed Version"
-msgstr "Εγκατεστημένη έκδοση"
-
-#: usubthread.rs_latestversion
-msgid "Latest Version   "
-msgstr "Τελευταία έκδοση"
-
-#: usubthread.rs_newversionfound
-msgid "New Version found!"
-msgstr "Βρέθηκε νέα έκδοση!"
+msgstr ""
 
 #: uupdatethread.rs_dlghasnewmanga
+#, object-pascal-format
 msgid "%s has %d new manga(s)"
-msgstr "Το %s έχει %d νέα manga"
+msgstr ""
 
 #: uupdatethread.rs_gettingdirectory
 msgid "Getting directory"
-msgstr "Λήψη καταλόγου"
+msgstr ""
 
 #: uupdatethread.rs_gettinginfo
 msgid "Getting info"
-msgstr "Λήψη πληροφοριών"
+msgstr ""
 
 #: uupdatethread.rs_gettinglistfor
 msgid "Getting list for"
-msgstr "Λήψη λίστας για"
+msgstr ""
 
 #: uupdatethread.rs_indexingnewtitle
 msgid "Indexing new title(s)"
-msgstr "Ευρετηρίαση νέων τίτλων"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitle
 msgid "Looking for new title(s)"
-msgstr "Αναζήτηση για νέους τίτλους"
+msgstr ""
 
 #: uupdatethread.rs_lookingfornewtitlefromanotherdirectory
 msgid "Looking for new title(s) from another directory"
-msgstr "Αναζήτηση για νέους τίτλους από άλλο κατάλογο"
+msgstr ""
 
 #: uupdatethread.rs_preparing
 msgctxt "uupdatethread.rs_preparing"
 msgid "Preparing"
-msgstr "Προετοιμασία"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromcurrentdata
 msgid "Removing duplicate from current data"
-msgstr "Κατάργηση διπλότυπων από τα τρέχοντα δεδομένα"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromlocaldata
 msgid "Removing duplicate from local data"
-msgstr "Κατάργηση διπλότυπων από τα τοπικά δεδομένα"
+msgstr ""
 
 #: uupdatethread.rs_removingduplicatefromnewtitle
 msgid "Removing duplicate from new title(s)"
-msgstr "Κατάργηση διπλότυπων από τους νέους τίτλους"
+msgstr ""
 
 #: uupdatethread.rs_savingdata
 msgid "Saving data"
-msgstr "Αποθήκευση δεδομένων"
+msgstr ""
 
 #: uupdatethread.rs_synchronizingdata
 msgid "Synchronizing data"
-msgstr "Συγχρονισμός δεδομένων"
+msgstr ""
 
 #: uupdatethread.rs_updatinglist
 msgid "Updating list"
-msgstr "Ενημέρωση λίστας"
-
-#: tmainform.ckoptionautomaticallydisablecloudflarebypass.caption
-msgid "Automatically disable Cloudflare Bypass for websites on error or if not needed"
 msgstr ""
 
-#: tmainform.ckoptionenablecloudflarebypass.caption
-msgid "Enable Cloudflare Bypass"
+#: webp.serrloadfailed
+#, object-pascal-format
+msgid "Can not load WebP codec library \"%s\". Check your installation."
 msgstr ""
 
-#: tmainform.gboptionscloudflarebypass.caption
-msgid "Cloudflare Bypass (global settings)"
-msgstr ""
-
-#: tmainform.rbfavoritesshowall.caption
-msgctxt "tmainform.rbfavoritesshowall.caption"
-msgid "All"
-msgstr ""
-
-#: tmainform.rbfavoritesshowdisabled.caption
-msgid "Disabled"
-msgstr ""
-
-#: tmainform.rbfavoritesshowenabled.caption
-msgid "Enabled"
-msgstr ""
-
-#: frmmain.rs_favoritesshowall
-msgctxt "frmmain.rs_favoritesshowall"
-msgid "All"
-msgstr ""
-
-#: frmmain.rs_favoritesshowdisabled
-msgctxt "frmmain.rs_favoritesshowdisabled"
-msgid "Disabled"
-msgstr ""
-
-#: frmmain.rs_favoritesshowenabled
-msgctxt "frmmain.rs_favoritesshowenabled"
-msgid "Enabled"
-msgstr ""
-
-#: tmainform.mifavoritesdefaultaction.caption
-msgctxt "tmainform.mifavoritesdefaultaction.caption"
-msgid "Default Action"
-msgstr "Default Action"
-
-#: tmainform.mifavoritesdefaultactionchecknewchapters.caption
-msgctxt "tmainform.mifavoritesdefaultactionchecknewchapters.caption"
-msgid "Check for new Chapters"
-msgstr "Check for new Chapters"
-
-#: tmainform.mifavoritesdefaultactionopenfolder.caption
-msgctxt "tmainform.mifavoritesdefaultactionopenfolder.caption"
-msgid "Open Folder"
-msgstr "Open Folder"
-
-#: tmainform.mifavoritesdefaultactionrename.caption
-msgctxt "tmainform.mifavoritesdefaultactionrename.caption"
-msgid "Rename"
-msgstr "Rename"
-
-#: tmainform.mifavoritesdefaultactionshowinfo.caption
-msgctxt "tmainform.mifavoritesdefaultactionshowinfo.caption"
-msgid "View Manga Info"
-msgstr "View Manga Info"
-
-#: tselectdirectoryform.lbdescription.caption
-msgid ""
-"If you change multiple entries at once, the new paths will be constructed like this:\n"
-"\"{New_Path}\\{Manga_Title}\"\n"
-"\n"
-"Old folder structures will be ignored. However, if the only part you change is the drive letter (e.g. 'D:'), only the letter will be replaced. This only works for absolute paths, relative paths will be ignored.\n"
-msgstr ""

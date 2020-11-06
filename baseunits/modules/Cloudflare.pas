@@ -15,20 +15,16 @@ type
   TCFProps = class
   public
     websitemodule: TObject;
-    cf_clearance: string;
-    expires: TDateTime;
     CS: TRTLCriticalSection;
     constructor Create(awebsitemodule: TObject);
     destructor Destroy; override;
-    procedure Reset;
-    procedure AddCookiesTo(const ACookies: TStringList);
   end;
 
 function CFRequest(const AHTTP: THTTPSendThread; const Method, AURL: String; const Response: TObject; const CFProps: TCFProps): Boolean;
 
 implementation
 
-uses WebsiteModules;
+uses WebsiteModules, MultiLog;
 
 const
   MIN_WAIT_TIME = 5000;
@@ -49,7 +45,10 @@ end;
 function JSGetAnsweredURL(const Source, URL: String; var OMethod, OURL, opostdata: String;
   var OSleepTime: Integer): Boolean;
 var
-  s, meth, surl, r, jschl_vc, pass, jschl_answer: String;
+  meth, surl, r, jschl_vc, pass, jschl_answer,
+  body, javascript, challenge, innerHTML, i, k, domain: String;
+  re: TRegExpr;
+  ms: Integer;
 begin
   Result := False;
   if (Source = '') or (URL = '') then Exit;
@@ -73,32 +72,56 @@ begin
 
   if (meth = '') or (surl = '') or (r='') or (jschl_vc = '') or (pass = '') then Exit;
 
-  s := Source;
-  with TRegExpr.Create do
-    try
-      ModifierG := False;
-      ModifierI := True;
+  re:=TRegExpr.Create;
+  try
+    body:=source;
+    // main script
+    re.Expression := '\<script type\=\"text\/javascript\"\>\n(.*?)\<\/script\>';
+    if re.Exec(body) then javascript:=re.Match[1];
 
-      Expression := 'setTimeout\(function\(\)\{\s*var.*\w,\s+(\S.+a\.value =[^;]+;)';
-      Exec(s);
-      if SubExprMatchCount > 0 then
-      begin
-        s := Match[1];
-        Expression := '\s{3,}[a-z](\s*=\s*document\.|\.).+;\r?\n';
-        s := Replace(s, '', False);
-        Expression := 't\s=\s*t\.firstChild.href;';
-        s := Replace(s, ' t = "' + URL + '";', False);
-        Expression := 'a\.value\s*=';
-        s := Replace(s, 'a =', False);
-        Expression := '^.*\.submit\(.*\},\s*(\d{4,})\).*$';
-        OSleepTime := StrToIntDef(Replace(Source, '$1', True), MIN_WAIT_TIME);
-        jschl_answer := ExecJS(s);
-      end;
-    finally
-      Free;
+    // challenge
+    re.Expression := 'setTimeout\(function\(\)\{\s*(var '+
+                     's,t,o,p,b,r,e,a,k,i,n,g,f.+?\r?\n.+?a\.value\s*=.+?)\r?\n'+
+                     '([^\{<>]*\},\s*(\d{4,}))?';
+    ms:=0;
+    if re.Exec(javascript) and (re.SubExprMatchCount>0) then begin
+      challenge:=re.Match[1];
+      if re.SubExprMatchCount=3 then ms:=StrToIntDef(re.Match[3], MIN_WAIT_TIME);
     end;
+    if ms=0 then ms:=MIN_WAIT_TIME;
+
+    //
+    innerHTML:='';
+    for i in javascript.Split([';']) do
+      if SeparateLeft(i,'=').trim = 'k' then begin
+        k:=SeparateRight(i,'=').trim(' ''');
+         re.Expression := '\<div.*?id\=\"'+k+'\".*?\>(.*?)\<\/div\>';
+         if re.Exec(body) then
+           innerHTML := re.Match[1];
+      end;
+
+    SplitURL(URL,@domain,nil,false,false);
+    challenge := Format(
+    '        var document = {'+LineEnding+
+    '            createElement: function () {'+LineEnding+
+    '              return { firstChild: { href: "http://%s/" } }'+LineEnding+
+    '            },'+LineEnding+
+    '            getElementById: function () {'+LineEnding+
+    '              return {"innerHTML": "%s"};'+LineEnding+
+    '            }'+LineEnding+
+    '          };'+LineEnding+
+    LineEnding+
+    '        %s; a.value',
+                [domain,
+                innerHTML,
+                challenge]);
+    jschl_answer := ExecJS(challenge);
+  finally
+    re.free;
+  end;
 
   if jschl_answer = '' then Exit;
+  OSleepTime:=ms;
   OMethod := meth;
   OURL := surl;
   opostdata:='r='+encodeurlelement(r)+'&jschl_vc='+encodeurlelement(jschl_vc)+'&pass='+encodeurlelement(pass)+'&jschl_answer='+encodeurlelement(jschl_answer);
@@ -142,13 +165,10 @@ begin
           Sleep(250);
         end;
         AHTTP.FollowRedirection := False;
-        if AHTTP.HTTPRequest(m, FillHost(h, u)) then
-        begin
-          cfprops.cf_clearance := AHTTP.Cookies.Values['cf_clearance'];
-          Result := cfprops.cf_clearance <> '';
-          if Result then
-            cfprops.expires := AHTTP.CookiesExpires;
-        end;
+        AHTTP.HTTPRequest(m, FillHost(h, u));
+        Result := AHTTP.Cookies.Values['cf_clearance']<>'';
+        if AHTTP.ResultCode=403 then
+           Logger.SendError('cloudflare bypass failed, probably asking for captcha! '+AURL);
         AHTTP.FollowRedirection := True;
       end;
     // update retry count in case user change it in the middle of process
@@ -176,31 +196,16 @@ function CFRequest(const AHTTP: THTTPSendThread; const Method, AURL: String; con
 begin
   Result := False;
   if AHTTP = nil then Exit;
-  if (CFProps.expires <> 0.0) and (Now > CFProps.expires) then
-    CFProps.Reset;
-  CFProps.AddCookiesTo(AHTTP.Cookies);
   AHTTP.AllowServerErrorResponse := True;
   Result := AHTTP.HTTPRequest(Method, AURL);
   if AntiBotActive(AHTTP) then begin
     if TryEnterCriticalsection(CFProps.CS) > 0 then
       try
-        CFProps.Reset;
-        //AHTTP.Cookies.Clear;
         Result := CFJS(AHTTP, AURL, CFProps);
-        // reduce the expires by 5 minutes, usually it is 24 hours or 16 hours
-        // in case of the different between local and server time
-        if Result then
-          CFProps.expires := IncMinute(CFProps.expires, -5);
       finally
         LeaveCriticalsection(CFProps.CS);
       end
     else begin
-      try
-        EnterCriticalsection(CFProps.CS);
-        CFProps.AddCookiesTo(AHTTP.Cookies);
-      finally
-        LeaveCriticalsection(CFProps.CS);
-      end;
       if not AHTTP.ThreadTerminated then
         Result := AHTTP.HTTPRequest(Method, AURL);
     end;
@@ -219,30 +224,12 @@ constructor TCFProps.Create(awebsitemodule: TObject);
 begin
   websitemodule:=awebsitemodule;
   InitCriticalSection(CS);
-  Reset;
 end;
 
 destructor TCFProps.Destroy;
 begin
   DoneCriticalsection(CS);
   inherited Destroy;
-end;
-
-procedure TCFProps.Reset;
-begin
-  if TryEnterCriticalsection(CS) <> 0 then
-    try
-      cf_clearance := '';
-      expires := 0.0;
-    finally
-      LeaveCriticalsection(CS);
-    end;
-end;
-
-procedure TCFProps.AddCookiesTo(const ACookies: TStringList);
-begin
-  if cf_clearance <> '' then
-    ACookies.Values['cf_clearance'] := cf_clearance;
 end;
 
 end.

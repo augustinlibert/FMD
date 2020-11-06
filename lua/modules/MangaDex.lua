@@ -183,7 +183,8 @@ function getgenre(genre)
     ["81"] = "Virtual Reality",
     ["82"] = "Zombies",
     ["83"] = "Incest",
-    ["84"] = "Mafia"
+    ["84"] = "Mafia",
+    ["85"] = "Villainess"		
   }
   if genres[genre] ~= nil then
     return genres[genre]
@@ -267,13 +268,14 @@ function getpagenumber()
   delay()
   if http.get(MaybeFillHost(module.rooturl,'/api/chapter/'..chapterid)) then
     local x=TXQuery.Create(http.Document)
-    x.ParseHTML(StreamToString(http.Document):gsub('<', ''):gsub('>', ''))
+    x.ParseHTML(StreamToString(http.Document):gsub('<', ''):gsub('>', ''):gsub('&quot;', ''))
     local hash = x.xpathstring('json(*).hash')
     local srv = x.xpathstring('json(*).server')
+	if srv:sub(-1) ~= '/' then srv = srv .. '/' end
     local v = x.xpath('json(*).page_array()')
     for i = 1, v.count do
       local v1 = v.get(i)
-      local s = MaybeFillHost(module.rooturl, srv .. '/' .. hash .. '/' .. v1.toString)
+      local s = MaybeFillHost(module.rooturl, srv .. hash .. '/' .. v1.toString)
       task.pagelinks.add(s)
     end
     return true
@@ -331,6 +333,62 @@ function delay()
   module.storage['lastDelay'] = tostring(GetCurrentTime())
 end
 
+function getFormData(formData)
+	local t=tostring(os.time())
+	local b=string.rep('-',39-t:len())..t
+	local crlf=string.char(13)..string.char(10)
+	local r=''
+	for k,v in pairs(formData) do
+		r=r..'--'..b..crlf..
+			'Content-Disposition: form-data; name="'..k..'"'..crlf..
+			crlf..
+			v..crlf
+	end
+	r=r..'--'..b..'--'..crlf
+	return 'multipart/form-data; boundary='..b,r
+end
+
+function Login()
+	module.ClearCookies()
+	module.account.status=asChecking
+	local login_url=module.rooturl..'/login'
+	if not http.GET(login_url) then
+		module.account.status=asUnknown
+		return false
+	end
+	local login_post_url=TXQuery.Create(http.document).xpathstring('//form[@id="login_form"]/@action') or ''
+	if login_post_url=='' then
+		module.account.status=asUnknown
+		return false
+	end
+	login_post_url=module.rooturl..login_post_url:gsub('&nojs=1','')
+	http.reset()
+	
+	http.headers.values['Origin']= ' '..module.rooturl
+	http.headers.values['Referer']= ' '..login_url
+	http.headers.values['Accept']=' */*'
+	http.headers.values['X-Requested-With']=' XMLHttpRequest'
+	
+	local post_data
+	http.mimetype,post_data=getFormData({
+		login_username=module.account.username,
+		login_password=module.account.password,
+		two_factor='',
+		remember_me='1'})
+
+	http.POST(login_post_url,post_data)
+	if http.resultcode==200 then
+		if http.cookies.values['mangadex_rememberme_token']~='' then
+			module.account.status=asValid
+		else
+			module.account.status=asInvalid
+		end
+	else
+		module.account.status=asUnknown
+	end
+	return true
+end
+
 function Init()
   m=NewModule()
   m.category='English'
@@ -347,6 +405,9 @@ function Init()
   m.addoptionspinedit('luainterval', 'Min. interval between requests (ms)', 1000)
   m.addoptionspinedit('luadelay', 'Delay (ms)', 1000)
   m.addoptioncheckbox('luashowscangroup', 'Show scanlation group', false)
+  
+  m.AccountSupport=true
+  m.OnLogin='Login'
   
   local items = 'All'
   local t = getlanglist()

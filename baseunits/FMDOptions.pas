@@ -25,7 +25,6 @@ type
   TFMDDo = (DO_NOTHING, DO_EXIT, DO_POWEROFF, DO_HIBERNATE, DO_UPDATE);
 
 const
-  FMD_REVISION = '$WCREV$';
   FMD_INSTANCE = '_FreeMangaDownloaderInstance_';
   FMD_TARGETOS  = {$i %FPCTARGETOS%};
   FMD_TARGETCPU = {$i %FPCTARGETCPU%};
@@ -61,6 +60,11 @@ const
   MAX_CONNECTIONPERHOSTLIMIT = 32;
   {$ENDIF}
 
+  BACKUP_FILE_PREFIX = 'fmdbackup_';
+  BACKUP_FILE_EXT = '7z';
+
+{$i revision.inc}
+
 var
   FMD_VERSION_NUMBER: TProgramVersion;
   FMD_VERSION_STRING,
@@ -94,10 +98,10 @@ var
   EXTRAS_FOLDER,
   MANGAFOXTEMPLATE_FOLDER,
   LUA_WEBSITEMODULE_FOLDER,
-  LUA_WEBSITEMODULE_FILE: String;
-
-  // dll
-  OpenSSLVersion:String='';
+  LUA_REPO_FOLDER,
+  LUA_REPO_FILE,
+  LUA_REPO_WORK_FILE,
+  BACKUP_FOLDER: String;
 
   // ini files
   revisionfile,
@@ -193,6 +197,7 @@ var
   CL_BSOdd: TColor = clBtnFace;
   CL_BSEven: TColor = clWindow;
   CL_BSSortedColumn: TColor = $F8E6D6;
+  CL_BSEnabledWebsiteSettings: TColor = clYellow;
 
   //mangalist color
   CL_MNNewManga: TColor = $FDC594;
@@ -217,7 +222,7 @@ procedure DoRestartFMD;
 
 implementation
 
-uses FMDVars, UTF8Process;
+uses FMDVars, process, UTF8Process;
 
 { TIniFileRun }
 
@@ -247,10 +252,12 @@ end;
 procedure TIniFileRun.UpdateFile;
 begin
   if CacheUpdates and (Dirty = False) then Exit;
-  inherited UpdateFile;
+  EnterCriticalSection(FCSLock);
   try
+    inherited UpdateFile;
     CopyFile(FileName, FRealFileName, [cffOverwriteFile, cffPreserveTime, cffCreateDestDirectory]);
-  except
+  finally
+    LeaveCriticalSection(FCSLock);
   end;
 end;
 
@@ -305,10 +312,12 @@ begin
   README_FILE := FMD_DIRECTORY + 'readme.rtf';
   EXTRAS_FOLDER := FMD_DIRECTORY + 'extras' + PathDelim;
   MANGAFOXTEMPLATE_FOLDER := EXTRAS_FOLDER + 'mangafoxtemplate' + PathDelim;
-  DEFAULT_LOG_FILE := FMD_DIRECTORY + FMD_EXENAME + '.log';
+  DEFAULT_LOG_FILE := FMD_EXENAME + '.log';
   CURRENT_UPDATER_EXE := FMD_DIRECTORY + UPDATER_EXE;
   OLD_CURRENT_UPDATER_EXE := FMD_DIRECTORY + OLD_UPDATER_EXE;
   CURRENT_ZIP_EXE := FMD_DIRECTORY + ZIP_EXE;
+
+  BACKUP_FOLDER := FMD_DIRECTORY + 'backup' + PathDelim;
 
   ReadBaseFile;
 end;
@@ -323,7 +332,8 @@ begin
   CONFIG_FILE := CONFIG_FOLDER + 'config.ini';
   ACCOUNTS_FILE := CONFIG_FOLDER + 'accounts.db';
   MODULES_FILE := CONFIG_FOLDER + 'modules.json';
-  LUA_WEBSITEMODULE_FILE := CONFIG_FOLDER + 'luamodules.json';
+  LUA_REPO_FILE := CONFIG_FOLDER + 'lua.json';
+  LUA_REPO_WORK_FILE := CONFIG_FOLDER + 'lua_repo.json';
 
   DATA_FOLDER := APPDATA_DIRECTORY + 'data' + PathDelim;
 
@@ -336,6 +346,7 @@ begin
   FAVORITESDB_FILE := WORK_FOLDER + 'favorites.db';
 
   LUA_WEBSITEMODULE_FOLDER := FMD_DIRECTORY + 'lua' + PathDelim + 'modules' + PathDelim;
+  LUA_REPO_FOLDER := FMD_DIRECTORY + 'lua' + PathDelim;
 
   SetIniFiles;
 end;
@@ -349,15 +360,18 @@ end;
 procedure DoRestartFMD;
 var
   p: TProcessUTF8;
-  i: Integer;
 begin
   p := TProcessUTF8.Create(nil);
   try
     p.InheritHandles := False;
-    p.CurrentDirectory := ExtractFilePath(Application.ExeName);
+    p.CurrentDirectory := FMD_DIRECTORY;
     p.Executable := Application.ExeName;
-    for i := 1 to ParamCount do
-      p.Parameters.Add(ParamStrUTF8(i));
+    p.Options := [];
+    p.InheritHandles := False;
+    p.Parameters.AddStrings(AppParams);
+    {$ifdef windows}
+    p.Parameters.Add('--dorestart-handle=' + IntToStr(Integer(Application.Handle)));
+    {$ifend}
     p.Execute;
   finally
     p.Free;

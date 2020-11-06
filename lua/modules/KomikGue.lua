@@ -2,7 +2,7 @@
 -- Scripting Parameters
 ----------------------------------------------------------------------------------------------------
 
-local LuaDebug   = require 'Modules.LuaDebugging'
+local LuaDebug   = require 'LuaDebugging'
 -- LuaDebugging  = true   --> Override the global LuaDebugging variable by uncommenting this line.
 -- LuaStatistics = true   --> Override the global LuaStatistics variable by uncommenting this line.
 
@@ -11,7 +11,7 @@ local LuaDebug   = require 'Modules.LuaDebugging'
 -- Local Constants
 ----------------------------------------------------------------------------------------------------
 
-local Template   = require 'Modules.Template-MangaReaderOnline'
+local Template   = require 'templates.MangaReaderOnline'
 -- DirectoryParameters = '/'            --> Override template variable by uncommenting this line.
 -- XPathTokenStatus    = 'Status'       --> Override template variable by uncommenting this line.
 -- XPathTokenAuthors   = 'Author(s)'    --> Override template variable by uncommenting this line.
@@ -28,8 +28,7 @@ function GetInfo()
   Template.GetInfo()
   local v, x = nil
   local u = MaybeFillHost(module.RootURL, url)
-  
-  --[[Debug]] LuaDebug.WriteLogWithHeader('GetInfo', 'url ->  ' .. u)
+
   if not http.Get(u) then return net_problem end
   
   x = TXQuery.Create(http.Document)
@@ -45,9 +44,6 @@ function GetInfo()
     mangainfo.ChapterNames.Add(x.XPathString('normalize-space(.)', v.Get(i)))
   end
   InvertStrings(mangainfo.ChapterLinks, mangainfo.ChapterNames)
-  
-  --[[Debug]] LuaDebug.PrintMangaInfo()
-  --[[Debug]] LuaDebug.WriteStatistics('Chapters', mangainfo.ChapterLinks.Count .. '  (' .. mangainfo.Title .. ')')
   
   return no_error
 end

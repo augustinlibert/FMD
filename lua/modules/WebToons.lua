@@ -7,6 +7,7 @@ local langs = {
 
 function getinfo()
   mangainfo.url = mangainfo.url:gsub('(.*)&page=.*', '%1')
+  http.cookies.values['ageGatePass'] = 'True'
   if http.get(mangainfo.url) then
     x=TXQuery.Create(http.document)
     mangainfo.title = x.xpathstring('//meta[@property="og:title"]/@content')
@@ -50,6 +51,7 @@ function getpagenumber()
   task.pagenumber=0
   task.pagelinks.clear()
   url = url:gsub('(.*)&page=.*', '%1')
+  http.Cookies.Values['ageGatePass'] = 'True'
   if http.get(MaybeFillHost(module.rooturl,url)) then
     TXQuery.Create(http.Document).xpathstringall('//div[@id="_imageList"]/img[@class="_images"]/@data-url', task.pagelinks)
     return true
